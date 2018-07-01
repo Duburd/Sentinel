@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navvy from './Navbar.jsx';
 import MainTable from './Table.jsx';
+import EnhancedTable from './enhancedTable.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class App extends Component {
         </header>
         <p className="App-intro">
         </p>
-        <MainTable />
+        <EnhancedTable />
       </div>
     )
   }
