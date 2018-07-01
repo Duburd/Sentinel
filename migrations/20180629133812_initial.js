@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
       knex.schema.createTable('reports', function(table) {
         table.increments();
         table.string('location');
-        table.string('description');
+        table.text('description');
         table.integer('user_id').references('id').inTable('users').onDelete('cascade');
         table.integer('vehicle_id').references('id').inTable('vehicles').onDelete('cascade');
         table.timestamp('created_at').defaultTo(knex.fn.now());
@@ -35,7 +35,7 @@ exports.up = function(knex, Promise) {
       knex.schema.createTable('vehicles', function(table) {
         table.increments();
         table.integer('user_id').references('id').inTable('users').onDelete('cascade');
-        table.integer('plate');
+        table.string('plate', 6);
         table.string('make');
         table.string('model');
         table.integer('year');
@@ -47,7 +47,7 @@ exports.up = function(knex, Promise) {
       knex.schema.createTable('witnesses', function(table) {
         table.increments();
         table.integer('report_id').references('id').inTable('reports').onDelete('cascade');
-        table.string('testimony'); 
+        table.text('testimony'); 
         table.string('first_name');
         table.string('last_name');
         table.integer('phone_number');
