@@ -2,20 +2,12 @@
 
 const express = require('express');
 const router = express.Router();
+const aws_router = require('./s3_endpoints/aws-sdk.js');
 
 module.exports = (knex) => {
 
     router.get("/", (req, res, next) => {
-        res.json([
-          {
-            id: 1,
-            name: 'matt'
-          },
-          {
-            id: 1,
-            name: 'aaron'
-          }
-        ]);
+      res.json(aws_router);
     });
     return router
 }
