@@ -47,7 +47,7 @@ exports.up = function(knex, Promise) {
       knex.schema.createTable('witnesses', function(table) {
         table.increments();
         table.integer('report_id').references('id').inTable('reports').onDelete('cascade');
-        table.string('testimony'); 
+        table.text('testimony'); 
         table.string('first_name');
         table.string('last_name');
         table.integer('phone_number');
