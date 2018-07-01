@@ -19,11 +19,16 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
+//truncate using var(n)
+String.prototype.trunc = String.prototype.trunc ||
+      function(n){
+          return (this.length > n) ? this.substr(0, n-1) + ' ...' : this;
+      };
 
 let counter = 0;
-function createData(description, caseNumber, client, reportDate, protein) {
+function createData(description, caseNumber, client, reportDate, status) {
   counter += 1;
-  return { id: counter, description, caseNumber, client, reportDate, protein };
+  return { id: counter, description, caseNumber, client, reportDate, status };
 }
 
 function getSorting(order, orderBy) {
@@ -37,7 +42,7 @@ const columnData = [
   { id: 'caseNumber', numeric: true, disablePadding: false, label: 'Case #' },
   { id: 'client', numeric: true, disablePadding: false, label: 'Client' },
   { id: 'reportDate', numeric: true, disablePadding: false, label: 'Date' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Status' },
+  { id: 'status', numeric: true, disablePadding: false, label: 'Status' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -192,19 +197,6 @@ class EnhancedTable extends React.Component {
       orderBy: 'caseNumber',
       selected: [],
       data: [
-        createData('Cupcake', 305, 'James McCoy', '12/22/2017', 'pending'),
-        createData('Donut', 452, 'Ronald McDonald', '2/28/2018', 'resolved'),
-        createData('Eclair', 262, 'Bob Ross', '3/1/2018', 'pending'),
-        createData('Frozen yoghurt', 159, 'Richard Simmons', '5/2/2017', 'pending'),
-        createData('Gingerbread', 356, 'Chuck Norris', '4/1/2018', 'resolved'),
-        createData('Honeycomb', 408, 'Oprah Winfrey', '5/1/2018', 'resolved'),
-        createData('Ice cream sandwich', 237, 'Barrack Obama', '3/20/2018', 'pending'),
-        createData('Jelly Bean', 375, 'Hugh Jackman', '7/1/2018', 'resolved'),
-        createData('KitKat', 518, 'Russel Crowe', '12/1/2017', 'pending'),
-        createData('Lollipop', 392, 'Christian Bale', '1/1/2018', 'resolved'),
-        createData('Marshmallow', 318, 'Emma Stone', '3/1/2016', 'pending'),
-        createData('Nougat', 360, 'Janet Jackson', '3/1/2017', 'resolved'),
-        createData('Oreo', 437, 'Billy Mays', '2/22/2018', 'pending'),
       ],
       page: 0,
       rowsPerPage: 5,
@@ -261,6 +253,18 @@ class EnhancedTable extends React.Component {
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+  componentDidMount() {
+    fetch('/api/reports')
+    .then(results => results.json())
+    .then(results => {
+      let mappy = results.map((rep) => {
+        return createData(rep.description.trunc(125), rep.id, rep.id, rep.created_at, 'pending')
+      })
+      return this.setState({data:mappy})
+    })
+  }
+  
+
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
@@ -304,7 +308,7 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.caseNumber}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.client}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.reportDate}</TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.protein}</TableCell>
+                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.status}</TableCell>
                     </TableRow>
                   );
                 })}
