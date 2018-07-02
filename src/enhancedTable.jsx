@@ -266,7 +266,7 @@ class EnhancedTable extends React.Component {
     .then(results => {
       console.log(results)
       let mappy = results.map((rep) => {
-        return createData(rep.description.trunc(115), rep.id, rep.user_id, chopDate(rep.created_at), 'pending')
+        return createData(rep.description.trunc(115), rep.id, `${rep.first_name} ${rep.last_name}`, chopDate(rep.created_at), 'pending')
       })
       return this.setState({data:mappy})
     })

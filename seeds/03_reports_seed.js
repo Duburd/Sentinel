@@ -26,175 +26,175 @@ exports.seed = function (knex, Promise) {
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 4,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 5,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 6,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 7,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 8,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 9,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 10,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 11,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 12,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 13,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 14,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 15,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 16,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 17,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 6,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 5,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 7,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 8,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 20,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 22,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 23,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 24,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 25,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 12,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
-        user_id: 2,
+        user_id: 9,
         vehicle_id: 2,
         created_at: faker.date.past()
       },
