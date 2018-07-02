@@ -38,7 +38,7 @@ exports.up = function(knex, Promise) {
         table.string('plate', 6);
         table.string('make');
         table.string('model');
-        table.integer('year');
+        table.string('year');
         table.string('color');
         table.string('damage'); //condition of vehicle
         table.timestamp('created_at').defaultTo(knex.fn.now());
