@@ -21,7 +21,7 @@ exports.seed = function (knex, Promise) {
         damage:  'front-bumper'
       },
       {
-        user_id: 2,
+        user_id: 3,
         plate:   'CCC000',
         make:    'Nissan',
         model:   'Skyline',
@@ -29,5 +29,33 @@ exports.seed = function (knex, Promise) {
         color:   'orange',
         damage:  'totalled'
       },
+      {
+        user_id: 4,
+        plate:   'CCC000',
+        make:    'Honda',
+        model:   'Civic',
+        year:    faker.date.past(),
+        color:   faker.commerce.color(),
+        damage:  'driver mirror'
+      },
+      {
+        user_id: 5,
+        plate:   'CCC000',
+        make:    'Toyota',
+        model:   'Celica',
+        year:    faker.date.past(),
+        color:   faker.commerce.color(),
+        damage:  'bumper'
+      },
+      {
+        user_id: 6,
+        plate:   'CCC000',
+        make:    'Ford',
+        model:   'Escape',
+        year:    faker.date.past(),
+        color:   faker.commerce.color(),
+        damage:  'keyed'
+      },
+      
   ]);
 }
