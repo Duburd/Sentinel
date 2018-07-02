@@ -11,8 +11,8 @@ module.exports = {
    client: 'postgresql',
    connection: {
      database: 'lhlfinal',
-     user:     'matti',
-     password: '1234'
+     user:     'aaronblack',
+     password: 'aaronblack'
    },
    pool: {
      min: 2,
@@ -27,8 +27,8 @@ module.exports = {
    client: 'postgresql',
    connection: {
      database: 'lhlfinal',
-     user:     'matti',
-     password: '1234'
+     user:     'aaronblack',
+     password: 'aaronblack'
    },
    pool: {
      min: 2,
