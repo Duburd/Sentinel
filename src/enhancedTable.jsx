@@ -25,6 +25,12 @@ String.prototype.trunc = String.prototype.trunc ||
           return (this.length > n) ? this.substr(0, n-1) + ' ...' : this;
       };
 
+
+      function chopDate(str) {
+        return str.slice(0,-5).replace("T", " at ");
+      }
+      
+
 let counter = 0;
 function createData(description, caseNumber, client, reportDate, status) {
   counter += 1;
@@ -43,6 +49,7 @@ const columnData = [
   { id: 'client', numeric: true, disablePadding: false, label: 'Client' },
   { id: 'reportDate', numeric: true, disablePadding: false, label: 'Date' },
   { id: 'status', numeric: true, disablePadding: false, label: 'Status' },
+
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -62,10 +69,10 @@ class EnhancedTableHead extends React.Component {
               checked={numSelected === rowCount}
               onChange={onSelectAllClick}
             />
-          </TableCell>
+          </TableCell > 
           {columnData.map(column => {
             return (
-              <TableCell
+              <TableCell style={{ fontSize: '1.75rem' }}
                 key={column.id}
                 numeric={column.numeric}
                 padding={column.disablePadding ? 'none' : 'default'}
@@ -259,13 +266,12 @@ class EnhancedTable extends React.Component {
     .then(results => {
       console.log(results)
       let mappy = results.map((rep) => {
-        return createData(rep.description.trunc(125), rep.id, rep.user_id, rep.created_at, 'pending')
+        return createData(rep.description.trunc(115), rep.id, rep.user_id, chopDate(rep.created_at), 'pending')
       })
       return this.setState({data:mappy})
     })
   }
   
-
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;

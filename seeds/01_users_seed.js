@@ -1,3 +1,5 @@
+var faker = require('faker');
+
 exports.seed = function (knex, Promise) {
 return knex('users')
   .insert([
@@ -16,11 +18,186 @@ return knex('users')
         license_number: '444444'
     },
     {
-        first_name: 'Bob',
-        last_name: 'b',
-        phone_number: '3333333',
-        policy_number: '34567',
-        license_number: '555555'
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        license_number: faker.random.number()
     },
   ]);
 }
