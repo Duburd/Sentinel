@@ -257,8 +257,9 @@ class EnhancedTable extends React.Component {
     fetch('/api/reports')
     .then(results => results.json())
     .then(results => {
+      console.log(results)
       let mappy = results.map((rep) => {
-        return createData(rep.description.trunc(125), rep.id, rep.id, rep.created_at, 'pending')
+        return createData(rep.description.trunc(125), rep.id, rep.user_id, rep.created_at, 'pending')
       })
       return this.setState({data:mappy})
     })
