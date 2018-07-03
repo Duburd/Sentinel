@@ -38,10 +38,11 @@ function getSorting(order, orderBy) {
 
 const columnData = [
   { id: 'description', numeric: false, disablePadding: true, label: 'Incident Description' },
-  { id: 'caseNumber', numeric: true, disablePadding: false, label: 'Case #' },
-  { id: 'client', numeric: true, disablePadding: false, label: 'Client' },
-  { id: 'reportDate', numeric: true, disablePadding: false, label: 'Date' },
+  { id: 'id', numeric: true, disablePadding: false, label: 'Case #' },
+  { id: 'first_name', numeric: true, disablePadding: false, label: 'Client' },
+  { id: 'created_at', numeric: true, disablePadding: false, label: 'Date' },
   { id: 'status', numeric: true, disablePadding: false, label: 'Status' },
+  { id: 'reports', numeric: true, disablePadding: false, label: 'Reports' },
 
 ];
 
@@ -194,7 +195,7 @@ class EnhancedTable extends React.Component {
 
     this.state = {
       order: 'asc',
-      orderBy: 'caseNumber',
+      orderBy: 'id',
       selected: [],
       data: [
       ],
@@ -217,10 +218,31 @@ class EnhancedTable extends React.Component {
 
   handleSelectAllClick = (event, checked) => {
     if (checked) {
-      this.setState(state => ({ selected: state.data.map(n => n.id) }));
+      this.setState(state => ({ selected: this.props.claimsList.map(n => n.id) }));
       return;
     }
-    this.setState({ selected: [] });
+      this.setState({ selected: [] });
+  };
+
+  handleClick = (event, id) => {
+    const { selected } = this.state;
+    const selectedIndex = selected.indexOf(id);
+    let newSelected = [];
+  
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, id);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      );
+    }
+  
+    this.setState({ selected: newSelected });
   };
 
   handleChangePage = (event, page) => {
@@ -231,14 +253,13 @@ class EnhancedTable extends React.Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 
-  isSelected = id => this.props.selected.indexOf(id) !== -1;
+  isSelected = id => this.state.selected.indexOf(id) !== -1;
 
   
   render() {
 
     
-    const { classes, handleClick } = this.props;
-    console.log(handleClick);
+    const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.claimsList.length - page * rowsPerPage);
 
@@ -264,7 +285,7 @@ class EnhancedTable extends React.Component {
                   return (
                     <TableRow
                       hover
-                      onClick={event => this.props.handleClick(event, n.id)}
+                      onClick={event => handleClick(event, n.id)}
                       role="checkbox"
                       aria-checked={isSelected}
                       tabIndex={-1}
@@ -278,7 +299,7 @@ class EnhancedTable extends React.Component {
                         {n.description.trunc(125)}
                       </TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.id}</TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name} {n.last_name}</TableCell>
+                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>Pending</TableCell>
                       <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report</Button>

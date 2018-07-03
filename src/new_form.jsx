@@ -69,7 +69,7 @@ class TextFields extends React.Component {
         <TextField
           id="uncontrolled"
           label="Policy Number"
-          defaultValue="1238712983719823"
+          defaultValue={this.props.modalObj.policy_number}
           className={classes.textField}
           margin="normal"
         />

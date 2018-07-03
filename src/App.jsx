@@ -33,33 +33,13 @@ class App extends Component {
     }
   }
 
-  handleClick = (event, id) => {
-    const { selected } = this.state;
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
-  
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-  
-    this.setState({ selected: newSelected });
-  };
 
   handleOpen = (id) => {
-    let modalObj = this.state.claimsList[id];
+    let modalObj = this.state.claimsList[id - 1];
     this.setState({ open: true, modalId: id, modalObj });
   };
 
-  handleClose = (id) => {
+  handleClose = () => {
     this.setState({ open: false, modalId: false });
   };
 
@@ -84,7 +64,16 @@ class App extends Component {
         </header>
         <p className="App-intro">
         </p>
-        <EnhancedTable modalObj={this.state.modalObj} tableHelper={this.state.tableHelper} modalId={this.state.modalId} open={this.state.open} handleClose={this.handleClose} handleOpen={this.handleOpen} handleClick={this.handleClick} claimsList={this.state.claimsList} selected={this.state.selected} />
+        <EnhancedTable
+          modalObj={this.state.modalObj}
+          tableHelper={this.state.tableHelper}
+          modalId={this.state.modalId}
+          open={this.state.open}
+          handleClose={this.handleClose}
+          handleOpen={this.handleOpen}
+          claimsList={this.state.claimsList}
+          selected={this.state.selected}
+        />
         <SimpleModalWrapped modalObj={this.state.modalObj} modalId={this.state.modalId} open={this.state.open} handleClose={this.handleClose} handleOpen={this.handleOpen} claimsList={this.state.claimsList}/>
       </div>
     )
