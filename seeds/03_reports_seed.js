@@ -27,42 +27,42 @@ exports.seed = function (knex, Promise) {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
         user_id: 4,
-        vehicle_id: 2,
+        vehicle_id: 4,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
         user_id: 5,
-        vehicle_id: 2,
+        vehicle_id: 5,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
         user_id: 6,
-        vehicle_id: 2,
+        vehicle_id: 6,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
         user_id: 7,
-        vehicle_id: 2,
+        vehicle_id: 7,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
         user_id: 8,
-        vehicle_id: 2,
+        vehicle_id: 8,
         created_at: faker.date.past()
       },
       {
         location: faker.address.streetAddress(),
         description: faker.lorem.paragraph(),
         user_id: 9,
-        vehicle_id: 2,
+        vehicle_id: 9,
         created_at: faker.date.past()
       },
       {

@@ -18,24 +18,17 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
+import Button from '@material-ui/core/Button';
+
+function chopDate(str) {
+  return str.slice(0,-5).replace("T", " at ");
+}
 
 //truncate using var(n)
 String.prototype.trunc = String.prototype.trunc ||
       function(n){
           return (this.length > n) ? this.substr(0, n-1) + ' ...' : this;
       };
-
-
-      function chopDate(str) {
-        return str.slice(0,-5).replace("T", " at ");
-      }
-      
-
-let counter = 0;
-function createData(description, caseNumber, client, reportDate, status) {
-  counter += 1;
-  return { id: counter, description, caseNumber, client, reportDate, status };
-}
 
 function getSorting(order, orderBy) {
   return order === 'desc'
@@ -209,6 +202,7 @@ class EnhancedTable extends React.Component {
       rowsPerPage: 5,
     };
   }
+  
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
@@ -229,27 +223,6 @@ class EnhancedTable extends React.Component {
     this.setState({ selected: [] });
   };
 
-  handleClick = (event, id) => {
-    const { selected } = this.state;
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-
-    this.setState({ selected: newSelected });
-  };
-
   handleChangePage = (event, page) => {
     this.setState({ page });
   };
@@ -258,24 +231,16 @@ class EnhancedTable extends React.Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 
-  isSelected = id => this.state.selected.indexOf(id) !== -1;
+  isSelected = id => this.props.selected.indexOf(id) !== -1;
 
-  componentDidMount() {
-    fetch('/api/reports')
-    .then(results => results.json())
-    .then(results => {
-      console.log(results)
-      let mappy = results.map((rep) => {
-        return createData(rep.description.trunc(115), rep.id, `${rep.first_name} ${rep.last_name}`, chopDate(rep.created_at), 'pending')
-      })
-      return this.setState({data:mappy})
-    })
-  }
   
   render() {
-    const { classes } = this.props;
+
+    
+    const { classes, handleClick } = this.props;
+    console.log(handleClick);
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.claimsList.length - page * rowsPerPage);
 
     return (
       <Paper className={classes.root}>
@@ -288,10 +253,10 @@ class EnhancedTable extends React.Component {
               orderBy={orderBy}
               onSelectAllClick={this.handleSelectAllClick}
               onRequestSort={this.handleRequestSort}
-              rowCount={data.length}
+              rowCount={this.props.claimsList.length}
             />
             <TableBody >
-              {data
+              {this.props.claimsList
                 .sort(getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
@@ -299,7 +264,7 @@ class EnhancedTable extends React.Component {
                   return (
                     <TableRow
                       hover
-                      onClick={event => this.handleClick(event, n.id)}
+                      onClick={event => this.props.handleClick(event, n.id)}
                       role="checkbox"
                       aria-checked={isSelected}
                       tabIndex={-1}
@@ -310,12 +275,13 @@ class EnhancedTable extends React.Component {
                         <Checkbox checked={isSelected} />
                       </TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} component="th" scope="row" padding="none">
-                        {n.description}
+                        {n.description.trunc(125)}
                       </TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.caseNumber}</TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.client}</TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.reportDate}</TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.status}</TableCell>
+                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.id}</TableCell>
+                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name} {n.last_name}</TableCell>
+                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
+                      <TableCell style={{ fontSize: '1.25rem' }} numeric>Pending</TableCell>
+                      <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report</Button>
                     </TableRow>
                   );
                 })}
@@ -329,7 +295,7 @@ class EnhancedTable extends React.Component {
         </div>
         <TablePagination style={{ fontSize: '1.25rem' }}
           component="div"
-          count={data.length}
+          count={this.props.claimsList.length}
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{

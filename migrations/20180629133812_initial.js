@@ -17,7 +17,7 @@ exports.up = function(knex, Promise) {
         table.integer('report_id').references('id').inTable('users').onDelete('cascade');
         table.timestamp('created_at').defaultTo(knex.fn.now());
       }),
-      knex.schema.createTable('reports', function(table) {
+      knex.schema.createTable('reports', function(table) { //ref witnesses and media?
         table.increments();
         table.string('location');
         table.text('description');
@@ -50,7 +50,7 @@ exports.up = function(knex, Promise) {
         table.text('testimony'); 
         table.string('first_name');
         table.string('last_name');
-        table.integer('phone_number');
+        table.string('phone_number');
         table.timestamp('created_at').defaultTo(knex.fn.now());
       })
     ])

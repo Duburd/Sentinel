@@ -5,18 +5,11 @@ const router = express.Router();
 
 module.exports = (knex) => {
 
-    router.get("/", (req, res, next) => {
-        res.json([
-          {
-            id: 1,
-            name: 'matt'
-          },
-          {
-            id: 1,
-            name: 'aaron'
-          }
-        ]);
-    });
-    return router
+  router.get("/", (req, res, next) => {
+    knex.select('*').from('witnesses')
+      .then((results) => {
+        res.json(results)
+      });
+  });
+  return router
 }
-
