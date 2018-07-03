@@ -6,5 +6,4 @@ exports.seed = function(knex, Promise) {
     .then(knex('media').del())
     .then(knex('messages').del())
     .then(knex('witnesses').del());
-
 };
