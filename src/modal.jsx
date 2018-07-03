@@ -10,12 +10,6 @@ function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
 
-let counter = 0;
-function createData(firstName, lastName, caseNumber) {
-  counter += 1;
-  return { id: counter, firstName, lastName, caseNumber };
-}
-
 
 function getModalStyle() {
   const top = 50;
@@ -54,7 +48,6 @@ class SimpleModal extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this)
 
     return (
       <div>

@@ -4,11 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
-let counter = 0;
-function createData(firstName, lastName, caseNumber) {
-  counter += 1;
-  return { id: counter, firstName, lastName, caseNumber };
-}
 
 const styles = theme => ({
   container: {
@@ -50,7 +45,7 @@ class TextFields extends React.Component {
     last_name: 'Black',
     age: '32',
     multiline: 'Controlled',
-    currency: 'EUR',
+    currency: 'USD',
   };
 
   handleChange = name => event => {
@@ -62,7 +57,6 @@ class TextFields extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.props.modalId)
     return (
 
       <form className={classes.container} noValidate autoComplete="off">
@@ -78,7 +72,6 @@ class TextFields extends React.Component {
           label="First Name"
           className={classes.textField}
           defaultValue={this.props.modalObj.first_name}
-          onChange={this.handleChange('name')}
           margin="normal"
         />
         <TextField

@@ -280,7 +280,7 @@ class EnhancedTable extends React.Component {
               {this.props.claimsList
                 .sort(getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map(n => {
+                .map((n, index) => {
                   const isSelected = this.isSelected(n.id);
                   return (
                     <TableRow
@@ -289,7 +289,7 @@ class EnhancedTable extends React.Component {
                       role="checkbox"
                       aria-checked={isSelected}
                       tabIndex={-1}
-                      key={n.id}
+                      key={index}
                       selected={isSelected}
                     >
                       <TableCell padding="checkbox">
@@ -302,7 +302,7 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>Pending</TableCell>
-                      <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report</Button>
+                      <Button onClick={this.props.handleOpen.bind(this, index)}>Open Report</Button>
                     </TableRow>
                   );
                 })}
