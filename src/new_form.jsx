@@ -184,7 +184,6 @@ class TextFields extends React.Component {
           multiline
           margin="normal"
         />
-        <img className="pics" src={this.props.modalObj.uri} />
       </form>
     );
   }

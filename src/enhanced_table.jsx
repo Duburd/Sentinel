@@ -285,7 +285,7 @@ class EnhancedTable extends React.Component {
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, n.id)}
+                      onClick={event => this.handleClick(event, n.id)}
                       role="checkbox"
                       aria-checked={isSelected}
                       tabIndex={-1}
@@ -296,7 +296,7 @@ class EnhancedTable extends React.Component {
                         <Checkbox checked={isSelected} />
                       </TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} component="th" scope="row" padding="none">
-                        {n.description.trunc(125)}
+                        {n.description.trunc(75)}
                       </TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.id}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name}</TableCell>

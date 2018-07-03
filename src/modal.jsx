@@ -4,7 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import NewReport from './new_form.jsx'
+import NewReport from './new_form.jsx';
+import ModalTabs from './Modal_tabs.jsx';
+
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -61,11 +63,10 @@ class SimpleModal extends React.Component {
         >
           <div style={getModalStyle()} className={classes.paper}>
             <Typography variant="title" id="modal-title">
-            Damage Report
             </Typography>
             <Typography variant="subheading" id="simple-modal-description">
               {/* Duis mollis, est non commodo luctus, nisi erat porttitor ligula. */}
-              <NewReport claimsList={this.props.claimsList} modalId={this.props.modalId} modalObj={this.props.modalObj} />
+              <ModalTabs claimsList={this.props.claimsList} modalId={this.props.modalId} modalObj={this.props.modalObj}/>
             </Typography>
           </div>
         </Modal>

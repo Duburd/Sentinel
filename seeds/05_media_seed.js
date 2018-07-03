@@ -130,77 +130,12 @@ exports.seed = function (knex, Promise) {
     {
       type: 'image',
       uri: faker.image.cats(),
-      report_id: 1
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 2
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 3
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 4
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 5
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 6
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 7
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
       report_id: 26
     },
     {
       type: 'image',
       uri: faker.image.cats(),
       report_id: 27
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 8
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 9
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 10
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 11
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 12
-    },
-    {
-      type: 'image',
-      uri: faker.image.cats(),
-      report_id: 13
     },
 
   ]);
