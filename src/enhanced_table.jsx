@@ -19,6 +19,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
+import './App.css';
 
 function chopDate(str) {
   return str.slice(0,-5).replace("T", " at ");
@@ -302,7 +303,9 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>Pending</TableCell>
+                      <TableCell>
                       <Button onClick={this.props.handleOpen.bind(this, index)}>Open Report</Button>
+                      </TableCell>
                     </TableRow>
                   );
                 })}

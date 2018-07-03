@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-
+import classNames from 'classnames';
 
 const styles = theme => ({
   container: {
@@ -17,6 +17,12 @@ const styles = theme => ({
   },
   menu: {
     width: 200,
+  },
+  resize: {
+    fontSize: 14,
+  },
+  resizeDesc: {
+    fontSize: 11,
   },
 });
 
@@ -64,12 +70,22 @@ class TextFields extends React.Component {
           id="uncontrolled"
           label="Policy Number"
           defaultValue={this.props.modalObj.policy_number}
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           className={classes.textField}
           margin="normal"
         />
         <TextField
           id="name"
           label="First Name"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           className={classes.textField}
           defaultValue={this.props.modalObj.first_name}
           margin="normal"
@@ -77,6 +93,11 @@ class TextFields extends React.Component {
         <TextField
           id="uncontrolled"
           label="Last Name"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.last_name}
           className={classes.textField}
           margin="normal"
@@ -85,6 +106,11 @@ class TextFields extends React.Component {
           required
           id="required"
           label="Case Number"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.id}
           className={classes.textField}
           margin="normal"
@@ -93,6 +119,11 @@ class TextFields extends React.Component {
           required
           id="required"
           label="Phone Number"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.phone_number}
           className={classes.textField}
           margin="normal"
@@ -101,6 +132,11 @@ class TextFields extends React.Component {
           required
           id="uncontrolled"
           label="Vehicle Make"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.make}
           className={classes.textField}
           margin="normal"
@@ -108,6 +144,11 @@ class TextFields extends React.Component {
         <TextField
           id="uncontrolled"
           label="Vehicle Model"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.model}
           className={classes.textField}
           margin="normal"
@@ -115,6 +156,11 @@ class TextFields extends React.Component {
         <TextField
           id="uncontrolled"
           label="Vehicle Year"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.year}
           className={classes.textField}
           margin="normal"
@@ -122,6 +168,11 @@ class TextFields extends React.Component {
         <TextField
           id="uncontrolled"
           label="License plate"
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.license_plate}
           className={classes.textField}
           margin="normal"
@@ -132,6 +183,11 @@ class TextFields extends React.Component {
           InputLabelProps={{
             shrink: true,
           }}
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           defaultValue={this.props.modalObj.damage}
           fullWidth
           multiline
@@ -141,6 +197,11 @@ class TextFields extends React.Component {
           id="uncontrolled"
           label="Date/Time of incident"
           defaultValue=""
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           className={classes.textField}
           margin="normal"
         />
@@ -148,6 +209,11 @@ class TextFields extends React.Component {
           id="uncontrolled"
           label="Location of incident"
           defaultValue=""
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           className={classes.textField}
           margin="normal"
         />
@@ -158,6 +224,11 @@ class TextFields extends React.Component {
           className={classes.textField}
           value={this.state.currency}
           onChange={this.handleChange('currency')}
+          InputProps={{
+            classes: {
+              input: classes.resize,
+            },
+          }}
           SelectProps={{
             native: true,
             MenuProps: {
@@ -178,6 +249,11 @@ class TextFields extends React.Component {
           label="Incident Description"
           InputLabelProps={{
             shrink: true,
+          }}
+          InputProps={{
+            classes: {
+              input: classes.resizeDesc,
+            },
           }}
           defaultValue={this.props.modalObj.description}
           fullWidth
