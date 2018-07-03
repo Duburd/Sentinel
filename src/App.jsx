@@ -55,7 +55,8 @@ class App extends Component {
   };
 
   handleOpen = (id) => {
-    this.setState({ open: true, modalId: id });
+    let modalObj = this.state.claimsList[id];
+    this.setState({ open: true, modalId: id, modalObj });
   };
 
   handleClose = (id) => {
@@ -83,8 +84,8 @@ class App extends Component {
         </header>
         <p className="App-intro">
         </p>
-        <EnhancedTable tableHelper={this.state.tableHelper} modalId={this.state.modalId} open={this.state.open} handleClose={this.handleClose} handleOpen={this.handleOpen} handleClick={this.handleClick} claimsList={this.state.claimsList} selected={this.state.selected} />
-        <SimpleModalWrapped modalId={this.state.modalId} open={this.state.open} handleClose={this.handleClose} handleOpen={this.handleOpen} claimsList={this.state.claimsList}/>
+        <EnhancedTable modalObj={this.state.modalObj} tableHelper={this.state.tableHelper} modalId={this.state.modalId} open={this.state.open} handleClose={this.handleClose} handleOpen={this.handleOpen} handleClick={this.handleClick} claimsList={this.state.claimsList} selected={this.state.selected} />
+        <SimpleModalWrapped modalObj={this.state.modalObj} modalId={this.state.modalId} open={this.state.open} handleClose={this.handleClose} handleOpen={this.handleOpen} claimsList={this.state.claimsList}/>
       </div>
     )
   }

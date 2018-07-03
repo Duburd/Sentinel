@@ -77,13 +77,14 @@ class TextFields extends React.Component {
           id="name"
           label="First Name"
           className={classes.textField}
+          defaultValue={this.props.modalObj.first_name}
           onChange={this.handleChange('name')}
           margin="normal"
         />
         <TextField
           id="uncontrolled"
           label="Last Name"
-          defaultValue={this.state.last_name}
+          defaultValue={this.props.modalObj.last_name}
           className={classes.textField}
           margin="normal"
         />
@@ -91,7 +92,7 @@ class TextFields extends React.Component {
           required
           id="required"
           label="Case Number"
-          defaultValue="123456"
+          defaultValue={this.props.modalObj.id}
           className={classes.textField}
           margin="normal"
         />
@@ -99,7 +100,7 @@ class TextFields extends React.Component {
           required
           id="required"
           label="Phone Number"
-          defaultValue="(902)123-4567"
+          defaultValue={this.props.modalObj.phone_number}
           className={classes.textField}
           margin="normal"
         />
@@ -107,28 +108,28 @@ class TextFields extends React.Component {
           required
           id="uncontrolled"
           label="Vehicle Make"
-          defaultValue="Toyota"
+          defaultValue={this.props.modalObj.make}
           className={classes.textField}
           margin="normal"
         />
         <TextField
           id="uncontrolled"
           label="Vehicle Model"
-          defaultValue="Corolla"
+          defaultValue={this.props.modalObj.model}
           className={classes.textField}
           margin="normal"
         />
         <TextField
           id="uncontrolled"
           label="Vehicle Year"
-          value="2000"
+          defaultValue={this.props.modalObj.year}
           className={classes.textField}
           margin="normal"
         />
         <TextField
           id="uncontrolled"
           label="License plate"
-          defaultValue="AAA000"
+          defaultValue={this.props.modalObj.license_plate}
           className={classes.textField}
           margin="normal"
         />
@@ -138,7 +139,7 @@ class TextFields extends React.Component {
           InputLabelProps={{
             shrink: true,
           }}
-          defaultValue="Spicy jalapeno bacon ipsum dolor amet culpa anim irure shoulder ground round aliqua hamburger aliquip leberkas. Shank flank irure pancetta, in aliquip laboris swine ribeye turkey frankfurter boudin dolore strip steak anim. Ham incididunt sint meatloaf aliquip ut capicola frankfurter nisi aute beef, shankle commodo. Voluptate laboris eu cupim, salami tenderloin laborum. Pastrami meatball est veniam turducken in, qui ribeye rump occaecat consequat. Minim tail shoulder, turkey short ribs lorem pork loin. Magna ball tip frankfurter ullamco chicken, fatback alcatra dolore reprehenderit sausage brisket."
+          defaultValue={this.props.modalObj.damage}
           fullWidth
           multiline
           margin="normal"
@@ -185,7 +186,7 @@ class TextFields extends React.Component {
           InputLabelProps={{
             shrink: true,
           }}
-          defaultValue="Spicy jalapeno bacon ipsum dolor amet culpa anim irure shoulder ground round aliqua hamburger aliquip leberkas. Shank flank irure pancetta, in aliquip laboris swine ribeye turkey frankfurter boudin dolore strip steak anim. Ham incididunt sint meatloaf aliquip ut capicola frankfurter nisi aute beef, shankle commodo. Voluptate laboris eu cupim, salami tenderloin laborum. Pastrami meatball est veniam turducken in, qui ribeye rump occaecat consequat. Minim tail shoulder, turkey short ribs lorem pork loin. Magna ball tip frankfurter ullamco chicken, fatback alcatra dolore reprehenderit sausage brisket."
+          defaultValue={this.props.modalObj.description}
           fullWidth
           multiline
           margin="normal"

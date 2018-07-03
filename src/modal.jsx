@@ -72,7 +72,7 @@ class SimpleModal extends React.Component {
             </Typography>
             <Typography variant="subheading" id="simple-modal-description">
               {/* Duis mollis, est non commodo luctus, nisi erat porttitor ligula. */}
-              <NewReport claimsList={this.props.claimsList} modalId={this.props.modalId} />
+              <NewReport claimsList={this.props.claimsList} modalId={this.props.modalId} modalObj={this.props.modalObj} />
             </Typography>
           </div>
         </Modal>
