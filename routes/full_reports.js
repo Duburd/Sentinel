@@ -20,6 +20,7 @@ module.exports = (knex) => {
       'description', 
       'reports.id', 
       'reports.created_at', 
+      'reports.status',
       'witnesses.first_name as witnesses_first_name', 
       'witnesses.last_name as witnesses_last_name', 
       'witnesses.testimony as witnesses_testimony', 

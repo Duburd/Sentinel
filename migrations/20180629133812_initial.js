@@ -21,6 +21,7 @@ exports.up = function(knex, Promise) {
         table.increments();
         table.string('location');
         table.text('description');
+        table.string('status');
         table.integer('user_id').references('id').inTable('users').onDelete('cascade');
         table.integer('vehicle_id').references('id').inTable('vehicles').onDelete('cascade');
         table.timestamp('created_at').defaultTo(knex.fn.now());
