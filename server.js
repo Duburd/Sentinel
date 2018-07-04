@@ -1,8 +1,8 @@
-const ENV        = process.env.PORT || 'development';
+const ENV        = process.env.ENV || 'production';
 const express    = require('express'   );
 const knexConfig = require("./knexfile");
 const knex       = require("knex"      )(knexConfig[ENV]);
-const PORT       = process.env.API_PORT | 8081;       // this port needs to match the port in the webapack.config.js -> devServer -> proxy
+const PORT       = process.env.PORT | 8081;       // this port needs to match the port in the webapack.config.js -> devServer -> proxy
 
 
 const app = express();
