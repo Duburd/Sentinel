@@ -28,6 +28,9 @@ app.use("/api/fullreports", fullReportsRoutes(knex));
 
 // can be GETted through the webpack-dev-server at localhost:8080/api or whatever host/port makes sense
 
-app.listen(PORT, () => {console.log("API server is up, on port " + PORT);});
+app.listen(PORT, (a, b, c) => {
+  console.log("listen callbacking being called, with these arguments:\na:\n", a, '\nb:\n', b, '\nc:\n', c, '\nprocess.env:\n', process.env);
+  // console.log("API server is up, on port " + PORT);
+});
 
 
