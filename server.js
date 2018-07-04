@@ -7,8 +7,8 @@ const PORT       = process.env.PORT       // this port needs to match the port i
 
 
 const app = express();
-app.use(express.static(__dirname + 'build/public'));
-app.use(express.static(__dirname + 'build/js'));
+app.use(express.static('build/public'));
+app.use(express.static('build/js'));
 
 const reportsRoutes     = require("./routes/reports"       );
 const mediaRoutes       = require("./routes/media"         );
