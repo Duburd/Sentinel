@@ -9,7 +9,10 @@ module.exports = (knex) => {
     knex.select('*').from('users')
       .then((results) => {
         res.json(results)
-      });
+      })
+      .catch(() => {
+        res.status(500).send("oh fuck you");
+      })
   });
   return router
 }

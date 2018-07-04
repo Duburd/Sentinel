@@ -5,9 +5,10 @@
   "description": "webpack/babel/etc recipes for starting new projects",
   "scripts": {
     "build": "webpack-cli",
+    "build2": "cp -r src/public/* build && webpack-cli",
     "dev": "concurrently --kill-others \"webpack-dev-server\" \"nodemon server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "yarn dev"
+    "start": "node server.js"
   },
   "author": "Jeremy Holman <jeremy.holman@gmail.com>",
   "license": "UNLICENSED",
