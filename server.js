@@ -1,8 +1,9 @@
-const ENV        = process.env.ENV || 'production';
+require('dotenv').config();
+const ENV        = process.env.ENV;
 const express    = require('express'   );
 const knexConfig = require("./knexfile");
 const knex       = require("knex"      )(knexConfig[ENV]);
-const PORT       = process.env.PORT | 8081;       // this port needs to match the port in the webapack.config.js -> devServer -> proxy
+const PORT       = process.env.PORT       // this port needs to match the port in the webapack.config.js -> devServer -> proxy
 
 
 const app = express();
@@ -28,8 +29,8 @@ app.use("/api/fullreports", fullReportsRoutes(knex));
 
 // can be GETted through the webpack-dev-server at localhost:8080/api or whatever host/port makes sense
 
-app.listen(PORT, (a, b, c) => {
-  console.log("listen callbacking being called, with these arguments:\na:\n", a, '\nb:\n', b, '\nc:\n', c, '\nprocess.env:\n', process.env);
+app.listen(PORT, (e) => {
+  console.log("listen callbacking being called, err?:\na:\n", e);
   // console.log("API server is up, on port " + PORT);
 });
 
