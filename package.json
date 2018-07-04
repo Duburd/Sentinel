@@ -9,7 +9,8 @@
     "build2": "cp -r src/public/* build && webpack-cli",
     "dev": "concurrently --kill-others \"webpack-dev-server\" \"nodemon server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "npm run build"
   },
   "author": "Jeremy Holman <jeremy.holman@gmail.com>",
   "license": "UNLICENSED",
