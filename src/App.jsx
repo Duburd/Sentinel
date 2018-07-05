@@ -33,9 +33,11 @@ class App extends Component {
     }
   }
 
-  handleOpen = (i) => {
-    let modalObj = this.state.claimsList[i];
-    this.setState({ open: true, modalId: i, modalObj });
+  handleOpen = (targetId) => {
+    let modalObj = this.state.claimsList.find(function(claim) {
+      return claim.id === targetId;
+    });
+    this.setState({ open: true, modalId: targetId, modalObj });
   };
 
   handleClose = () => {

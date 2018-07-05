@@ -24,6 +24,9 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
+  tabRoot: {
+    fontSize: 12,
+  },
 
 });
 
@@ -44,12 +47,23 @@ class SimpleTabs extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
-            <Tab label="Damage Report" />
-            <Tab label="Pictures" />
+            <Tab label={<span style={{fontSize: 12}}>Damage Report</span>} classes={{ root: classes.tabRoot }} />
+    <Tab label={<span style={{fontSize: 12}}>Pictures</span>} classes={{ root: classes.tabRoot }} />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><NewReport claimsList={this.props.claimsList} modalId={this.props.modalId} modalObj={this.props.modalObj} /></TabContainer>}
-        {value === 1 && <TabContainer><img className="pics" src={this.props.modalObj.uri} /></TabContainer>}
+        {value === 0 && 
+        <TabContainer>
+          <NewReport 
+            claimsList={this.props.claimsList} 
+            modalId={this.props.modalId} 
+            modalObj={this.props.modalObj} 
+            />
+            </TabContainer>}
+        {value === 1 && 
+        <TabContainer>
+          <img className="pics" src={this.props.modalObj.uri} 
+          />
+          </TabContainer>}
       </div>
     );
   }

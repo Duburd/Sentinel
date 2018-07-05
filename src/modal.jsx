@@ -8,6 +8,7 @@ import NewReport from './new_form.jsx';
 import ModalTabs from './Modal_tabs.jsx';
 
 
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -39,14 +40,6 @@ class SimpleModal extends React.Component {
     open: false,
   };
 
-//   handleOpen = () => {
-//     this.setState({ open: true });
-//   };
-
-//   handleClose = () => {
-//     this.setState({ open: false });
-//   };
-
 
   render() {
     const { classes } = this.props;
@@ -66,9 +59,14 @@ class SimpleModal extends React.Component {
             </Typography>
             <Typography variant="subheading" id="simple-modal-description">
               {/* Duis mollis, est non commodo luctus, nisi erat porttitor ligula. */}
-              <ModalTabs claimsList={this.props.claimsList} modalId={this.props.modalId} modalObj={this.props.modalObj}/>
+              <ModalTabs 
+              claimsList={this.props.claimsList} 
+              modalId={this.props.modalId} 
+              modalObj={this.props.modalObj}
+              />
             </Typography>
           </div>
+          
         </Modal>
       </div>
     );

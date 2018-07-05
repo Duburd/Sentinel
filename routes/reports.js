@@ -14,5 +14,16 @@ module.exports = (knex) => {
         res.json(results)
       });
   });
+  router.put("/:id/status", (req, res, next) => {
+    console.log(req.params)
+    knex('reports')
+      .where('id', '=', req.params.id)
+      .update({
+        status: 'open',
+      }).then(function() {
+        res.json({message: 'status updated'})
+      })
+  });
+
   return router
 }
