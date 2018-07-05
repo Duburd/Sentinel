@@ -8,13 +8,15 @@ return knex('users')
         last_name: 'Black',
         phone_number: '1111111',
         policy_number: '12345',
-        license_number: '333333'
+        license_number: '333333',
+        uri: faker.image.cats(),
     },
     {
         first_name: 'Matt',
         last_name: 'Greff',
         phone_number: '2222222',
         policy_number: '23456',
+        uri: faker.image.cats(),
         license_number: '444444'
     },
     {
@@ -22,6 +24,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -29,6 +32,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -36,6 +40,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -43,6 +48,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -50,6 +56,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -57,6 +64,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -64,6 +72,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -71,6 +80,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -78,6 +88,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -85,6 +96,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -92,6 +104,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -99,6 +112,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -106,6 +120,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -113,6 +128,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -120,6 +136,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -127,6 +144,15 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
+        license_number: faker.razndom.number()
+    },
+    {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        phone_number: faker.phone.phoneNumber(),
+        policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -134,6 +160,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -141,6 +168,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -148,6 +176,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -155,6 +184,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -162,6 +192,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -169,6 +200,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -176,6 +208,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -183,6 +216,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -190,6 +224,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -197,6 +232,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -204,6 +240,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -211,6 +248,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -218,6 +256,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -225,6 +264,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     {
@@ -232,13 +272,7 @@ return knex('users')
         last_name: faker.name.lastName(),
         phone_number: faker.phone.phoneNumber(),
         policy_number: faker.random.number(),
-        license_number: faker.random.number()
-    },
-    {
-        first_name: faker.name.firstName(),
-        last_name: faker.name.lastName(),
-        phone_number: faker.phone.phoneNumber(),
-        policy_number: faker.random.number(),
+        uri: faker.image.cats(),
         license_number: faker.random.number()
     },
     
