@@ -21,16 +21,15 @@ import { lighten } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
 import './App.css';
 
-
 function chopDate(str) {
-  return str.slice(0,-5).replace("T", " at ");
+  return str.slice(0, -5).replace("T", " at ");
 }
 
 //truncate using var(n)
 String.prototype.trunc = String.prototype.trunc ||
-      function(n){
-          return (this.length > n) ? this.substr(0, n-1) + ' ...' : this;
-      };
+  function (n) {
+    return (this.length > n) ? this.substr(0, n - 1) + ' ...' : this;
+  };
 
 function getSorting(order, orderBy) {
   return order === 'desc'
@@ -65,7 +64,7 @@ class EnhancedTableHead extends React.Component {
               checked={numSelected === rowCount}
               onChange={onSelectAllClick}
             />
-          </TableCell > 
+          </TableCell >
           {columnData.map(column => {
             return (
               <TableCell style={{ fontSize: '1.75rem' }}
@@ -112,13 +111,13 @@ const toolbarStyles = theme => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   spacer: {
     flex: '1 1 100%',
   },
@@ -145,10 +144,10 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="title" id="tableTitle">
-            Reports
+            <Typography variant="title" id="tableTitle">
+              Reports
           </Typography>
-        )}
+          )}
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions}>
@@ -159,12 +158,12 @@ let EnhancedTableToolbar = props => {
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
+            <Tooltip title="Filter list">
+              <IconButton aria-label="Filter list">
+                <FilterListIcon />
+              </IconButton>
+            </Tooltip>
+          )}
       </div>
     </Toolbar>
   );
@@ -205,7 +204,6 @@ class EnhancedTable extends React.Component {
       rowsPerPage: 5,
     };
   }
-  
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
@@ -214,7 +212,6 @@ class EnhancedTable extends React.Component {
     if (this.state.orderBy === property && this.state.order === 'desc') {
       order = 'asc';
     }
-
     this.setState({ order, orderBy });
   };
 
@@ -223,14 +220,14 @@ class EnhancedTable extends React.Component {
       this.setState(state => ({ selected: this.props.claimsList.map(n => n.id) }));
       return;
     }
-      this.setState({ selected: [] });
+    this.setState({ selected: [] });
   };
 
   handleClick = (event, id) => {
     const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
-  
+
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
@@ -243,7 +240,6 @@ class EnhancedTable extends React.Component {
         selected.slice(selectedIndex + 1),
       );
     }
-  
     this.setState({ selected: newSelected });
   };
 
@@ -257,10 +253,8 @@ class EnhancedTable extends React.Component {
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-  
   render() {
 
-    
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.claimsList.length - page * rowsPerPage);
@@ -305,7 +299,7 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.status}</TableCell>
                       <TableCell>
-                      <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report</Button>
+                        <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report</Button>
                       </TableCell>
                     </TableRow>
                   );

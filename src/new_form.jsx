@@ -49,7 +49,7 @@ const ModalButton = styled.button`
 class TextFields extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {...props.modalObj}
+    this.state = { ...props.modalObj }
   }
 
 
@@ -61,31 +61,32 @@ class TextFields extends React.Component {
     console.log('state', this.state)
   }
 
-  handleSubmit(event) {
-    event.preventDefault()
+  updateReport(e) {
+    console.log('hi');
+    e.preventDefault()
     var data = {
-      data: {...this.state}
+      data: { ...this.state, ...this.props }
     }
     console.log(data)
-    fetch("/reports/update", {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    }).then(function(response) {
-        if (response.status >= 400) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-    }).then(function(data) {
-        console.log(data)    
-        if(data == "success"){
-           this.setState({msg: "Form submitted"});  
-        }
-    }).catch(function(err) {
-        console.log(err)
+    fetch(`/api/reports/${this.props.modalObj.id}/update`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (response) {
+      if (response.status >= 400) {
+        throw new Error("Bad response from server");
+      }
+      return response.json();
+    }).then(function (data) {
+      console.log(data)
+      if (data == "success") {
+        this.setState({ msg: "Form submitted" });
+      }
+    }).catch(function (err) {
+      console.log(err)
     });
   }
-  
+
   markAsOpen(e) {
     e.preventDefault();
     fetch(`/api/reports/${this.props.modalObj.id}/status`, {
@@ -95,12 +96,12 @@ class TextFields extends React.Component {
           status: "Open"
         }
       ), // data can be `string` or {object}!
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
   }
 
   markAsClosed(e) {
@@ -112,18 +113,31 @@ class TextFields extends React.Component {
           status: "Closed"
         }
       ), // data can be `string` or {object}!
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
-    
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
   }
+
+
+  handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+
+
 
   render() {
     const { classes } = this.props;
-    const { policyNum, firstName, lastName, phoneNum, make, model, year, licensePlate, damageDescription, incidentTime, location, incidentDescription } = this.state;
+    // const { policyNum, firstName, lastName, phoneNum, make, model, year, licensePlate, damageDescription, incidentTime, location, incidentDescription } = this.state;
     return (
 
       <form className={classes.container} noValidate autoComplete="off">
@@ -131,6 +145,7 @@ class TextFields extends React.Component {
           id="policyNum"
           label="Policy Number"
           name="policyNum"
+          disabled
           defaultValue={this.props.modalObj.policy_number}
           InputLabelProps={{
             shrink: true,
@@ -145,13 +160,13 @@ class TextFields extends React.Component {
           }}
           className={classes.textField}
           margin="normal"
-          onChange={this.onChange}
+          onChange={this.handleInputChange}
         />
 
         <TextField
           id="firstName"
           label="First Name"
-          name="firstName"
+          name="first_name"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -163,14 +178,16 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
+
           className={classes.textField}
           defaultValue={this.props.modalObj.first_name}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           id="lastName"
           label="Last Name"
-          name="lastName"
+          name="last_name"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -182,9 +199,11 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
+
           defaultValue={this.props.modalObj.last_name}
           className={classes.textField}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           required
@@ -212,7 +231,7 @@ class TextFields extends React.Component {
           required
           id="phoneNum"
           label="Phone Number"
-          name="phoneNum"
+          name="phone_number"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -225,8 +244,10 @@ class TextFields extends React.Component {
             },
           }}
           defaultValue={this.props.modalObj.phone_number}
+
           className={classes.textField}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           required
@@ -247,6 +268,7 @@ class TextFields extends React.Component {
           defaultValue={this.props.modalObj.make}
           className={classes.textField}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           id="model"
@@ -266,6 +288,7 @@ class TextFields extends React.Component {
           defaultValue={this.props.modalObj.model}
           className={classes.textField}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           id="year"
@@ -285,11 +308,12 @@ class TextFields extends React.Component {
           defaultValue={this.props.modalObj.year}
           className={classes.textField}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
-          id="licencePlate"
+          id="licensePlate"
           label="License plate"
-          name="licensePlate"
+          name="license_number"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -304,11 +328,12 @@ class TextFields extends React.Component {
           defaultValue={this.props.modalObj.license_number}
           className={classes.textField}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           id="damageDescription"
           label="Damage Description"
-          name="damageDescription"
+          name="damage"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -324,6 +349,7 @@ class TextFields extends React.Component {
           fullWidth
           multiline
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           id="incidentTime"
@@ -343,6 +369,7 @@ class TextFields extends React.Component {
           }}
           className={classes.textField}
           margin="normal"
+          onChange={this.handleInputChange}
         />
         <TextField
           id="location"
@@ -360,13 +387,14 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
+          onChange={this.handleInputChange}
           className={classes.textField}
           margin="normal"
         />
         <TextField
           id="incidentDescription"
           label="Incident Description"
-          name="incidentDescription"
+          name="description"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -379,12 +407,14 @@ class TextFields extends React.Component {
             },
           }}
           defaultValue={this.props.modalObj.description}
+          onChange={this.handleInputChange}
           fullWidth
           multiline
           margin="normal"
         />
         <ModalButton onClick={this.markAsOpen.bind(this)}>Mark as Open</ModalButton>
         <ModalButton onClick={this.markAsClosed.bind(this)}>Mark as Closed</ModalButton>
+        <ModalButton onClick={this.updateReport.bind(this)}>Update Report</ModalButton>
       </form>
     );
   }
