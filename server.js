@@ -1,12 +1,17 @@
 const ENV        = process.env.ENV || "production";
 const express    = require('express'   );
+const bodyParser = require('body-parser')
 const knexConfig = require("./knexfile");
 const knex       = require("knex"      )(knexConfig[ENV]);
 const PORT       = process.env.API_PORT | 8081;       // this port needs to match the port in the webapack.config.js -> devServer -> proxy
 
 
-
 const app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
 const reportsRoutes     = require("./routes/reports"       );
 const mediaRoutes       = require("./routes/media"         );

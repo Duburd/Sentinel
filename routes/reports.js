@@ -2,6 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser')
+
+
 
 module.exports = (knex) => {
 
@@ -16,10 +19,11 @@ module.exports = (knex) => {
   });
   router.put("/:id/status", (req, res, next) => {
     console.log(req.params)
+    console.log(req.body)
     knex('reports')
       .where('id', '=', req.params.id)
       .update({
-        status: 'open',
+        status: req.body.status,
       }).then(function() {
         res.json({message: 'status updated'})
       })

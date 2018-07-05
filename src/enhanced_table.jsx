@@ -280,7 +280,7 @@ class EnhancedTable extends React.Component {
             />
             <TableBody >
               {this.props.claimsList
-                .slice(0)
+                .slice(0) //slice creates a shallow copy so that the state is updated correctly
                 .sort(getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((n, index) => {
@@ -306,7 +306,7 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.status}</TableCell>
                       <TableCell>
-                      <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report {index}</Button>
+                      <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report</Button>
                       </TableCell>
                     </TableRow>
                   );

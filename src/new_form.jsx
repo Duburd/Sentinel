@@ -90,7 +90,11 @@ class TextFields extends React.Component {
     e.preventDefault();
     fetch(`/api/reports/${this.props.modalObj.id}/status`, {
       method: 'PUT', // or 'POST'
-      body: JSON.stringify(this.props.modalObj.id), // data can be `string` or {object}!
+      body: JSON.stringify(
+        {
+          status: "Open"
+        }
+      ), // data can be `string` or {object}!
       headers:{
         'Content-Type': 'application/json'
       }
@@ -101,6 +105,19 @@ class TextFields extends React.Component {
 
   markAsClosed(e) {
     e.preventDefault();
+    fetch(`/api/reports/${this.props.modalObj.id}/status`, {
+      method: 'PUT', // or 'POST'
+      body: JSON.stringify(
+        {
+          status: "Closed"
+        }
+      ), // data can be `string` or {object}!
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
     
   }
 
