@@ -47,22 +47,23 @@ class SimpleTabs extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
-            <Tab label={<span style={{fontSize: 12}}>Damage Report</span>} classes={{ root: classes.tabRoot }} />
-    <Tab label={<span style={{fontSize: 12}}>Pictures</span>} classes={{ root: classes.tabRoot }} />
+            <Tab label={<span style={{ fontSize: 12 }}>Damage Report</span>} classes={{ root: classes.tabRoot }} />
+            <Tab label={<span style={{ fontSize: 12 }}>Pictures</span>} classes={{ root: classes.tabRoot }} />
           </Tabs>
         </AppBar>
-        {value === 0 && 
-        <TabContainer>
-          <NewReport 
-            claimsList={this.props.claimsList} 
-            modalId={this.props.modalId} 
-            modalObj={this.props.modalObj} 
+        {value === 0 &&
+          <TabContainer>
+            <NewReport
+              claimsList={this.props.claimsList}
+              modalId={this.props.modalId}
+              modalObj={this.props.modalObj}
+              handleClose={this.props.handleClose}
             />
-            </TabContainer>}
-        {value === 1 && 
-        <TabContainer>
-          <img className="pics" src={this.props.modalObj.uri} 
-          />
+          </TabContainer>}
+        {value === 1 &&
+          <TabContainer>
+            <img className="pics" src={this.props.modalObj.uri}
+            />
           </TabContainer>}
       </div>
     );

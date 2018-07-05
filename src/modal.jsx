@@ -54,19 +54,20 @@ class SimpleModal extends React.Component {
           open={this.props.open}
           onClose={this.props.handleClose}
         >
-          <div style={{...getModalStyle()}} className={classes.paper}>
+          <div style={{ ...getModalStyle() }} className={classes.paper}>
             <Typography variant="title" id="modal-title">
             </Typography>
             <Typography variant="subheading" id="simple-modal-description">
               {/* Duis mollis, est non commodo luctus, nisi erat porttitor ligula. */}
-              <ModalTabs 
-              claimsList={this.props.claimsList} 
-              modalId={this.props.modalId} 
-              modalObj={this.props.modalObj}
+              <ModalTabs
+                handleClose={this.props.handleClose}
+                claimsList={this.props.claimsList}
+                modalId={this.props.modalId}
+                modalObj={this.props.modalObj}
               />
             </Typography>
           </div>
-          
+
         </Modal>
       </div>
     );
