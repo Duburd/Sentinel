@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
         table.string('phone_number');
         table.string('license_number');
         table.string('policy_number');
+        table.string('profile_photo');
       }),
       knex.schema.createTable('media', function(table) {
         table.increments();
