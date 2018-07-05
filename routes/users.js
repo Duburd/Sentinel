@@ -10,9 +10,22 @@ module.exports = (knex) => {
       .then((results) => {
         res.json(results)
       })
-      .catch(() => {
-        res.status(500).send("oh fuck you");
+      .catch((e) => {
+        res.status(500).send(e);
       })
+      
+  });
+
+  router.get("/:id", (req, res, next) => {
+    knex.select('*').from('users')
+      .where('id', '=', re.params.id)
+      .then((results) => {
+        res.json(results)
+      })
+      .catch((e) => {
+        res.status(500).send(e);
+      })
+      
   });
   return router
 }
