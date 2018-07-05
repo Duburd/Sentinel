@@ -60,6 +60,7 @@ class SimpleModal extends React.Component {
             <Typography variant="subheading" id="simple-modal-description">
               {/* Duis mollis, est non commodo luctus, nisi erat porttitor ligula. */}
               <ModalTabs
+                handleClose={this.props.handleClose}
                 claimsList={this.props.claimsList}
                 modalId={this.props.modalId}
                 modalObj={this.props.modalObj}

@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
 import styled from 'styled-components';
 
-
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -45,7 +44,6 @@ const ModalButton = styled.button`
   }
 `;
 
-
 class TextFields extends React.Component {
   constructor(props) {
     super(props)
@@ -53,21 +51,12 @@ class TextFields extends React.Component {
   }
 
 
-
-  onChange = (e) => {
-    // Because we named the inputs to match their corresponding values in state, it's
-    // super easy to update the state
-    this.setState({ [e.target.name]: e.target.value });
-    console.log('state', this.state)
-  }
-
   updateReport(e) {
-    console.log('hi');
     e.preventDefault()
     var data = {
       data: { ...this.state, ...this.props }
     }
-    console.log(data)
+    this.props.handleClose()
     fetch(`/api/reports/${this.props.modalObj.id}/update`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -78,14 +67,14 @@ class TextFields extends React.Component {
       }
       return response.json();
     }).then(function (data) {
-      console.log(data)
-      if (data == "success") {
-        this.setState({ msg: "Form submitted" });
-      }
+      // if (data == "success") {
+      //   this.setState({ msg: "Form submitted" } );
+      // }
     }).catch(function (err) {
       console.log(err)
     });
   }
+  
 
   markAsOpen(e) {
     e.preventDefault();
@@ -101,6 +90,7 @@ class TextFields extends React.Component {
       }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
+      this.props.handleClose()
       .then(response => console.log('Success:', response));
   }
 
@@ -118,6 +108,7 @@ class TextFields extends React.Component {
       }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
+      this.props.handleClose()
       .then(response => console.log('Success:', response));
   }
 

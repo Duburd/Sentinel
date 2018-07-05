@@ -299,7 +299,7 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.status}</TableCell>
                       <TableCell>
-                        <Button onClick={this.props.handleOpen.bind(this, n.id)}>Open Report</Button>
+                        <Button style={{}} onClick={this.props.handleOpen.bind(this, n.id)}>View Report</Button>
                       </TableCell>
                     </TableRow>
                   );

@@ -22,15 +22,25 @@ class App extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false, modalId: false });
+    this.setState({ open: false });
   };
 
   componentDidMount() {
+
+    fetch('/api/reports')
+    .then(results => results.json())
+    .then(results => {
+      return this.setState({ claimsList: results })
+    })
+
+    //don't know if this is the best way to do this. ****
+    this.lookupInterval = setInterval(() => { 
     fetch('/api/reports')
       .then(results => results.json())
       .then(results => {
         return this.setState({ claimsList: results })
       })
+    }, 2000)
   }
 
   render() {

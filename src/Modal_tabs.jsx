@@ -57,6 +57,7 @@ class SimpleTabs extends React.Component {
               claimsList={this.props.claimsList}
               modalId={this.props.modalId}
               modalObj={this.props.modalObj}
+              handleClose={this.props.handleClose}
             />
           </TabContainer>}
         {value === 1 &&
