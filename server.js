@@ -18,7 +18,6 @@ const mediaRoutes       = require("./routes/media"         );
 const vehiclesRoutes    = require("./routes/vehicles"      );
 const witnessesRoutes   = require("./routes/witnesses"     );
 const usersRoutes       = require("./routes/users"         );
-const fullReportsRoutes = require("./routes/full_reports"  );
 // const updateReport      = require("./routes/update_report" );
 
 app.use("/api/reports",             reportsRoutes    (knex));
@@ -26,7 +25,6 @@ app.use("/api/media",               mediaRoutes      (knex));
 app.use("/api/vehicles",            vehiclesRoutes   (knex));
 app.use("/api/witnesses",           witnessesRoutes  (knex));
 app.use("/api/users",               usersRoutes      (knex));
-app.use("/api/fullreports",         fullReportsRoutes(knex));
 // app.use("/api/reports/:id",         updateReport     (knex));
 
 

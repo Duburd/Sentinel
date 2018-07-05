@@ -228,6 +228,33 @@ exports.seed = function (knex, Promise) {
         damage:  'broken fender'
       },
       {
+        user_id: 26,
+        plate:   'AAA222',
+        make:    'Dodge',
+        model:   'Charger',
+        year:    '2010',
+        color:   faker.commerce.color(),
+        damage:  'Busted'
+      },
+      {
+        user_id: 27,
+        plate:   'ZZZ000',
+        make:    'Cadillac',
+        model:   'AA',
+        year:    '1995',
+        color:   faker.commerce.color(),
+        damage:  'Extensive damage to the left side'
+      },
+      {
+        user_id: 28,
+        plate:   'ZZZ000',
+        make:    'Jaguar',
+        model:   'JP',
+        year:    '1985',
+        color:   faker.commerce.color(),
+        damage:  'Severely scratched and damaged on the right side'
+      },
+      {
         user_id: 10,
         plate:   'AAA111',
         make:    'Mclaren',

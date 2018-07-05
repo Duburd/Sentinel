@@ -45,7 +45,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch('/api/fullreports')
+    fetch('/api/reports')
     .then(results => results.json())
     .then(results => {
       return this.setState({claimsList:results})
