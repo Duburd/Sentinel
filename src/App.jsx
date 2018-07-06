@@ -1,24 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import Admin from './views/admin.jsx';
 
 const BasicExample = () => (
   <Router>
     <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/admin">Admin</Link>
-        </li>
-        <li>
-          <Link to="/topics">Topics</Link>
-        </li>
-      </ul>
-
-      <hr />
-
       <Route exact path="/" component={Home} />
       <Route path="/admin" component={Admin} />
       <Route path="/topics" component={Topics} />
@@ -39,7 +25,7 @@ const Home = () => (
     <div>
     <div className="tempText">
       <h1 className="landing_rowMainText">Test test test test test test</h1>
-      <button className="actionButton">Start Here</button>
+      <Link to="/admin"><button className="actionButton">Start Here</button></Link>
       </div>
     </div>
   </div>
