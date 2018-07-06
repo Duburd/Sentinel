@@ -58,6 +58,7 @@ class SimpleTabs extends React.Component {
               modalId={this.props.modalId}
               modalObj={this.props.modalObj}
               handleClose={this.props.handleClose}
+              addNotification={this.props.addNotification}
             />
           </TabContainer>}
         {value === 1 &&

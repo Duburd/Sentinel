@@ -9,6 +9,7 @@ import ModalTabs from './Modal_tabs.jsx';
 
 
 
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -64,6 +65,7 @@ class SimpleModal extends React.Component {
                 claimsList={this.props.claimsList}
                 modalId={this.props.modalId}
                 modalObj={this.props.modalObj}
+                addNotification={this.props.addNotification}
               />
             </Typography>
           </div>

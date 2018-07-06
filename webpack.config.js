@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/index.jsx',
 
   // https://webpack.js.org/configuration/output/
   output: {
@@ -45,7 +45,12 @@ module.exports = {
         }, {
           loader: 'sass-loader'
         }]
-      }
+      },
+
+      {
+        test: /\.(jpeg|png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
+      },
     ]
   },
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Navvy extends Component {
   constructor(props) {
@@ -37,10 +38,10 @@ class Navvy extends Component {
     </Nav>
     <Nav pullRight>
       <NavItem eventKey={1} href="#">
-        Link Right
+      <Link to="/admin">Admin</Link>
       </NavItem>
       <NavItem eventKey={2} href="#">
-        Link Right
+      <Link to="/">Home</Link>
       </NavItem>
     </Nav>
   </Navbar.Collapse>
