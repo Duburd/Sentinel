@@ -97,7 +97,8 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res, next) => {
-    const report = req.body
+    const report = req.body;
+    console.log(report)
     knex('reports')
       .insert({
         description: report.description,
