@@ -34,13 +34,15 @@ module.exports = (knex) => {
         'media.id as mediaid',
       )
       .from('reports')
-      .innerJoin('vehicles', 'reports.vehicle_id', '=', 'vehicles.id')
-      .innerJoin('users', 'reports.user_id', '=', 'users.id')
-      .innerJoin('witnesses', 'witnesses.report_id', 'reports.id')
+      .leftJoin('vehicles', 'reports.vehicle_id', '=', 'vehicles.id')
+      .leftJoin('users', 'reports.user_id', '=', 'users.id')
+      .leftJoin('witnesses', 'witnesses.report_id', 'reports.id')
       .leftJoin('media', 'media.report_id', 'reports.id')
       .then((results) => {
         res.json(results)
-      });
+      }).catch((err) => {
+        res.json(err)
+      })
   });
 
   router.put("/:id/update", (req, res, next) => {
@@ -72,6 +74,8 @@ module.exports = (knex) => {
                 res.json({
                   message: 'report updated'
                 })
+              }).catch((err) => {
+                res.json(err)
               })
           });
       })
@@ -87,6 +91,25 @@ module.exports = (knex) => {
         res.json({
           message: 'status updated'
         })
+      }).catch((err) => {
+        res.json(err)
+      })
+  });
+
+  router.post("/", (req, res, next) => {
+    const report = req.body
+    knex('reports')
+      .insert({
+        description: report.description,
+        vehicle_id:  report.vehicle_id,
+        location:    report.location,
+        user_id:     report.user_id,
+        status:      report.status,
+      })
+      .then(function (results) {
+        res.json({results})
+      }).catch((err) => {
+        res.json(err)
       })
   });
 

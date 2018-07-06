@@ -18,18 +18,18 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json())
 
-const reportsRoutes = require("./routes/reports");
-const mediaRoutes = require("./routes/media");
-const vehiclesRoutes = require("./routes/vehicles");
+const reportsRoutes   = require("./routes/reports");
+const mediaRoutes     = require("./routes/media");
+const vehiclesRoutes  = require("./routes/vehicles");
 const witnessesRoutes = require("./routes/witnesses");
-const usersRoutes = require("./routes/users");
+const usersRoutes     = require("./routes/users");
 // const updateReport      = require("./routes/update_report" );
 
-app.use("/api/reports", reportsRoutes(knex));
-app.use("/api/media", mediaRoutes(knex));
-app.use("/api/vehicles", vehiclesRoutes(knex));
+app.use("/api/reports",   reportsRoutes(knex));
+app.use("/api/media",     mediaRoutes(knex));
+app.use("/api/vehicles",  vehiclesRoutes(knex));
 app.use("/api/witnesses", witnessesRoutes(knex));
-app.use("/api/users", usersRoutes(knex));
+app.use("/api/users",     usersRoutes(knex));
 // app.use("/api/reports/:id",         updateReport     (knex));
 
 
