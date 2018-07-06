@@ -3,6 +3,9 @@ import './App.css';
 import Navvy from './Navbar.jsx';
 import EnhancedTable from './enhanced_table.jsx';
 import SimpleModalWrapped from './modal.jsx';
+import NotifyComponent from './notify_component.jsx'
+import NotificationSystem from 'react-notification-system';
+
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +16,16 @@ class App extends Component {
       open: false,
     }
   }
+
+  _notificationSystem = null
+ 
+  _addNotification = (event, msg) => {
+    event.preventDefault();
+    this._notificationSystem.addNotification({
+      message: msg,
+      level: 'success'
+    });
+  };
 
   handleOpen = (targetId) => {
     let modalObj = this.state.claimsList.find(function (claim) {
@@ -27,26 +40,29 @@ class App extends Component {
 
   componentDidMount() {
 
-    fetch('/api/reports')
-    .then(results => results.json())
-    .then(results => {
-      return this.setState({ claimsList: results })
-    })
+    this._notificationSystem = this.refs.notificationSystem;
 
-    //don't know if this is the best way to do this. ****
-    this.lookupInterval = setInterval(() => { 
     fetch('/api/reports')
       .then(results => results.json())
       .then(results => {
         return this.setState({ claimsList: results })
       })
-    }, 2000)
+
+    //don't know if this is the best way to do this. ****
+    this.lookupInterval = setInterval(() => {
+      fetch('/api/reports')
+        .then(results => results.json())
+        .then(results => {
+          return this.setState({ claimsList: results })
+        })
+    }, 500)
   }
 
   render() {
 
     return (
       <div className="App">
+        <NotificationSystem ref="notificationSystem" />
         <Navvy />
         <header className="App-header">
           <img src="insure.svg" className="App-logo" alt="logo" />
@@ -70,7 +86,9 @@ class App extends Component {
           open={this.state.open}
           handleClose={this.handleClose}
           handleOpen={this.handleOpen}
-          claimsList={this.state.claimsList} />
+          claimsList={this.state.claimsList}
+          addNotification={this._addNotification} />
+
       </div>
     )
   }

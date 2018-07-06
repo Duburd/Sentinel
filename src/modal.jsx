@@ -64,6 +64,7 @@ class SimpleModal extends React.Component {
                 claimsList={this.props.claimsList}
                 modalId={this.props.modalId}
                 modalObj={this.props.modalObj}
+                addNotification={this.props.addNotification}
               />
             </Typography>
           </div>

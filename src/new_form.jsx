@@ -74,7 +74,7 @@ class TextFields extends React.Component {
       console.log(err)
     });
   }
-  
+
 
   markAsOpen(e) {
     e.preventDefault();
@@ -90,7 +90,7 @@ class TextFields extends React.Component {
       }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
-      this.props.handleClose()
+    this.props.handleClose()
       .then(response => console.log('Success:', response));
   }
 
@@ -403,9 +403,9 @@ class TextFields extends React.Component {
           multiline
           margin="normal"
         />
-        <ModalButton onClick={this.markAsOpen.bind(this)}>Mark as Open</ModalButton>
-        <ModalButton onClick={this.markAsClosed.bind(this)}>Mark as Closed</ModalButton>
-        <ModalButton onClick={this.updateReport.bind(this)}>Update Report</ModalButton>
+        <ModalButton onClick={(ev) => {this.props.addNotification(ev, 'Report updated'); this.updateReport.bind(this)(ev)}}>Update Report</ModalButton>
+        <ModalButton onClick={(ev) => {this.props.addNotification(ev, 'Marked as open'); this.markAsOpen.bind(this)(ev)}}>Mark as Open</ModalButton>
+        <ModalButton onClick={(ev) => {this.props.addNotification(ev, 'Marked as closed'); this.markAsClosed.bind(this)(ev)}}>Mark as Closed</ModalButton>
       </form>
     );
   }

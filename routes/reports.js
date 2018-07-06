@@ -59,21 +59,21 @@ module.exports = (knex) => {
             phone_number: req.body.data.phone_number,
             license_number: req.body.data.license_number,
           })
-          .then(function () {
-            return knex('vehicles')
-              .where('vehicles.id', '=', req.body.data.modalObj.vehicleid)
-              .update({
-                make: req.body.data.make,
-                model: req.body.data.model,
-                year: req.body.data.year,
-                damage: req.body.data.damage,
-              })
-              .then(function () {
-                res.json({
-                  message: 'report updated'
-                })
-              })
-          });
+      })
+      .then(function () {
+        return knex('vehicles')
+          .where('vehicles.id', '=', req.body.data.modalObj.vehicleid)
+          .update({
+            make: req.body.data.make,
+            model: req.body.data.model,
+            year: req.body.data.year,
+            damage: req.body.data.damage,
+          })
+      })
+      .then(function () {
+        res.json({
+          message: 'report updated'
+        })
       })
   });
 
