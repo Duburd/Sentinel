@@ -3,8 +3,9 @@ import './App.css';
 import Navvy from './Navbar.jsx';
 import EnhancedTable from './enhanced_table.jsx';
 import SimpleModalWrapped from './modal.jsx';
-import NotifyComponent from './notify_component.jsx'
 import NotificationSystem from 'react-notification-system';
+
+
 
 
 class App extends Component {
