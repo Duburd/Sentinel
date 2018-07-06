@@ -2,12 +2,15 @@
   "name": "boilerplate",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "description": "webpack/babel/etc recipes for starting new projects",
   "scripts": {
     "build": "webpack-cli",
+    "build2": "cp -r src/public/* build && webpack-cli",
     "dev": "concurrently --kill-others \"webpack-dev-server\" \"nodemon server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "yarn dev"
+    "start": "node server.js",
+    "postinstall": "npm run build"
   },
   "author": "Jeremy Holman <jeremy.holman@gmail.com>",
   "license": "UNLICENSED",

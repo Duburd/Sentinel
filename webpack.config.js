@@ -7,7 +7,7 @@ module.exports = {
 
   // https://webpack.js.org/configuration/output/
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build', 'js'),
     filename: 'bundle.js'
   },
 
