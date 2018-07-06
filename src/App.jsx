@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import Admin from './views/admin.jsx';
+import Login from './views/login.jsx';
 
 const BasicExample = () => (
   <Router>
@@ -8,6 +9,7 @@ const BasicExample = () => (
       <Route exact path="/" component={Home} />
       <Route path="/admin" component={Admin} />
       <Route path="/topics" component={Topics} />
+      <Route path="/login" component={Login} />
     </div>
   </Router>
 );
@@ -30,6 +32,7 @@ const Home = () => (
     </div>
   </div>
 );
+
 
 const About = () => (
   <div>

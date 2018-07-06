@@ -43,6 +43,9 @@ class Navvy extends Component {
       <NavItem eventKey={2} href="#">
       <Link to="/">Home</Link>
       </NavItem>
+      <NavItem eventKey={2} href="#">
+      <Link to="/login">Login</Link>
+      </NavItem>
     </Nav>
   </Navbar.Collapse>
 </Navbar>

@@ -5,6 +5,7 @@ import EnhancedTable from '../enhanced_table.jsx';
 import SimpleModalWrapped from '../modal.jsx';
 import NotificationSystem from 'react-notification-system';
 import { BrowserRouter, Route } from 'react-router-dom'
+import Login from './login.jsx';
 
 
 
@@ -57,7 +58,7 @@ class Admin extends Component {
         .then(results => {
           return this.setState({ claimsList: results })
         })
-    }, 500)
+    }, 5000)
   }
 
   render() {
@@ -90,7 +91,6 @@ class Admin extends Component {
           handleOpen={this.handleOpen}
           claimsList={this.state.claimsList}
           addNotification={this._addNotification} />
-
       </div>
     )
   }
