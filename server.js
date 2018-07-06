@@ -1,11 +1,22 @@
 require('dotenv').config();
+const path = require('path');
+
 const ENV        = process.env.ENV || 'production';
 const express    = require('express'   );
 const knexConfig = require("./knexfile");
 const bodyParser = require('body-parser');
 const knex       = require("knex"      )(knexConfig[ENV]);
 const PORT       = process.env.PORT;       // this port needs to match the port in the webapack.config.js -> devServer -> proxy
+// const webpack = require('webpack');
+// const config = require('./webpack.config.dev.js');
+// var compiler = webpack(config);
 
+// app.use(require('webpack-dev-middleware')(compiler, {
+//     noInfo: true,
+//     publicPath: config.output.publicPath
+//   }));
+
+// app.use(require('webpack-hot-middleware')(compiler));
 
 const app = express();
 app.use(express.static('build/public'));
@@ -17,6 +28,10 @@ app.use(bodyParser.urlencoded({
 }))
 // parse application/json
 app.use(bodyParser.json())
+
+// app.get('*', function(req, res) {
+//     res.sendFile(path.resolve(__dirname, 'index.html'));
+//   });
 
 const reportsRoutes = require("./routes/reports");
 const mediaRoutes = require("./routes/media");

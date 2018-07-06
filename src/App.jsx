@@ -1,98 +1,84 @@
-import React, { Component } from 'react';
-import './App.css';
-import Navvy from './Navbar.jsx';
-import EnhancedTable from './enhanced_table.jsx';
-import SimpleModalWrapped from './modal.jsx';
-import NotificationSystem from 'react-notification-system';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Admin from './views/admin.jsx';
 
+const BasicExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/admin">Admin</Link>
+        </li>
+        <li>
+          <Link to="/topics">Topics</Link>
+        </li>
+      </ul>
 
+      <hr />
 
+      <Route exact path="/" component={Home} />
+      <Route path="/admin" component={Admin} />
+      <Route path="/topics" component={Topics} />
+    </div>
+  </Router>
+);
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      claimsList: [],
-      selected: [],
-      open: false,
-    }
-  }
-
-  _notificationSystem = null
- 
-  _addNotification = (event, msg) => {
-    event.preventDefault();
-    this._notificationSystem.addNotification({
-      message: msg,
-      level: 'success'
-    });
-  };
-
-  handleOpen = (targetId) => {
-    let modalObj = this.state.claimsList.find(function (claim) {
-      return claim.id === targetId;
-    });
-    this.setState({ open: true, modalId: targetId, modalObj });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  componentDidMount() {
-
-    this._notificationSystem = this.refs.notificationSystem;
-
-    fetch('/api/reports')
-      .then(results => results.json())
-      .then(results => {
-        return this.setState({ claimsList: results })
-      })
-
-    //don't know if this is the best way to do this. ****
-    this.lookupInterval = setInterval(() => {
-      fetch('/api/reports')
-        .then(results => results.json())
-        .then(results => {
-          return this.setState({ claimsList: results })
-        })
-    }, 500)
-  }
-
-  render() {
-
-    return (
-      <div className="App">
-        <NotificationSystem ref="notificationSystem" />
-        <Navvy />
-        <header className="App-header">
-          <img src="insure.svg" className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to InsuranceBuddy Admin</h1>
-        </header>
-        <p className="App-intro">
-        </p>
-        <EnhancedTable
-          modalObj={this.state.modalObj}
-          tableHelper={this.state.tableHelper}
-          modalId={this.state.modalId}
-          open={this.state.open}
-          handleClose={this.handleClose}
-          handleOpen={this.handleOpen}
-          claimsList={this.state.claimsList}
-          selected={this.state.selected}
-        />
-        <SimpleModalWrapped
-          modalObj={this.state.modalObj}
-          modalId={this.state.modalId}
-          open={this.state.open}
-          handleClose={this.handleClose}
-          handleOpen={this.handleOpen}
-          claimsList={this.state.claimsList}
-          addNotification={this._addNotification} />
-
-      </div>
-    )
-  }
+const bgStyle = {
+  backgroundImage: "url('./Images/AdobeStock_64718583.jpeg')",
+  backgroundSize: "cover",
+  backgroundRepeat: "repeat-x",
+  height: "800px",
 }
 
-export default App;
+
+const Home = () => (
+  <div style={bgStyle}>
+    <div>
+    <div className="tempText">
+      <h1 className="landing_rowMainText">Test test test test test test</h1>
+      <button className="actionButton">Start Here</button>
+      </div>
+    </div>
+  </div>
+);
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>Components</Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.url}/:topicId`} component={Topic} />
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
+    />
+  </div>
+);
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+);
+
+export default BasicExample;
