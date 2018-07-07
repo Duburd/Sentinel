@@ -121,7 +121,7 @@ module.exports = (knex) => {
         if(err) {
           res.json(err)
         }else {
-        res.json({id: id[0]})
+        res.json({message: 'success'})
         }
       })
   });
