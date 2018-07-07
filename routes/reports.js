@@ -120,6 +120,7 @@ module.exports = (knex) => {
         });
       })
       .then((results, err) => {
+        console.log(results)
         if(err) {
           res.json(err)
         }else {
