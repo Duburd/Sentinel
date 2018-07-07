@@ -16,7 +16,7 @@ class Navvy extends Component {
       <Navbar inverse collapseOnSelect>
   <Navbar.Header>
     <Navbar.Brand>
-      <a href="#brand">React-Bootstrap</a>
+      <a href="#brand">Valiant</a>
     </Navbar.Brand>
     <Navbar.Toggle />
   </Navbar.Header>
@@ -36,9 +36,7 @@ class Navvy extends Component {
         <MenuItem eventKey={3.3}>Separated link</MenuItem>
       </NavDropdown>
     </Nav>
-    
-
-
+  
 
     <Nav pullRight>
       <NavItem eventKey={1} href="#">
@@ -47,8 +45,11 @@ class Navvy extends Component {
       <NavItem eventKey={2} href="#">
       <Link to="/">Home</Link>
       </NavItem>
-      <NavItem eventKey={2} href="#">
+      <NavItem eventKey={3} href="#">
       <Link to="/login">Login</Link>
+      </NavItem>
+      <NavItem eventKey={4} href="#">
+      <Link to="/main">Main</Link>
       </NavItem>
       
   {this.state.isAuthenticated

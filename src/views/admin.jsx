@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import '../App.css';
-import Navvy from '../Navbar.jsx';
-import EnhancedTable from '../enhanced_table.jsx';
-import SimpleModalWrapped from '../modal.jsx';
+import '../styles/App.css';
+import EnhancedTable from './Components/enhanced_table.jsx';
+import SimpleModalWrapped from './Components/modal.jsx';
 import NotificationSystem from 'react-notification-system';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './login.jsx';
+import { withAuthenticator } from 'aws-amplify-react';
 
 
 
@@ -66,7 +66,6 @@ class Admin extends Component {
     return (
       <div className="App">
         <NotificationSystem ref="notificationSystem" />
-        <Navvy />
         <header className="App-header">
           <img src="insure.svg" className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to InsuranceBuddy Admin</h1>

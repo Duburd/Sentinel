@@ -7,15 +7,16 @@ const bgStyle = {
     backgroundSize: "cover",
     backgroundRepeat: "repeat-x",
     height: "800px",
+    opacity: "0.8",
   }
   
 
 const Home = () => (
     <div style={bgStyle}>
-      <div>
+      <div className="blankDiv">
         <div className="tempText">
-          <h1 className="landing_rowMainText">Test test test test test test</h1>
-          <Link to="/admin"><button className="actionButton">Start Here</button></Link>
+          <h1 className="landing_rowMainText">Valiant</h1>
+          <Link to="/main"><button className="actionButton">Start Here</button></Link>
         </div>
       </div>
     </div>

@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "../Login.css";
-import "../App.css"
+import "../styles/login.css";
+import "../styles/App.css"
 import { Auth } from 'aws-amplify';
 require("babel-core/register");
 require("babel-polyfill");
-
-
 
 export default class Login extends Component {
   constructor(props) {
