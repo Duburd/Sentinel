@@ -109,10 +109,10 @@ module.exports = (knex) => {
         status:      report.status,
       })
       .then(function (id) {
-        report.media.forEach((uri)=>{
+        return report.media.forEach((uri)=>{
           knex('media')
           .insert({
-            type: 'photo',
+            type: 'image',
             uri: uri,
             user_id: report.user_id,
             report_id: id[0]
@@ -123,7 +123,7 @@ module.exports = (knex) => {
         if(err) {
           res.json(err)
         }else {
-        res.json({message: 'success'})
+        res.json(results)
         }
       })
   });
