@@ -98,6 +98,7 @@ module.exports = (knex) => {
 
   router.post("/", (req, res, next) => {
     const report = req.body;
+    console.log(report)
     knex('reports')
       .returning('id')
       .insert({
@@ -108,19 +109,21 @@ module.exports = (knex) => {
         status:      report.status,
       })
       .then(function (id) {
-        reports.media.forEach((_)=>{
+        report.media.forEach((uri)=>{
           knex('media')
           .insert({
-            uri: _,
+            uri: uri,
             report_id: id[0]
-          })
+          });
         });
       })
-      .then((results) => {
+      .then((results, err) => {
+        if(err) {
+          res.json(err)
+        }else {
         res.json({id: id[0]})
-      }).catch((err) => {
-        res.json(err)
-      });
+        }
+      })
   });
 
   return router
