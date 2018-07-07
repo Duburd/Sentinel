@@ -116,16 +116,16 @@ module.exports = (knex) => {
             uri: uri,
             user_id: report.user_id,
             report_id: id[0]
-          });
-        });
-      })
-      .then((results, err) => {
-        console.log(results)
-        if(err) {
-          res.json(err)
-        }else {
-        res.json(results)
-        }
+          })
+          .then((results, err) => {
+            console.log(results)
+            if(err) {
+              //res.json(err)
+            }else {
+            //res.json(results)
+            }
+          })
+        })
       })
   });
   return router
