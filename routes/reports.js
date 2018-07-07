@@ -112,7 +112,9 @@ module.exports = (knex) => {
         report.media.forEach((uri)=>{
           knex('media')
           .insert({
+            type: 'photo',
             uri: uri,
+            user_id: report.user_id,
             report_id: id[0]
           });
         });
@@ -125,6 +127,5 @@ module.exports = (knex) => {
         }
       })
   });
-
   return router
 }
