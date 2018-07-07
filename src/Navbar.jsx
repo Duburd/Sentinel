@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -36,6 +36,10 @@ class Navvy extends Component {
         <MenuItem eventKey={3.3}>Separated link</MenuItem>
       </NavDropdown>
     </Nav>
+    
+
+
+
     <Nav pullRight>
       <NavItem eventKey={1} href="#">
       <Link to="/admin">Admin</Link>
@@ -46,12 +50,22 @@ class Navvy extends Component {
       <NavItem eventKey={2} href="#">
       <Link to="/login">Login</Link>
       </NavItem>
-    </Nav>
+      
+  {this.state.isAuthenticated
+  ? <NavItem eventKey={2} href="#"> Logout (I'm logged in) </NavItem>
+  : <NavItem eventKey={2} href="#"> Login (I'm logged out) </NavItem>
+}
+
+
+
+  </Nav>
   </Navbar.Collapse>
-</Navbar>
+  </Navbar>
       </div>
     );
   }
 }
 
 export default Navvy;
+
+

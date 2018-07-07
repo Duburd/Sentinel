@@ -3,6 +3,10 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../Login.css";
 import "../App.css"
 import { Auth } from 'aws-amplify';
+require("babel-core/register");
+require("babel-polyfill");
+
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -30,6 +34,7 @@ export default class Login extends Component {
   
     try {
       await Auth.signIn(this.state.email, this.state.password);
+      this.props.userHasAuthenticated(true);
       alert("Logged in");
     } catch (e) {
       alert(e.message);

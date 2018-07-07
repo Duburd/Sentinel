@@ -58,7 +58,7 @@ class Admin extends Component {
         .then(results => {
           return this.setState({ claimsList: results })
         })
-    }, 5000)
+    }, 500)
   }
 
   render() {
