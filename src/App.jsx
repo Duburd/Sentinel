@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
-import Admin from './views/admin.jsx';
-import Login from './views/login.jsx';
-import Routes from './routes.jsx';
-import Home from './views/home.jsx';
+import Admin from './views/Admin.jsx';
+import Login from './views/Login.jsx';
+import Routes from './Routes.jsx';
+import Home from './views/Home.jsx';
 import Navvy from './views/Components/Navbar.jsx';
 import { Auth } from "aws-amplify";
 require("babel-core/register");

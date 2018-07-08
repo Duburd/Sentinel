@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AppliedRoute from "./AppliedRoute.jsx";
-import App from './app.jsx';
-import Admin from './views/admin.jsx';
-import Login from './views/login.jsx';
-import Home from './views/home.jsx';
-import Main from './views/main.jsx';
-import Contact from './views/contact.jsx';
+import App from './App.jsx';
+import Admin from './views/Admin.jsx';
+import Login from './views/Login.jsx';
+import Home from './views/Home.jsx';
+import Main from './views/Main.jsx';
+import Contact from './views/Contact.jsx';
 
 
 

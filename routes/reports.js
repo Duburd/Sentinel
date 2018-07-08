@@ -100,6 +100,7 @@ module.exports = (knex) => {
     const report = req.body;
     console.log(report)
     knex('reports')
+      .returning('id')
       .insert({
         description: report.description,
         vehicle_id:  report.vehicle_id,
@@ -107,12 +108,25 @@ module.exports = (knex) => {
         user_id:     report.user_id,
         status:      report.status,
       })
-      .then(function (results) {
-        res.json({results})
-      }).catch((err) => {
-        res.json(err)
+      .then(function (id) {
+        return report.media.forEach((uri)=>{
+          knex('media')
+          .insert({
+            type: 'image',
+            uri: uri,
+            user_id: report.user_id,
+            report_id: id[0]
+          })
+          .then((results, err) => {
+            console.log(results)
+            if(err) {
+              //res.json(err)
+            }else {
+            //res.json(results)
+            }
+          })
+        })
       })
   });
-
   return router
 }

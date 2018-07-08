@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 import '../styles/landing-page.css';
-import Footer from './components/footer.jsx';
+import Footer from './Components/Footer.jsx';
 
 const BootstrapHeader = () => (
   <header className="masthead text-white text-center">
@@ -104,21 +104,21 @@ const ImageShowcase = () => (
     <div className="container-fluid p-0">
       <div className="row no-gutters">
 
-        <div className="col-lg-6 order-lg-2 text-white showcase-img" style={{ backgroundImage: `url(./images/AdobeStock_95986245.jpeg)` }}></div>
+        <div className="col-lg-6 order-lg-2 text-white showcase-img" style={{ backgroundImage: `url(./Images/AdobeStock_95986245.jpeg)` }}></div>
         <div className="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Delicious Bacon</h2>
           <p className="lead mb-0">Spicy jalapeno bacon ipsum dolor amet chicken in exercitation pork ribeye. Velit enim ipsum bacon labore in dolore doner capicola ut frankfurter venison. Meatball id swine capicola, eiusmod tenderloin landjaeger shoulder eu incididunt. Quis boudin dolor pork belly, in strip steak voluptate. Labore id meatloaf turducken dolor tempor, bresaola exercitation chuck lorem. Duis short ribs proident magna ad.</p>
         </div>
       </div>
       <div className="row no-gutters">
-        <div className="col-lg-6 text-white showcase-img" style={{ backgroundImage: `url(./images/AdobeStock_92848862.jpeg)`, float: `right` }}></div>
+        <div className="col-lg-6 text-white showcase-img" style={{ backgroundImage: `url(./Images/AdobeStock_92848862.jpeg)`, float: `right` }}></div>
         <div className="col-lg-6 my-auto showcase-text" >
           <h2>Bacon</h2>
           <p className="lead mb-0">Spicy jalapeno bacon ipsum dolor amet chicken in exercitation pork ribeye. Velit enim ipsum bacon labore in dolore doner capicola ut frankfurter venison. Meatball id swine capicola, eiusmod tenderloin landjaeger shoulder eu incididunt. Quis boudin dolor pork belly, in strip steak voluptate. Labore id meatloaf turducken dolor tempor, bresaola exercitation chuck lorem. Duis short ribs proident magna ad.</p>
         </div>
       </div>
       <div className="row no-gutters">
-        <div className="col-lg-6 order-lg-2 text-white showcase-img" style={{ backgroundImage: `url(./images/AdobeStock_104143549.jpeg)` }}></div>
+        <div className="col-lg-6 order-lg-2 text-white showcase-img" style={{ backgroundImage: `url(./Images/AdobeStock_104143549.jpeg)` }}></div>
         <div className="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Easy to Use / Customize</h2>
           <p className="lead mb-0">Spicy jalapeno bacon ipsum dolor amet chicken in exercitation pork ribeye. Velit enim ipsum bacon labore in dolore doner capicola ut frankfurter venison. Meatball id swine capicola, eiusmod tenderloin landjaeger shoulder eu incididunt. Quis boudin dolor pork belly, in strip steak voluptate. Labore id meatloaf turducken dolor tempor, bresaola exercitation chuck lorem. Duis short ribs proident magna ad.</p>
@@ -137,21 +137,21 @@ const Testimonials = () => (
       <div className="row">
         <div className="col-lg-4">
           <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img className="img-fluid rounded-circle mb-3" src="images/jennifer.jpeg" alt="" />
+            <img className="img-fluid rounded-circle mb-3" src="Images/jennifer.jpeg" alt="" />
             <h5>Jennifer H.</h5>
             <p className="font-weight-light mb-0">"This is fantastic! Thanks so much guys! PLONK!"</p>
           </div>
         </div>
         <div className="col-lg-4">
           <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img className="img-fluid rounded-circle mb-3" src="images/chibwe.jpeg" alt="" />
+            <img className="img-fluid rounded-circle mb-3" src="Images/chibwe.jpeg" alt="" />
             <h5>Chibwe M.</h5>
             <p className="font-weight-light mb-0">"Valiant is amazing. It provides all of the tools you need when you're in a crisis."</p>
           </div>
         </div>
         <div className="col-lg-4">
           <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img className="img-fluid rounded-circle mb-3" src="images/robs.png" alt="" />
+            <img className="img-fluid rounded-circle mb-3" src="Images/robs.png" alt="" />
             <h5>Rob	S.</h5>
             <p className="font-weight-light mb-0">"Thanks so much for making everything streamlined and available to us!"</p>
           </div>
