@@ -120,11 +120,10 @@ module.exports = (knex) => {
         })
       })
       .then((results, err) => {
-        console.log(results)
         if(err) {
-          //res.json(err)
+          res.json(err)
         }else {
-        //res.json(results)
+          res.json(results)
         }
       })
   });
