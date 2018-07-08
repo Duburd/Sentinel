@@ -52,7 +52,7 @@ module.exports = (knex) => {
       .update({
         description: req.body.data.description,
       })
-      .then(function () {
+      .then(()=> {
         return knex('users')
           .where('policy_number', '=', req.body.data.policy_number)
           .update({
@@ -61,7 +61,7 @@ module.exports = (knex) => {
             phone_number: req.body.data.phone_number,
             license_number: req.body.data.license_number,
           })
-          .then(function () {
+          .then(()=> {
             return knex('vehicles')
               .where('vehicles.id', '=', req.body.data.modalObj.vehicleid)
               .update({
@@ -70,7 +70,7 @@ module.exports = (knex) => {
                 year: req.body.data.year,
                 damage: req.body.data.damage,
               })
-              .then(function () {
+              .then(()=> {
                 res.json({
                   message: 'report updated'
                 })
@@ -87,7 +87,7 @@ module.exports = (knex) => {
       .update({
         status: req.body.status,
       })
-      .then(function () {
+      .then(()=> {
         res.json({
           message: 'status updated'
         })
@@ -97,18 +97,18 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res, next) => {
-    const report = req.body;
-    console.log(report)
+    const {description, vehicle_id, location, user_id, status, media, additionalDrivers} = req.body;
     knex('reports')
       .returning('id')
       .insert({
-        description: report.description,
-        vehicle_id:  report.vehicle_id,
-        location:    report.location,
-        user_id:     report.user_id,
-        status:      report.status,
+        description:       description,
+        vehicle_id:        vehicle_id,
+        location:          location,
+        user_id:           user_id,
+        status:            status,
+        additionalDrivers: additionalDrivers,
       })
-      .then(function (id) {
+      .then((id) => {
         return report.media.forEach((uri)=>{
           knex('media')
           .insert({
@@ -117,15 +117,15 @@ module.exports = (knex) => {
             user_id: report.user_id,
             report_id: id[0]
           })
-          .then((results, err) => {
-            console.log(results)
-            if(err) {
-              //res.json(err)
-            }else {
-            //res.json(results)
-            }
-          })
         })
+      })
+      .then((results, err) => {
+        console.log(results)
+        if(err) {
+          //res.json(err)
+        }else {
+        //res.json(results)
+        }
       })
   });
   return router

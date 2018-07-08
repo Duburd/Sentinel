@@ -24,6 +24,7 @@ exports.up = function (knex, Promise) {
       table.string('status');
       table.integer('user_id').references('id').inTable('users').onDelete('cascade');
       table.integer('vehicle_id').references('id').inTable('vehicles').onDelete('cascade');
+      table.specificType('additionalDrivers', 'jsonb[]');
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());
     }),
