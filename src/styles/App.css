@@ -46,12 +46,24 @@ body {
   width: 100%;
   -webkit-filter: brightness(70%); /* Safari */
   filter: brightness(70%);
+  
+  /* background: url(img_flower.jpg) no-repeat center fixed; 
+  background-size: cover; */
   /* background-image: url("./Images/AdobeStock_64718583.jpeg") */
+}
+
+.mainPagePics {
+  width: 100%;
+  -webkit-filter: brightness(70%); /* Safari */
+  filter: brightness(70%);
+  -webkit-filter: opacity(10%); /* Safari */
+  filter: opacity(70%)
 }
 
 .bg { 
   /* Full height */
   height: 100%; 
+  
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -60,11 +72,22 @@ body {
 }
 
 .landing_rowMainText {
-  font-size: 70px;
+  font-size: 120px;
   text-shadow: 1px 1px 3px #000;
+  margin-top: 200px;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Marck Script', cursive;
   font-weight: 400;
+  -webkit-filter: drop-shadow(8px 8px 10px black);
+  filter: drop-shadow(8px 8px 10px black);
+  -webkit-animation: fadein 5s;
+  animation: fadein 5s;
+  
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .tempText {
@@ -75,6 +98,17 @@ body {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  
+}
+
+.spacer {
+  width: 100%;
+  height: 350px;
+}
+
+.midPic {
+  width: 50%;
+  height: 100%;
 }
 
 .actionButton {
@@ -83,8 +117,35 @@ body {
   border-radius: 6px;
   font-size: 20px;
   letter-spacing: 2px;
+  margin-top: 100px;
   margin-bottom: 10px;
-  background-color: lightblue;
+  background-color: pink;
+  -webkit-animation: fadein 15s;
+  animation: fadein 15s;
+}
+
+.whiteDiv {
+  height: 300px;
+  width: 100%;
+  border: solid thin grey;
+}
+
+.blackDiv {
+  height: 200px;
+  width: 100%;
+  background-color: black;
+}
+
+.contactUs {
+  height: 30%;
+  width: 100%;
+
+}
+
+.contactAddress {
+  margin-top: 100px;
+  text-align: center;
+
 }
 
 @keyframes App-logo-spin {

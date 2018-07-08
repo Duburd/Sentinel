@@ -7,13 +7,9 @@ import Button from '@material-ui/core/Button';
 import NewReport from './new_form.jsx';
 import ModalTabs from './Modal_tabs.jsx';
 
-
-
-
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
-
 
 function getModalStyle() {
   const top = 50;

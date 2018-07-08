@@ -90,7 +90,6 @@ class TextFields extends React.Component {
       }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
-    this.props.handleClose()
       .then(response => console.log('Success:', response));
   }
 
