@@ -4,16 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import NewReport from './new_form.jsx';
+import NewReport from './New_form.jsx';
 import ModalTabs from './Modal_tabs.jsx';
-
-
-
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
-
 
 function getModalStyle() {
   const top = 50;

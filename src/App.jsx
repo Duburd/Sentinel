@@ -1,35 +1,15 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
-import Admin from './views/admin.jsx';
-
-const BasicExample = () => (
-  <Router>
-    <div>
-      <Route exact path="/" component={Home} />
-      <Route path="/admin" component={Admin} />
-      <Route path="/topics" component={Topics} />
-    </div>
-  </Router>
-);
-
-const bgStyle = {
-  backgroundImage: "url('./Images/AdobeStock_64718583.jpeg')",
-  backgroundSize: "cover",
-  backgroundRepeat: "repeat-x",
-  height: "800px",
-}
+import Admin from './views/Admin.jsx';
+import Login from './views/Login.jsx';
+import Routes from './Routes.jsx';
+import Home from './views/Home.jsx';
+import Navvy from './views/Components/Navbar.jsx';
+import { Auth } from "aws-amplify";
+require("babel-core/register");
+require("babel-polyfill");
 
 
-const Home = () => (
-  <div style={bgStyle}>
-    <div>
-    <div className="tempText">
-      <h1 className="landing_rowMainText">Test test test test test test</h1>
-      <Link to="/admin"><button className="actionButton">Start Here</button></Link>
-      </div>
-    </div>
-  </div>
-);
 
 const About = () => (
   <div>
@@ -37,34 +17,55 @@ const About = () => (
   </div>
 );
 
-const Topics = ({ match }) => (
-  <div>
-    <h2>Topics</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>Components</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-      </li>
-    </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic} />
-    <Route
-      exact
-      path={match.url}
-      render={() => <h3>Please select a topic.</h3>}
-    />
-  </div>
-);
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // isAuthenticated: false,
+      // isAuthenticating: true
+    }
+  }
 
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-);
 
-export default BasicExample;
+  // userHasAuthenticated = authenticated => {
+  //   this.setState({ isAuthenticated: authenticated });
+  // }
+
+  // handleLogout = event => {
+  //   this.userHasAuthenticated(false);
+  // }
+
+  // async componentDidMount() {
+  //   try {
+  //     if (await Auth.currentSession()) {
+  //       this.userHasAuthenticated(true);
+  //     }
+  //   }
+  //   catch (e) {
+  //     if (e !== 'No current user') {
+  //       alert(e);
+  //     }
+  //   }
+
+  //   this.setState({ isAuthenticating: false });
+  // }
+
+
+  render() {
+
+    const childProps = {
+      isAuthenticated: this.state.isAuthenticated,
+      userHasAuthenticated: this.userHasAuthenticated
+    }
+
+    return (
+      <div>
+      <Navvy />
+      <Routes childProps={childProps} />
+      </div>
+    )
+  }
+}
+
+export default App;
