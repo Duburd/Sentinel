@@ -21,13 +21,11 @@ export default class Contact extends Component {
 
   render() {
     return (
-        <div>
           <div>
             <img className="contactUs" src='./Images/AdobeStock_82861654.jpeg' />
           <div>
           {businessAddress}
           <Footer />
-          </div>
           </div>
           </div>
     );

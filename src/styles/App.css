@@ -145,7 +145,12 @@ body {
 .contactAddress {
   margin-top: 100px;
   text-align: center;
+}
 
+
+.addReports {
+  position: absolute;
+  margin: 15px;
 }
 
 @keyframes App-logo-spin {

@@ -121,16 +121,13 @@ class TextFields extends React.Component {
       [name]: value
     });
   }
-
-
-
+  
 
   render() {
     const { classes } = this.props;
     // const { policyNum, firstName, lastName, phoneNum, make, model, year, licensePlate, damageDescription, incidentTime, location, incidentDescription } = this.state;
     return (
-
-      <form className={classes.container} noValidate autoComplete="off">
+      <form className={classes.container} noValidate autoComplete="on">
         <TextField
           id="policyNum"
           label="Policy Number"
@@ -157,6 +154,7 @@ class TextFields extends React.Component {
           id="firstName"
           label="First Name"
           name="first_name"
+          autoComplete="given-name"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -178,6 +176,7 @@ class TextFields extends React.Component {
           id="lastName"
           label="Last Name"
           name="last_name"
+          autoComplete="family-name"
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -222,6 +221,7 @@ class TextFields extends React.Component {
           id="phoneNum"
           label="Phone Number"
           name="phone_number"
+          autoComplete='tel'
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {

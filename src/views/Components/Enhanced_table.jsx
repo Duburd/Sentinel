@@ -19,6 +19,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
+import { Button as BootButton } from 'react-bootstrap';
 // import './App.css';
 
 
@@ -146,9 +147,8 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-            <Typography variant="title" id="tableTitle">
-              Reports
-          </Typography>
+            <Typography variant="title" id="tableTitle" className="">
+            </Typography>
           )}
       </div>
       <div className={classes.spacer} />
@@ -263,6 +263,7 @@ class EnhancedTable extends React.Component {
 
     return (
       <Paper className={classes.root}>
+        <BootButton onClick={this.props.handleOpen.bind(this, 'new')}>+ Report</BootButton>
         <EnhancedTableToolbar numSelected={selected.length} />
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">

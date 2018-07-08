@@ -31,7 +31,11 @@ class Admin extends Component {
   };
 
   handleOpen = (targetId) => {
-    let modalObj = this.state.claimsList.find(function (claim) {
+    let modalObj = {}
+      if (targetId === 'new') {
+          this.setState({modalId: 'new', open: true, modalObj})
+      }
+    modalObj = this.state.claimsList.find(function (claim) {
       return claim.id === targetId;
     });
     this.setState({ open: true, modalId: targetId, modalObj });

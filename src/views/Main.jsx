@@ -12,11 +12,8 @@ export default class Home extends Component {
     }
   }
 
-
-
   render() {
     return (
-      <body>
         <div>
           <div>
             <img className="mainPagePics" src='./Images/AdobeStock_187790448.jpeg' />
@@ -34,7 +31,6 @@ export default class Home extends Component {
           <div className="blackDiv">
           </div>
         </div>
-      </body>
     );
   }
 }
