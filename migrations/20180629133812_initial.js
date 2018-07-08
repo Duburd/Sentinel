@@ -14,7 +14,7 @@ exports.up = function (knex, Promise) {
       table.string('type').notNullable();
       table.string('uri').notNullable();
       table.integer('user_id').references('id').inTable('users').onDelete('cascade');
-      table.integer('report_id').references('id').inTable('users').onDelete('cascade');
+      table.integer('report_id').references('id').inTable('reports').onDelete('cascade');
       table.timestamp('created_at').defaultTo(knex.fn.now());
     }),
     knex.schema.createTable('reports', function (table) { //ref witnesses and media?
