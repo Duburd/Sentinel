@@ -112,7 +112,6 @@ module.exports = (knex) => {
         return report.media.forEach((uri)=>{
           knex('media')
           .insert({
-            id: 40,
             type: 'image',
             uri: uri,
             user_id: report.user_id,
