@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import Footer from './components/footer.jsx'
+import Footer from './Components/Footer.jsx'
 
 const businessAddress = (
     <p className="contactAddress">

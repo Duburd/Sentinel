@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import EnhancedTable from './Components/enhanced_table.jsx';
-import SimpleModalWrapped from './Components/modal.jsx';
+import EnhancedTable from './Components/Enhanced_table.jsx';
+import SimpleModalWrapped from './Components/Modal.jsx';
 import NotificationSystem from 'react-notification-system';
 import { BrowserRouter, Route } from 'react-router-dom'
-import Login from './login.jsx';
+import Login from './Login.jsx';
 import { withAuthenticator } from 'aws-amplify-react';
 
 
