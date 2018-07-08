@@ -109,7 +109,7 @@ module.exports = (knex) => {
         status:            status,
       })
       .then((id) => {
-        return report.media.forEach((uri)=>{
+        return media.forEach((uri)=>{
           knex('media')
           .insert({
             type: 'image',
