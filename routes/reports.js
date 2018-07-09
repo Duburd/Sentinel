@@ -146,10 +146,8 @@ module.exports = (knex) => {
         status:            status,
       })
       .then((id) => {
-        console.log(media)
         if (media) {
           media.forEach((uri)=>{
-            console.log(uri)
             knex('media')
             .insert({
               type: 'image',
@@ -160,6 +158,13 @@ module.exports = (knex) => {
               res.json('flooooooop!!!!', e)
             })
           })
+        }
+      })
+      .then(() => {
+        if(damage){
+          return knex('vehicles')
+          .where('id', '=', vehicle_id)
+          .update({ damage: damage, })
         }
       })
       .then((results, err) => {
