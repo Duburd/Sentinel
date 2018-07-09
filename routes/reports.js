@@ -150,7 +150,7 @@ module.exports = (knex) => {
         if (media) {
           return media.forEach((uri)=>{
             console.log(uri)
-            knex('media')
+            return knex('media')
             .insert({
               type: 'image',
               uri: uri,
