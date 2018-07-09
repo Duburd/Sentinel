@@ -256,7 +256,6 @@ class EnhancedTable extends React.Component {
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
   render() {
-
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.claimsList.length - page * rowsPerPage);
@@ -276,7 +275,8 @@ class EnhancedTable extends React.Component {
             />
             <TableBody >
               {this.props.claimsList
-                .slice(0) //slice creates a shallow copy so that the state is updated correctly
+                //slice creates a shallow copy so that the state is updated correctly on sort
+                .slice(0) 
                 .sort(getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((n, index) => {

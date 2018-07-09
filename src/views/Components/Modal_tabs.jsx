@@ -100,10 +100,8 @@ class SimpleTabs extends React.Component {
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
-            
-              {this.state.media}
-            
-
+            {/* pictures of damaged cars/evidence */}
+            {this.state.media} 
           </TabContainer>}
       </div>
     );

@@ -35,6 +35,7 @@ class Admin extends Component {
     });
   };
 
+  //for opening/closing main report modal
   handleOpen = (targetId) => {
     let modalObj = {id: 'NEW'}
       if (targetId === 'new') {
@@ -43,7 +44,8 @@ class Admin extends Component {
     modalObj = this.state.claimsList.find(function (claim) {
       return claim.id === targetId;
     });
-    this.setState({ open: true, modalId: targetId, modalObj });
+    //clear images as to not let them accumulate in state
+    this.setState({ images: [], open: true, modalId: targetId, modalObj });
   };
 
   handleClose = () => {
@@ -79,8 +81,6 @@ class Admin extends Component {
     const { photoIndex, isOpen, images } = this.state;
 
     return (
-        
-
       <div className="App">
         <BootButton className="newReportButton" onClick={this.handleOpen.bind(this, 'new')}>+ Report</BootButton>
         <NotificationSystem ref="notificationSystem" />
@@ -112,25 +112,25 @@ class Admin extends Component {
           addNotification={this._addNotification} />
             {isOpen && (
             <Lightbox
-                  mainSrc={images[photoIndex]}
-                  nextSrc={images[(photoIndex + 1) % images.length]}
-                  prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                  onCloseRequest={() => this.setState({ isOpen: false })}
-                  onMovePrevRequest={() =>
+                mainSrc={images[photoIndex]}
+                nextSrc={images[(photoIndex + 1) % images.length]}
+                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                onCloseRequest={() => this.setState({ isOpen: false, images: [] })}
+                onMovePrevRequest={() =>
+                this.setState({
+                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                })
+                }
+                onMoveNextRequest={() =>
                     this.setState({
-                      photoIndex: (photoIndex + images.length - 1) % images.length,
+                        photoIndex: (photoIndex + 1) % images.length,
                     })
-                  }
-                  onMoveNextRequest={() =>
-                    this.setState({
-                      photoIndex: (photoIndex + 1) % images.length,
-                    })
-                  }
+                }
                 />
-              )}
-      </div>
-    )
-  }
-}
+                )}
+                </div>
+                )
+            }
+        }
 
 export default Admin;
