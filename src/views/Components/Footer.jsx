@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
+import '../../styles/landing-page.css';
+
 
 const Footer = () => (
     <footer className="footer bg-light">
@@ -24,23 +26,23 @@ const Footer = () => (
                 <a href="#">Privacy Policy</a>
               </li>
             </ul>
-            <p className="text-muted small mb-4 mb-lg-0">&copy; Valiant 2018. All Rights Reserved.</p>
+            <p className="text-muted small mb-4 mb-lg-0">&copy; Sentinel 2018. All Rights Reserved.</p>
           </div>
           <div className="col-lg-6 h-100 text-center text-lg-right my-auto">
             <ul className="list-inline mb-0">
               <li className="list-inline-item mr-3">
                 <a href="#">
-                  <i className="fa fa-facebook fa-2x fa-fw"></i>
+                <i className="fab fa-facebook-f" />
                 </a>
               </li>
               <li className="list-inline-item mr-3">
                 <a href="#">
-                  <i className="fa fa-twitter fa-2x fa-fw"></i>
+                <i className="fab fa-twitter" />
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href="#">
-                  <i className="fa fa-instagram fa-2x fa-fw"></i>
+                <i className="fab fa-reddit" />
                 </a>
               </li>
             </ul>

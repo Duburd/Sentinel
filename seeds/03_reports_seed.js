@@ -16,7 +16,7 @@ exports.seed = function (knex, Promise) {
         user_id: 2,
         vehicle_id: 2,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: '4020 willingdon',
@@ -24,7 +24,7 @@ exports.seed = function (knex, Promise) {
         user_id: 3,
         vehicle_id: 3,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -32,7 +32,7 @@ exports.seed = function (knex, Promise) {
         user_id: 4,
         vehicle_id: 4,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -40,7 +40,7 @@ exports.seed = function (knex, Promise) {
         user_id: 5,
         vehicle_id: 5,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -48,7 +48,7 @@ exports.seed = function (knex, Promise) {
         user_id: 6,
         vehicle_id: 6,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -56,7 +56,7 @@ exports.seed = function (knex, Promise) {
         user_id: 7,
         vehicle_id: 7,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -64,7 +64,7 @@ exports.seed = function (knex, Promise) {
         user_id: 8,
         vehicle_id: 8,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -72,7 +72,7 @@ exports.seed = function (knex, Promise) {
         user_id: 9,
         vehicle_id: 9,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -80,7 +80,7 @@ exports.seed = function (knex, Promise) {
         user_id: 10,
         vehicle_id: 10,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -88,7 +88,7 @@ exports.seed = function (knex, Promise) {
         user_id: 11,
         vehicle_id: 11,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -96,7 +96,7 @@ exports.seed = function (knex, Promise) {
         user_id: 12,
         vehicle_id: 12,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -104,7 +104,7 @@ exports.seed = function (knex, Promise) {
         user_id: 13,
         vehicle_id: 13,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -112,7 +112,7 @@ exports.seed = function (knex, Promise) {
         user_id: 14,
         vehicle_id: 14,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -120,7 +120,7 @@ exports.seed = function (knex, Promise) {
         user_id: 15,
         vehicle_id: 15,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -128,7 +128,7 @@ exports.seed = function (knex, Promise) {
         user_id: 16,
         vehicle_id: 16,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -136,7 +136,7 @@ exports.seed = function (knex, Promise) {
         user_id: 17,
         vehicle_id: 17,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -144,7 +144,7 @@ exports.seed = function (knex, Promise) {
         user_id: 6,
         vehicle_id: 18,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -152,7 +152,7 @@ exports.seed = function (knex, Promise) {
         user_id: 5,
         vehicle_id: 19,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -160,7 +160,7 @@ exports.seed = function (knex, Promise) {
         user_id: 7,
         vehicle_id: 20,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -168,7 +168,7 @@ exports.seed = function (knex, Promise) {
         user_id: 8,
         vehicle_id: 21,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -176,7 +176,7 @@ exports.seed = function (knex, Promise) {
         user_id: 20,
         vehicle_id: 22,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -184,7 +184,7 @@ exports.seed = function (knex, Promise) {
         user_id: 22,
         vehicle_id: 23,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -192,7 +192,7 @@ exports.seed = function (knex, Promise) {
         user_id: 23,
         vehicle_id: 24,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -200,7 +200,7 @@ exports.seed = function (knex, Promise) {
         user_id: 24,
         vehicle_id: 25,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -208,7 +208,7 @@ exports.seed = function (knex, Promise) {
         user_id: 25,
         vehicle_id: 26,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -216,7 +216,7 @@ exports.seed = function (knex, Promise) {
         user_id: 12,
         vehicle_id: 27,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       {
         location: faker.address.streetAddress(),
@@ -224,7 +224,7 @@ exports.seed = function (knex, Promise) {
         user_id: 9,
         vehicle_id: 28,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Closed'
       },
       
     ]);

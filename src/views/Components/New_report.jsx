@@ -108,6 +108,7 @@ class TextFields extends React.Component {
           }}
           className={classes.textField}
           margin="normal"
+          value={this.state.policyNum}
           onChange={this.handleInputChange}
         />
         <TextField
