@@ -4,7 +4,7 @@ import Footer from './Components/Footer.jsx'
 
 const businessAddress = (
     <p className="contactAddress">
-      <strong>Valiant</strong><br />
+      <strong>Sentinel</strong><br />
       The HiVE, 128 W Hastings St #300, <br />
       Vancouver, BC V6B 1G8<br />
       +1 888-569-6898

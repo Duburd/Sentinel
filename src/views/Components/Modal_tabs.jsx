@@ -50,6 +50,8 @@ class SimpleTabs extends React.Component {
 
 
   componentDidMount() {
+    //make sure media fetch isnt happening for new report
+    if (this.props.modalObj.id !== 'NEW') {
     fetch(`/api/reports/${this.props.modalObj.id}/media`)
       .then(results => results.json())
       .then(results => {
@@ -62,6 +64,7 @@ class SimpleTabs extends React.Component {
         return this.setState({ media })
       })
   }
+}
 
 
   render() {
@@ -100,10 +103,8 @@ class SimpleTabs extends React.Component {
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
-            
-              {this.state.media}
-            
-
+            {/* pictures of damaged cars/evidence */}
+            {this.state.media} 
           </TabContainer>}
       </div>
     );
