@@ -8,6 +8,18 @@ const bodyParser = require('body-parser')
 
 module.exports = (knex) => {
 
+    //get all media for modal tab
+    router.get("/:id/media", (req, res, next) => {
+      knex.select('*').from('media')
+      .where('report_id', '=', req.params.id)
+        .then((results) => {
+          res.json(results)
+        }).catch((err) => {
+          res.json(err)
+        })
+    });
+  
+
   router.get("/", (req, res, next) => {
     knex
       .select(
@@ -20,6 +32,7 @@ module.exports = (knex) => {
         'vehicles.make',
         'vehicles.model',
         'vehicles.year',
+        'vehicles.plate',
         'vehicles.damage',
         'vehicles.id as vehicleid',
         'description',
@@ -30,19 +43,41 @@ module.exports = (knex) => {
         'witnesses.last_name as witnesses_last_name',
         'witnesses.testimony as witnesses_testimony',
         'witnesses.id as witnessesid',
-        'media.uri',
-        'media.id as mediaid',
       )
       .from('reports')
       .leftJoin('vehicles', 'reports.vehicle_id', '=', 'vehicles.id')
       .leftJoin('users', 'reports.user_id', '=', 'users.id')
       .leftJoin('witnesses', 'witnesses.report_id', 'reports.id')
-      .leftJoin('media', 'media.report_id', 'reports.id')
       .then((results) => {
         res.json(results)
       }).catch((err) => {
         res.json(err)
       })
+  });
+
+  router.post("/new", (req, res, next) => {
+    console.log(req.body)
+    knex('reports')
+      .insert({
+        description: req.body.data.description,
+        user_id: req.body.data.policyNum,
+        vehicle_id: req.body.data.vehicleId,
+        status: 'pending'
+      })
+      .then(function () {
+        return knex('vehicles')
+          .where('id', '=', req.body.data.vehicleId)
+          .update({
+            damage: req.body.data.damage,
+          })
+          .then(function () {
+            res.json({
+              message: 'report submitted'
+            })
+          }).catch((err) => {
+            res.json(err)
+          })
+      });
   });
 
   router.put("/:id/update", (req, res, next) => {
@@ -58,7 +93,7 @@ module.exports = (knex) => {
             first_name: req.body.data.first_name,
             last_name: req.body.data.last_name,
             phone_number: req.body.data.phone_number,
-            license_number: req.body.data.license_number,
+            license_number: req.body.data.licenseNum,
           })
           .then(()=> {
             return knex('vehicles')
@@ -68,6 +103,7 @@ module.exports = (knex) => {
                 model: req.body.data.model,
                 year: req.body.data.year,
                 damage: req.body.data.damage,
+                plate: req.body.data.plate,
               })
               .then(()=> {
                 res.json({
@@ -110,8 +146,10 @@ module.exports = (knex) => {
         status:            status,
       })
       .then((id) => {
+        console.log(media)
         if (media) {
-          media.forEach((uri)=>{
+          return media.forEach((uri)=>{
+            console.log(uri)
             knex('media')
             .insert({
               type: 'image',
