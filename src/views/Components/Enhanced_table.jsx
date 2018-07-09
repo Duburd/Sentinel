@@ -263,7 +263,6 @@ class EnhancedTable extends React.Component {
 
     return (
       <Paper className={classes.root}>
-        <BootButton onClick={this.props.handleOpen.bind(this, 'new')}>+ Report</BootButton>
         <EnhancedTableToolbar numSelected={selected.length} />
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">

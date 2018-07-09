@@ -6,6 +6,7 @@ import NotificationSystem from 'react-notification-system';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './Login.jsx';
 import { withAuthenticator } from 'aws-amplify-react';
+import { Button as BootButton } from 'react-bootstrap';
 
 
 
@@ -31,9 +32,10 @@ class Admin extends Component {
   };
 
   handleOpen = (targetId) => {
-    let modalObj = {}
+    let modalObj = {id: 'NEW'}
       if (targetId === 'new') {
-          this.setState({modalId: 'new', open: true, modalObj})
+          console.log('new')
+          return this.setState({modalId: 'new', open: true, modalObj})
       }
     modalObj = this.state.claimsList.find(function (claim) {
       return claim.id === targetId;
@@ -62,13 +64,14 @@ class Admin extends Component {
         .then(results => {
           return this.setState({ claimsList: results })
         })
-    }, 500)
+    }, 2500)
   }
 
   render() {
 
     return (
       <div className="App">
+        <BootButton className="newReportButton" onClick={this.handleOpen.bind(this, 'new')}>+ Report</BootButton>
         <NotificationSystem ref="notificationSystem" />
         <header className="App-header">
           <img src="insure.svg" className="App-logo" alt="logo" />

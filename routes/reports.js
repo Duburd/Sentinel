@@ -20,6 +20,7 @@ module.exports = (knex) => {
         'vehicles.make',
         'vehicles.model',
         'vehicles.year',
+        'vehicles.plate',
         'vehicles.damage',
         'vehicles.id as vehicleid',
         'description',
@@ -45,6 +46,32 @@ module.exports = (knex) => {
       })
   });
 
+  router.post("/new", (req, res, next) => {
+    console.log(req.body)
+    knex('reports')
+      .insert({
+        description: req.body.data.description,
+        user_id: req.body.data.policyNum,
+        vehicle_id: req.body.data.vehicleId,
+        status: 'pending'
+      })
+      .then(function () {
+        return knex('vehicles')
+          .where('id', '=', req.body.data.vehicleId)
+          .update({
+            damage: req.body.data.damage,
+          })
+          .then(function () {
+            res.json({
+              message: 'report submitted'
+            })
+          }).catch((err) => {
+            res.json(err)
+          })
+      });
+  });
+
+
   router.put("/:id/update", (req, res, next) => {
     console.log(req.body)
     knex('reports')
@@ -59,7 +86,7 @@ module.exports = (knex) => {
             first_name: req.body.data.first_name,
             last_name: req.body.data.last_name,
             phone_number: req.body.data.phone_number,
-            license_number: req.body.data.license_number,
+            license_number: req.body.data.licenseNum,
           })
           .then(function () {
             return knex('vehicles')
@@ -69,6 +96,7 @@ module.exports = (knex) => {
                 model: req.body.data.model,
                 year: req.body.data.year,
                 damage: req.body.data.damage,
+                plate: req.body.data.plate,
               })
               .then(function () {
                 res.json({
@@ -103,28 +131,28 @@ module.exports = (knex) => {
       .returning('id')
       .insert({
         description: report.description,
-        vehicle_id:  report.vehicle_id,
-        location:    report.location,
-        user_id:     report.user_id,
-        status:      report.status,
+        vehicle_id: report.vehicle_id,
+        location: report.location,
+        user_id: report.user_id,
+        status: report.status,
       })
       .then(function (id) {
-        return report.media.forEach((uri)=>{
+        return report.media.forEach((uri) => {
           knex('media')
-          .insert({
-            type: 'image',
-            uri: uri,
-            user_id: report.user_id,
-            report_id: id[0]
-          })
-          .then((results, err) => {
-            console.log(results)
-            if(err) {
-              //res.json(err)
-            }else {
-            //res.json(results)
-            }
-          })
+            .insert({
+              type: 'image',
+              uri: uri,
+              user_id: report.user_id,
+              report_id: id[0]
+            })
+            .then((results, err) => {
+              console.log(results)
+              if (err) {
+                //res.json(err)
+              } else {
+                //res.json(results)
+              }
+            })
         })
       })
   });

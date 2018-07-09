@@ -5,7 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import NewReport from './New_form.jsx';
+import UpdateReport from './Update_report.jsx';
+import NewReport from './New_report.jsx';
 
 function TabContainer(props) {
   return (
@@ -53,13 +54,22 @@ class SimpleTabs extends React.Component {
         </AppBar>
         {value === 0 &&
           <TabContainer>
-            <NewReport
-              claimsList={this.props.claimsList}
-              modalId={this.props.modalId}
-              modalObj={this.props.modalObj}
-              handleClose={this.props.handleClose}
-              addNotification={this.props.addNotification}
-            />
+            {this.props.modalObj.id === 'NEW'
+              ? <NewReport
+                claimsList={this.props.claimsList}
+                modalId={this.props.modalId}
+                modalObj={this.props.modalObj}
+                handleClose={this.props.handleClose}
+                addNotification={this.props.addNotification}
+              />
+              : <UpdateReport
+                claimsList={this.props.claimsList}
+                modalId={this.props.modalId}
+                modalObj={this.props.modalObj}
+                handleClose={this.props.handleClose}
+                addNotification={this.props.addNotification}
+              />
+            }
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
