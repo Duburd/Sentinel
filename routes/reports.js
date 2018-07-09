@@ -15,9 +15,9 @@ module.exports = (knex) => {
         .then((results) => {
           res.json(results)
         }).catch((err) => {
-          res.json(err)
+          res.json(err)    });
+
         })
-    });
   
 
   router.get("/", (req, res, next) => {
@@ -147,25 +147,29 @@ module.exports = (knex) => {
       })
       .then((id) => {
         if (media) {
-          return media.forEach((uri)=>{
+          media.forEach((uri)=>{
             knex('media')
             .insert({
               type: 'image',
               uri: uri,
               user_id: user_id,
               report_id: id[0]
+            }).catch((e) => {
+              res.json('error inserting image to db', e)
             })
           })
         }
       })
       .then(() => {
-        return knex('vehicles')
-        .where('id', '=', vehicle_id)
-        .update({ damage: damage, })
+        if(damage){
+          return knex('vehicles')
+          .where('id', '=', vehicle_id)
+          .update({ damage: damage, })
+        }
       })
       .then((results, err) => {
         if(err) {
-          res.json('err')
+          res.json(err)
         }
         res.json(results)
       })
