@@ -148,16 +148,18 @@ module.exports = (knex) => {
       .then((id) => {
         console.log(media)
         if (media) {
-          return media.forEach((uri)=>{
-            console.log(uri)
-            return knex('media')
-            .insert({
-              type: 'image',
-              uri: uri,
-              user_id: user_id,
-              report_id: id[0]
+          Promise.all(
+            media.forEach((uri)=>{
+              console.log(uri)
+              return knex('media')
+              .insert({
+                type: 'image',
+                uri: uri,
+                user_id: user_id,
+                report_id: id[0]
+              })
             })
-          })
+          )
         }
       })
       .then((results, err) => {
