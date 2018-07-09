@@ -160,11 +160,6 @@ module.exports = (knex) => {
           })
         }
       })
-      .then(() => {
-        return knex('vehicles')
-        .where('id', '=', vehicle_id)
-        .update({ damage: damage, })
-      })
       .then((results, err) => {
         if(err) {
           res.json('err')
