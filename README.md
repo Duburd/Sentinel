@@ -1,8 +1,6 @@
+### Sentinel
 
-
-This is a template for setting up webpack, for use with babel and generally for use with React &c.
-
-It assumes `yarn` rather than npm, though I suspect it doesn't really matter.
+Sentinel is a full stack web app for insurance companies to manage and edit reports submitted by clients.
 
 
 ## Currently Working
