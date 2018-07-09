@@ -155,7 +155,7 @@ module.exports = (knex) => {
               user_id: user_id,
               report_id: id[0]
             }).catch((e) => {
-              res.json('flooooooop!!!!', e)
+              res.json('error inserting image to db', e)
             })
           })
         }
@@ -169,7 +169,7 @@ module.exports = (knex) => {
       })
       .then((results, err) => {
         if(err) {
-          res.json('err')
+          res.json(err)
         }
         res.json(results)
       })
