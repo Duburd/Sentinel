@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import UpdateReport from './Update_report.jsx';
 import NewReport from './New_report.jsx';
 
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -32,17 +33,36 @@ const styles = theme => ({
 });
 
 class SimpleTabs extends React.Component {
-  state = {
-    value: 0
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+      media: [],
+      test: [],
+    };
+  }
   handleChange = (event, value) => {
     this.setState({ value });
   };
 
+  componentDidMount() {
+    fetch(`/api/reports/${this.props.modalObj.id}/media`)
+      .then(media => media.json())
+      .then(media => {
+        console.log(media)
+        return this.setState({ media })
+      })
+  }
+
   render() {
+    const test = [];
+    let images = this.state.media.map((img) => {
+      return <img key={img.id} src={img.uri} />
+    })
+
     const { classes } = this.props;
     const { value } = this.state;
+    console.log(this.state.media)
 
     return (
       <div className={classes.root}>
@@ -73,8 +93,7 @@ class SimpleTabs extends React.Component {
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
-            <img className="pics" src={this.props.modalObj.uri}
-            />
+            {images}
           </TabContainer>}
       </div>
     );

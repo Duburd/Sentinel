@@ -8,6 +8,18 @@ const bodyParser = require('body-parser')
 
 module.exports = (knex) => {
 
+    //get all media for modal tab
+    router.get("/:id/media", (req, res, next) => {
+      knex.select('*').from('media')
+      .where('report_id', '=', req.params.id)
+        .then((results) => {
+          res.json(results)
+        }).catch((err) => {
+          res.json(err)
+        })
+    });
+  
+
   router.get("/", (req, res, next) => {
     knex
       .select(
@@ -31,14 +43,11 @@ module.exports = (knex) => {
         'witnesses.last_name as witnesses_last_name',
         'witnesses.testimony as witnesses_testimony',
         'witnesses.id as witnessesid',
-        'media.uri',
-        'media.id as mediaid',
       )
       .from('reports')
       .leftJoin('vehicles', 'reports.vehicle_id', '=', 'vehicles.id')
       .leftJoin('users', 'reports.user_id', '=', 'users.id')
       .leftJoin('witnesses', 'witnesses.report_id', 'reports.id')
-      .leftJoin('media', 'media.report_id', 'reports.id')
       .then((results) => {
         res.json(results)
       }).catch((err) => {
@@ -70,7 +79,6 @@ module.exports = (knex) => {
           })
       });
   });
-
 
   router.put("/:id/update", (req, res, next) => {
     console.log(req.body)

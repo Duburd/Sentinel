@@ -8,9 +8,6 @@ import Login from './Login.jsx';
 import { withAuthenticator } from 'aws-amplify-react';
 import { Button as BootButton } from 'react-bootstrap';
 
-
-
-
 class Admin extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +31,6 @@ class Admin extends Component {
   handleOpen = (targetId) => {
     let modalObj = {id: 'NEW'}
       if (targetId === 'new') {
-          console.log('new')
           return this.setState({modalId: 'new', open: true, modalObj})
       }
     modalObj = this.state.claimsList.find(function (claim) {

@@ -4,7 +4,7 @@ exports.seed = function (knex, Promise) {
   return knex('media')
     .insert([{
       type: 'image',
-      uri: faker.image.cats(),
+      uri: 'https://s3.amazonaws.com/lhl-insurance-buddy/0bfd79b6-9c67-4d3c-8cc7-c6e196770190.JPG',
       report_id: 1
     },
     {
@@ -137,6 +137,20 @@ exports.seed = function (knex, Promise) {
       uri: faker.image.cats(),
       report_id: 27
     },
-
+    {
+      type: 'image',
+      uri: 'https://s3.amazonaws.com/lhl-insurance-buddy/bmw_m3_2008_car_for_parts_only_184352_05.jpg',
+      report_id: 1
+    },
+    {
+      type: 'image',
+      uri: 'https://s3.amazonaws.com/lhl-insurance-buddy/9ed661da20509554c098bbdfe010c2acx.jpg',
+      report_id: 1
+    },
+    {
+      type: 'image',
+      uri: 'https://s3.amazonaws.com/lhl-insurance-buddy/New-BMW-M3-Convertible-White-Twin-Turbo-jpg.jpg',
+      report_id: 1
+    },
   ]);
 };
