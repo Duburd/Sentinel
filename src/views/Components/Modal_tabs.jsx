@@ -5,7 +5,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import NewReport from './New_form.jsx';
+import UpdateReport from './Update_report.jsx';
+import NewReport from './New_report.jsx';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
+
 
 function TabContainer(props) {
   return (
@@ -30,18 +34,42 @@ const styles = theme => ({
 
 });
 
-class SimpleTabs extends React.Component {
-  state = {
-    value: 0
-  };
 
+class SimpleTabs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+      media: [],
+      test: [],
+    };
+  }
   handleChange = (event, value) => {
     this.setState({ value });
   };
 
+
+  componentDidMount() {
+    fetch(`/api/reports/${this.props.modalObj.id}/media`)
+      .then(results => results.json())
+      .then(results => {
+        const media = results.map((img) => {
+          this.props.images.push(img.uri)
+          return (
+            <img className="pics" key={img.id} src={img.uri} onClick={() => this.props.lightbox()} />
+          )
+        })
+        return this.setState({ media })
+      })
+  }
+
+
   render() {
+
+
     const { classes } = this.props;
     const { value } = this.state;
+
 
     return (
       <div className={classes.root}>
@@ -53,18 +81,29 @@ class SimpleTabs extends React.Component {
         </AppBar>
         {value === 0 &&
           <TabContainer>
-            <NewReport
-              claimsList={this.props.claimsList}
-              modalId={this.props.modalId}
-              modalObj={this.props.modalObj}
-              handleClose={this.props.handleClose}
-              addNotification={this.props.addNotification}
-            />
+            {this.props.modalObj.id === 'NEW'
+              ? <NewReport
+                claimsList={this.props.claimsList}
+                modalId={this.props.modalId}
+                modalObj={this.props.modalObj}
+                handleClose={this.props.handleClose}
+                addNotification={this.props.addNotification}
+              />
+              : <UpdateReport
+                claimsList={this.props.claimsList}
+                modalId={this.props.modalId}
+                modalObj={this.props.modalObj}
+                handleClose={this.props.handleClose}
+                addNotification={this.props.addNotification}
+              />
+            }
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
-            <img className="pics" src={this.props.modalObj.uri}
-            />
+            
+              {this.state.media}
+            
+
           </TabContainer>}
       </div>
     );

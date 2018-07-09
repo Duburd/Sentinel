@@ -139,7 +139,7 @@ const Testimonials = () => (
           <div className="testimonial-item mx-auto mb-5 mb-lg-0">
             <img className="img-fluid rounded-circle mb-3" src="Images/jennifer.jpeg" alt="" />
             <h5>Jennifer H.</h5>
-            <p className="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+            <p className="font-weight-light mb-0">"This is fantastic! Thanks so much guys! PLONK!"</p>
           </div>
         </div>
         <div className="col-lg-4">
