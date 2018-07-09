@@ -47,22 +47,26 @@ class SimpleTabs extends React.Component {
 
   componentDidMount() {
     fetch(`/api/reports/${this.props.modalObj.id}/media`)
-      .then(media => media.json())
-      .then(media => {
-        console.log(media)
+      .then(results => results.json())
+      .then(results => {
+        const media = results.map((img) => {
+          return (
+            <img className="pics" key={img.id} src={img.uri} />
+          )
+        })
         return this.setState({ media })
       })
   }
+  
+  images = () => {
+  }
 
   render() {
-    const test = [];
-    let images = this.state.media.map((img) => {
-      return <img key={img.id} src={img.uri} />
-    })
+
 
     const { classes } = this.props;
     const { value } = this.state;
-    console.log(this.state.media)
+
 
     return (
       <div className={classes.root}>
@@ -93,7 +97,7 @@ class SimpleTabs extends React.Component {
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
-            {images}
+            {this.state.media}
           </TabContainer>}
       </div>
     );

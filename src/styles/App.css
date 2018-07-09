@@ -37,9 +37,12 @@ body {
 .pics {
   height: 250px;
   width: 250px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: inline-block;
+  margin: 10px;
+  border: solid 1px black;
+  -webkit-filter: drop-shadow(8px 8px 10px gray); /* Safari */
+  filter: drop-shadow(8px 8px 10px gray);
+
 }
 
 .homepagePics {
