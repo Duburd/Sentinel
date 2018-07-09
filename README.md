@@ -36,7 +36,7 @@ Currently we can production-build with just `yarn run webpack`.  This is a bit p
 ---
 
 Thanks to:
-
+* [Jeremy Holman]()
 * [David VanDusen](https://github.com/davidvandusen/react-webpack-boilerplate)
 * Karl Jensen
 
