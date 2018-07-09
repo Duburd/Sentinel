@@ -7,6 +7,10 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './Login.jsx';
 import { withAuthenticator } from 'aws-amplify-react';
 import { Button as BootButton } from 'react-bootstrap';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
+
+
 
 class Admin extends Component {
   constructor(props) {
@@ -15,6 +19,9 @@ class Admin extends Component {
       claimsList: [],
       selected: [],
       open: false,
+      photoIndex: 0,
+      isOpen: false,
+      images: [],
     }
   }
 
@@ -43,6 +50,11 @@ class Admin extends Component {
     this.setState({ open: false });
   };
 
+  lightbox = () => {
+    this.setState({ isOpen: true })
+    this.handleClose()
+  }
+
   componentDidMount() {
 
     this._notificationSystem = this.refs.notificationSystem;
@@ -64,8 +76,11 @@ class Admin extends Component {
   }
 
   render() {
+    const { photoIndex, isOpen, images } = this.state;
 
     return (
+        
+
       <div className="App">
         <BootButton className="newReportButton" onClick={this.handleOpen.bind(this, 'new')}>+ Report</BootButton>
         <NotificationSystem ref="notificationSystem" />
@@ -86,6 +101,8 @@ class Admin extends Component {
           selected={this.state.selected}
         />
         <SimpleModalWrapped
+          images={this.state.images}
+          lightbox={this.lightbox}
           modalObj={this.state.modalObj}
           modalId={this.state.modalId}
           open={this.state.open}
@@ -93,6 +110,24 @@ class Admin extends Component {
           handleOpen={this.handleOpen}
           claimsList={this.state.claimsList}
           addNotification={this._addNotification} />
+            {isOpen && (
+            <Lightbox
+                  mainSrc={images[photoIndex]}
+                  nextSrc={images[(photoIndex + 1) % images.length]}
+                  prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                  onCloseRequest={() => this.setState({ isOpen: false })}
+                  onMovePrevRequest={() =>
+                    this.setState({
+                      photoIndex: (photoIndex + images.length - 1) % images.length,
+                    })
+                  }
+                  onMoveNextRequest={() =>
+                    this.setState({
+                      photoIndex: (photoIndex + 1) % images.length,
+                    })
+                  }
+                />
+              )}
       </div>
     )
   }

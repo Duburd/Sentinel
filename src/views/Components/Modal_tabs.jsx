@@ -7,6 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import UpdateReport from './Update_report.jsx';
 import NewReport from './New_report.jsx';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 
 
 function TabContainer(props) {
@@ -32,6 +34,7 @@ const styles = theme => ({
 
 });
 
+
 class SimpleTabs extends React.Component {
   constructor(props) {
     super(props);
@@ -45,21 +48,21 @@ class SimpleTabs extends React.Component {
     this.setState({ value });
   };
 
+
   componentDidMount() {
     fetch(`/api/reports/${this.props.modalObj.id}/media`)
       .then(results => results.json())
       .then(results => {
         const media = results.map((img) => {
+          this.props.images.push(img.uri)
           return (
-            <img className="pics" key={img.id} src={img.uri} />
+            <img className="pics" key={img.id} src={img.uri} onClick={() => this.props.lightbox()} />
           )
         })
         return this.setState({ media })
       })
   }
-  
-  images = () => {
-  }
+
 
   render() {
 
@@ -97,7 +100,10 @@ class SimpleTabs extends React.Component {
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
-            {this.state.media}
+            
+              {this.state.media}
+            
+
           </TabContainer>}
       </div>
     );
