@@ -42,8 +42,19 @@ body {
   border: solid 1px black;
   -webkit-filter: drop-shadow(8px 8px 10px gray); /* Safari */
   filter: drop-shadow(8px 8px 10px gray);
-
 }
+
+.user {
+  display: inline-block;
+  width: 150px;
+  height: 125px;
+  border-radius: 25%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 
 .homepagePics {
   width: 100%;
@@ -112,6 +123,7 @@ body {
 .midPic {
   width: 50%;
   height: 100%;
+  
 }
 
 .actionButton {
@@ -161,6 +173,11 @@ body {
   position: absolute;
   right: 10px;
   margin: 20px 10px;
+}
+
+.bigger {
+  font-size: 30px;
+  margin: 0px 15px 10px 15px;
 }
 
 @keyframes App-logo-spin {

@@ -10,7 +10,6 @@ require("babel-core/register");
 require("babel-polyfill");
 
 
-
 const About = () => (
   <div>
     <h2>About</h2>
