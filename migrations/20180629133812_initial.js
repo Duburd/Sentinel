@@ -57,7 +57,14 @@ exports.up = function (knex, Promise) {
       table.string('phone_number');
       table.string('email');
       table.timestamp('created_at').defaultTo(knex.fn.now());
-    })
+    }),
+    knex.schema.createTable('admins', function (table) {
+      table.increments();
+      table.string('username');
+      table.string('email');
+      table.string('phone_number');
+      table.string('password');
+    }),
   ])
 };
 
@@ -68,6 +75,7 @@ exports.down = function (knex, Promise) {
     knex.raw('DROP TABLE reports CASCADE'),
     knex.raw('DROP TABLE vehicles CASCADE'),
     knex.raw('DROP TABLE messages CASCADE'),
-    knex.raw('DROP TABLE witnesses CASCADE')
+    knex.raw('DROP TABLE witnesses CASCADE'),
+    knex.raw('DROP TABLE admins CASCADE'),
   ])
 };
