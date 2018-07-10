@@ -36,7 +36,6 @@ app.use("/api/vehicles",  vehiclesRoutes(knex));
 app.use("/api/witnesses", witnessesRoutes(knex));
 app.use("/api/users",     usersRoutes(knex));
 app.use("/api/admins",     adminsRoutes(knex));
-
 // can be GETted through the webpack-dev-server at localhost:8080/api or whatever host/port makes sense
 
 app.listen(PORT, (e) => {

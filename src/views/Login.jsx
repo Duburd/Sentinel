@@ -44,19 +44,20 @@ class Login extends Component {
     }
     console.log(loginObj)
     const cred = JSON.stringify(loginObj)
-    fetch('api/admin/session', {
+    fetch('api/admins/session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: cred,
     })
-    .then((results)=> results)
+    .then((results)=> results.json())
     .then((response) => {
       if(response.user === null){
           this.setState({logErr: response.message})
           console.log(response)
         } else {
-          cookies.set('user', user, { path: '/' })
-          console.log(response)
+          const { cookies } = this.props
+          console.log(response.user[0])
+          cookies.set('user', response.user[0], { path: '/' })
         }
     })
   }
