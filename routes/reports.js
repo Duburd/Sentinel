@@ -41,15 +41,10 @@ module.exports = (knex) => {
         'reports.id',
         'reports.created_at',
         'reports.status',
-        'witnesses.first_name as witnesses_first_name',
-        'witnesses.last_name as witnesses_last_name',
-        'witnesses.testimony as witnesses_testimony',
-        'witnesses.id as witnessesid',
       )
       .from('reports')
       .leftJoin('vehicles', 'reports.vehicle_id', '=', 'vehicles.id')
       .leftJoin('users', 'reports.user_id', '=', 'users.id')
-      .leftJoin('witnesses', 'witnesses.report_id', 'reports.id')
       .then((results) => {
         res.json(results)
       }).catch((err) => {
@@ -57,8 +52,28 @@ module.exports = (knex) => {
       })
   });
 
-  router.post("/new", (req, res, next) => {
+  router.post("/:id/witness", (req, res, next) => {
     console.log('req body', req.body)
+    knex('witnesses')
+      .insert({
+        report_id: req.params.id,
+        first_name: req.body.data.firstName,
+        last_name: req.body.data.lastName,
+        email: req.body.data.email,
+        phone_number: req.body.data.phone,
+        testimony: req.body.data.testimony,
+      })
+      .then(()=> {
+        res.json({
+          message: 'witness testimony submitted'
+        })
+      })
+      .catch((err) => {
+        res.json(err)
+      })
+  });
+
+  router.post("/new", (req, res, next) => {
     knex('reports')
       .insert({
         description: req.body.data.description,
@@ -136,6 +151,7 @@ module.exports = (knex) => {
         res.json(err)
       })
   });
+
 
   router.post("/", (req, res, next) => {
     const {damage, description, vehicle_id, location, user_id, status, media, additionalDrivers} = req.body;

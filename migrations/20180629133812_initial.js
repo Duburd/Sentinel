@@ -55,6 +55,7 @@ exports.up = function (knex, Promise) {
       table.string('first_name');
       table.string('last_name');
       table.string('phone_number');
+      table.string('email');
       table.timestamp('created_at').defaultTo(knex.fn.now());
     })
   ])
