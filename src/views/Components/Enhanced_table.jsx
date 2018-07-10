@@ -255,6 +255,8 @@ class EnhancedTable extends React.Component {
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+
+
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
@@ -298,7 +300,12 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.id}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.status}</TableCell>
+                      {n.status === 'Open'
+                      ? <TableCell style={{ fontSize: '1.25rem', color: 'green' }} numeric>{n.status}</TableCell>
+                      : (n.status === 'Closed' 
+                      ? <TableCell style={{ fontSize: '1.25rem', color: 'red' }} numeric>{n.status}</TableCell>
+                      : <TableCell style={{ fontSize: '1.25rem', color: 'blue' }} numeric>{n.status}</TableCell>)
+                      }
                       <TableCell>
                         <Button style={{}} onClick={this.props.handleOpen.bind(this, n.id)}>View Report</Button>
                       </TableCell>

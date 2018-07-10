@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
 import styled from 'styled-components';
+var moment = require('moment');
 
 const styles = theme => ({
   container: {
@@ -360,7 +361,7 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
-          defaultValue={this.props.modalObj.date}
+          defaultValue={moment(this.props.modalObj.date).format('MMMM Do YYYY, h:mm a')}
           className={classes.textField}
           margin="normal"
           onChange={this.handleInputChange}

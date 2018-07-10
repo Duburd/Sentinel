@@ -10,7 +10,7 @@ exports.seed = function (knex, Promise) {
         user_id: 1,
         vehicle_id: 1,
         created_at: faker.date.past(),
-        status: 'pending'
+        status: 'Pending'
       },
       {
         date: faker.date.past(),
@@ -244,7 +244,7 @@ exports.seed = function (knex, Promise) {
         user_id: 12,
         vehicle_id: 27,
         created_at: faker.date.past(),
-        status: 'Closed'
+        status: 'Pending'
       },
       {
         date: faker.date.past(),
@@ -253,7 +253,7 @@ exports.seed = function (knex, Promise) {
         user_id: 9,
         vehicle_id: 28,
         created_at: faker.date.past(),
-        status: 'Closed'
+        status: 'Pending'
       },
       
     ]);

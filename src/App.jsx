@@ -4,7 +4,7 @@ import Admin from './views/Admin.jsx';
 import Login from './views/Login.jsx';
 import Routes from './Routes.jsx';
 import Home from './views/Home.jsx';
-import Navvy from './views/Components/Navbar.jsx';
+import Navbar from './views/Components/Navbar.jsx';
 import { Auth } from "aws-amplify";
 require("babel-core/register");
 require("babel-polyfill");
@@ -61,7 +61,7 @@ class App extends Component {
 
     return (
       <div>
-      <Navvy />
+      <Navbar />
       <Routes childProps={childProps} />
       </div>
     )
