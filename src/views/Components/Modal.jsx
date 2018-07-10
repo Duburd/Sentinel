@@ -6,14 +6,11 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import ModalTabs from './Modal_tabs.jsx';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
 
 function getModalStyle() {
   const top = 50;
   const left = 50;
-
+  
   return {
     top: `${top}%`,
     left: `${left}%`,
@@ -42,8 +39,6 @@ class SimpleModal extends React.Component {
 
     return (
       <div>
-        {/* <Typography gutterBottom>Click to get the full Modal experience!</Typography>
-        <Button onClick={this.props.handleOpen}>Open Modal</Button> */}
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -54,8 +49,10 @@ class SimpleModal extends React.Component {
             <Typography variant="title" id="modal-title">
             </Typography>
             <Typography variant="subheading" id="simple-modal-description">
-              {/* Duis mollis, est non commodo luctus, nisi erat porttitor ligula. */}
+              
               <ModalTabs
+              vehiclesList={this.props.vehiclesList}
+                usersList={this.props.usersList}
                 images={this.props.images}
                 lightbox={this.props.lightbox}
                 handleClose={this.props.handleClose}

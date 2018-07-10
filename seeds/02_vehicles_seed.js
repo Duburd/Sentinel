@@ -246,7 +246,7 @@ exports.seed = function (knex, Promise) {
         damage:  'Extensive damage to the left side'
       },
       {
-        user_id: 28,
+        user_id: 2,
         plate:   'ZZZ000',
         make:    'Jaguar',
         model:   'JP',
@@ -255,13 +255,22 @@ exports.seed = function (knex, Promise) {
         damage:  'Severely scratched and damaged on the right side'
       },
       {
-        user_id: 10,
-        plate:   'AAA111',
+        user_id: 1,
+        plate:   'AAA888',
         make:    'Mclaren',
         model:   '570S',
         year:    '2013',
         color:   faker.commerce.color(),
         damage:  'smashed windshield'
+      },
+      {
+        user_id: 1,
+        plate:   'AAA111',
+        make:    'Dodge',
+        model:   'Ram',
+        year:    '2018',
+        color:   faker.commerce.color(),
+        damage:  'scratched down the right side'
       },
 
   ]);

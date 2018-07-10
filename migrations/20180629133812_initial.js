@@ -7,7 +7,8 @@ exports.up = function (knex, Promise) {
       table.string('phone_number');
       table.string('license_number');
       table.string('policy_number');
-      table.string('uri');      
+      table.string('password');
+      table.string('uri');
     }),
     knex.schema.createTable('media', function (table) {
       table.increments();
@@ -20,6 +21,7 @@ exports.up = function (knex, Promise) {
     knex.schema.createTable('reports', function (table) { //ref witnesses and media?
       table.increments();
       table.string('location');
+      table.string('date');
       table.text('description');
       table.string('status');
       table.integer('user_id').references('id').inTable('users').onDelete('cascade');

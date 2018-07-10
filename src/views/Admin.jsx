@@ -35,6 +35,7 @@ class Admin extends Component {
     });
   };
 
+  //for opening/closing main report modal
   handleOpen = (targetId) => {
     let modalObj = {id: 'NEW'}
       if (targetId === 'new') {
@@ -43,7 +44,8 @@ class Admin extends Component {
     modalObj = this.state.claimsList.find(function (claim) {
       return claim.id === targetId;
     });
-    this.setState({ open: true, modalId: targetId, modalObj });
+    //clear images as to not let them accumulate in state
+    this.setState({ images: [], open: true, modalId: targetId, modalObj });
   };
 
   handleClose = () => {
@@ -65,6 +67,19 @@ class Admin extends Component {
         return this.setState({ claimsList: results })
       })
 
+      fetch('/api/users')
+      .then(results => results.json())
+      .then(results => {
+        return this.setState({ usersList: results })
+      })
+
+      fetch('/api/vehicles')
+      .then(results => results.json())
+      .then(results => {
+        return this.setState({ vehiclesList: results })
+      })
+
+
     //don't know if this is the best way to do this. ****
     this.lookupInterval = setInterval(() => {
       fetch('/api/reports')
@@ -79,14 +94,12 @@ class Admin extends Component {
     const { photoIndex, isOpen, images } = this.state;
 
     return (
-        
-
       <div className="App">
         <BootButton className="newReportButton" onClick={this.handleOpen.bind(this, 'new')}>+ Report</BootButton>
         <NotificationSystem ref="notificationSystem" />
         <header className="App-header">
           <img src="insure.svg" className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to InsuranceBuddy Admin</h1>
+          <h1 className="App-title">Welcome to Sentinel Admin</h1>
         </header>
         <p className="App-intro">
         </p>
@@ -101,6 +114,8 @@ class Admin extends Component {
           selected={this.state.selected}
         />
         <SimpleModalWrapped
+          vehiclesList={this.state.vehiclesList}
+          usersList={this.state.usersList}
           images={this.state.images}
           lightbox={this.lightbox}
           modalObj={this.state.modalObj}
@@ -112,25 +127,25 @@ class Admin extends Component {
           addNotification={this._addNotification} />
             {isOpen && (
             <Lightbox
-                  mainSrc={images[photoIndex]}
-                  nextSrc={images[(photoIndex + 1) % images.length]}
-                  prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                  onCloseRequest={() => this.setState({ isOpen: false })}
-                  onMovePrevRequest={() =>
+                mainSrc={images[photoIndex]}
+                nextSrc={images[(photoIndex + 1) % images.length]}
+                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                onCloseRequest={() => this.setState({ isOpen: false, images: [] })}
+                onMovePrevRequest={() =>
+                this.setState({
+                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                })
+                }
+                onMoveNextRequest={() =>
                     this.setState({
-                      photoIndex: (photoIndex + images.length - 1) % images.length,
+                        photoIndex: (photoIndex + 1) % images.length,
                     })
-                  }
-                  onMoveNextRequest={() =>
-                    this.setState({
-                      photoIndex: (photoIndex + 1) % images.length,
-                    })
-                  }
+                }
                 />
-              )}
-      </div>
-    )
-  }
-}
+                )}
+                </div>
+                )
+            }
+        }
 
 export default Admin;
