@@ -35,7 +35,9 @@ module.exports = (knex) => {
         'vehicles.plate',
         'vehicles.damage',
         'vehicles.id as vehicleid',
-        'description',
+        'reports.date',
+        'reports.location',
+        'reports.description',
         'reports.id',
         'reports.created_at',
         'reports.status',
@@ -56,13 +58,15 @@ module.exports = (knex) => {
   });
 
   router.post("/new", (req, res, next) => {
-    console.log(req.body)
+    console.log('req body', req.body)
     knex('reports')
       .insert({
         description: req.body.data.description,
-        user_id: req.body.data.policyNum,
+        user_id: req.body.data.userId,
         vehicle_id: req.body.data.vehicleId,
-        status: 'pending'
+        status: 'pending',
+        date: req.body.data.incidentTime,
+        location: req.body.data.location,
       })
       .then(function () {
         return knex('vehicles')
@@ -88,7 +92,7 @@ module.exports = (knex) => {
       })
       .then(()=> {
         return knex('users')
-          .where('policy_number', '=', req.body.data.policy_number)
+          .where('id', '=', req.body.data.userid)
           .update({
             first_name: req.body.data.first_name,
             last_name: req.body.data.last_name,

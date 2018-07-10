@@ -67,6 +67,19 @@ class Admin extends Component {
         return this.setState({ claimsList: results })
       })
 
+      fetch('/api/users')
+      .then(results => results.json())
+      .then(results => {
+        return this.setState({ usersList: results })
+      })
+
+      fetch('/api/vehicles')
+      .then(results => results.json())
+      .then(results => {
+        return this.setState({ vehiclesList: results })
+      })
+
+
     //don't know if this is the best way to do this. ****
     this.lookupInterval = setInterval(() => {
       fetch('/api/reports')
@@ -101,6 +114,8 @@ class Admin extends Component {
           selected={this.state.selected}
         />
         <SimpleModalWrapped
+          vehiclesList={this.state.vehiclesList}
+          usersList={this.state.usersList}
           images={this.state.images}
           lightbox={this.lightbox}
           modalObj={this.state.modalObj}

@@ -21,6 +21,7 @@ exports.up = function (knex, Promise) {
     knex.schema.createTable('reports', function (table) { //ref witnesses and media?
       table.increments();
       table.string('location');
+      table.string('date');
       table.text('description');
       table.string('status');
       table.integer('user_id').references('id').inTable('users').onDelete('cascade');
