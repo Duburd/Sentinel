@@ -47,6 +47,11 @@ export default class Witness extends Component {
         }
     }
 
+    handleSubmit = () => {
+        
+    }
+
+
     render() {
         return (
             <div>
