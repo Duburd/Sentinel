@@ -99,7 +99,7 @@ class Admin extends Component {
         <NotificationSystem ref="notificationSystem" />
         <header className="App-header">
           <img src="insure.svg" className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to InsuranceBuddy Admin</h1>
+          <h1 className="App-title">Welcome to Sentinel Admin</h1>
         </header>
         <p className="App-intro">
         </p>

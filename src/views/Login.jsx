@@ -44,7 +44,7 @@ export default class Login extends Component {
       <div className="App">
       <header className="App-header">
       <img src="insure.svg" className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to InsuranceBuddy</h1>
+      <h1 className="App-title">Welcome to Sentinel</h1>
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
