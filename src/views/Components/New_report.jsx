@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+
 import classNames from 'classnames';
 import styled from 'styled-components';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -56,7 +60,16 @@ const ModalButton = styled.button`
 class TextFields extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ...props.modalObj, policyObj: {}, policyIds: {ids: [], first_names: []} }
+    this.state = {
+      ...props.modalObj,
+      policyObj: {},
+      policyIds: {ids: [], first_names: []},
+
+      policyNum: "",
+      selectedPolicyNum: "",
+      userId: "",
+      vehicleId: "",
+    }
   }
 
   newReport(e) {
@@ -93,7 +106,13 @@ class TextFields extends React.Component {
     });
   }
 
-  handlePolicyNum = (policyNum) => {
+  handlePolicyNum = () => {
+    this.setState({
+      selectedPolicyNum: this.state.policyNum,
+      userId: "",
+      vehicleId: "",     // TODO: can delete this?
+    })
+
     // let relevantClaimsList = this.props.claimsList.filter(function (claim) {
     //   return claim.policy_number == policyNum;
     // });
@@ -116,19 +135,24 @@ class TextFields extends React.Component {
     
   }
 
-  getUsers() {
-    return this.props.usersList.filter(user => user.policy_number === this.state.policyNum);
+  getUsers = () => {
+    if (!this.state.policyNum) { return []; }   // TODO should be unnecessary?
+    return this.props.usersList
+      .filter(user => user.policy_number == this.state.policyNum)
+      .sort();   // TODO: something more fun
   }
 
-  getVehicles() {
-    return this.props.vehiclesList.filter(v => v.policy_number === this.state.policyNum);
+  getVehicles = () => {
+    if (!this.state.userId) { return []; }   // TODO should be unnecessary?
+    return this.props.vehiclesList
+      .filter(v => v.user_id == this.state.userId)
+      .sort();   // TODO: something more fun
   }
 
 
 
   render() {
-    console.log(this.state)
-    
+  
     const { classes } = this.props;
     // const { policyNum, firstName, lastName, phoneNum, make, model, year, licensePlate, damageDescription, incidentTime, location, incidentDescription } = this.state;
 
@@ -141,6 +165,14 @@ class TextFields extends React.Component {
     //   </form>
     // );
     
+    function prettifyUser(user) {
+      return user.id + ' : ' + user.first_name + ' ' + user.last_name;
+    }
+    
+    function prettifyVehicle(vehicle) {
+      return vehicle.plate;
+    }
+
     return (
       <form className={classes.container} noValidate autoComplete="on">
         <TextField
@@ -161,27 +193,45 @@ class TextFields extends React.Component {
           className={classes.textField}
           margin="normal" 
           onChange={this.handleInputChange}
- 
+          onBlur={this.handlePolicyNum}
         />
-        <TextField
-          id="vehicleId"
-          label="Vehicle Id"
-          name="vehicleId"
-          InputLabelProps={{
-            shrink: true,
-            FormLabelClasses: {
-              root: classes.resize
-            },
-          }}
-          InputProps={{
-            classes: {
-              input: classes.resize,
-            },
-          }}
-          className={classes.textField}
-          margin="normal"
-          onChange={this.handleInputChange}
-        />
+        
+        <FormControl >
+          <InputLabel htmlFor="user-id">User</InputLabel>
+          <Select
+            value={this.state.userId}
+            onChange={this.handleInputChange}
+            inputProps={{
+              name: 'userId',
+              id: 'user-id',
+            }}
+          >
+            <MenuItem key={-1} value="">&nbsp;</MenuItem>
+            {this.getUsers().map(user => {
+              return <MenuItem key={user.id} value={user.id}>{prettifyUser(user)}</MenuItem>
+            })}
+          </Select>
+        </FormControl>
+
+        <FormControl >
+          <InputLabel htmlFor="vehicle-id">Vehicle</InputLabel>
+          <Select
+            value={this.state.vehicleId}
+            onChange={this.handleInputChange}
+            inputProps={{
+              name: 'vehicleId',
+              id: 'vehicle-id',
+            }}
+          >
+            <MenuItem key={-1} value="">&nbsp;</MenuItem>
+            {this.getVehicles().map(vehicle => {
+              return <MenuItem key={vehicle.id} value={vehicle.id}>{prettifyVehicle(vehicle)}</MenuItem>
+            })}
+          </Select>
+        </FormControl>
+
+
+
         <TextField
           id="damageDescription"
           label="Damage Description"

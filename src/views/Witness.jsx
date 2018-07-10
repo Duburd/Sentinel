@@ -17,7 +17,7 @@ const bgStyle = {
     backgroundSize: "cover",
     backgroundRepeat: "repeat-x",
     height: "800px",
-    opacity: "0.8",
+    opacity: "0.5",
 }
 
 const boxStyle = {
@@ -77,7 +77,7 @@ export default class Witness extends Component {
                                 />
                                 <FieldGroup
                                     name="phone"
-                                    id="formControlsEmail"
+                                    id="formControlsPhone"
                                     type="tel"
                                     label="Phone Number"
                                     placeholder="Enter phone number"

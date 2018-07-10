@@ -74,7 +74,6 @@ class TextFields extends React.Component {
     });
   }
 
-
   markAsOpen(e) {
     e.preventDefault();
     fetch(`/api/reports/${this.props.modalObj.id}/status`, {
@@ -119,6 +118,10 @@ class TextFields extends React.Component {
     this.setState({
       [name]: value
     });
+  }
+
+  chopDate(str) {
+    return str.slice(0, -5).replace("T", " at ");
   }
 
 
@@ -362,6 +365,7 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
+          defaultValue={this.chopDate(this.props.modalObj.date)}
           className={classes.textField}
           margin="normal"
           onChange={this.handleInputChange}
@@ -382,6 +386,7 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
+          defaultValue={this.props.modalObj.location}
           onChange={this.handleInputChange}
           className={classes.textField}
           margin="normal"
