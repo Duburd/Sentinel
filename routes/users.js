@@ -61,7 +61,23 @@ module.exports = (knex) => {
       .catch((e) => {
         res.status(500).send(e);
       })
-      
   });
+
+  router.post("/session", (req, res, next) => {
+    console.log(req.body)
+    knex('users')
+    .select('*')
+    .where('policy_number', '=', req.body.policyNum)
+    .where('password', '=', req.body.pwd)
+    .then((results) => {
+      res.json({
+        message: 'user authenticated',
+        usr: results
+      })
+    }).catch((err) => {
+      res.json({message: 'looks like your credentials didn\'t match up', err: err})
+    })
+  });
+
   return router
 }
