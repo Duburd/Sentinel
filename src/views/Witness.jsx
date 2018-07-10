@@ -7,10 +7,7 @@ import MediaQuery from 'react-responsive';
 import WitnessForm from './Components/WitnessForm.jsx'
 
 const queryString = require('query-string');
-
-const parsed = queryString.parse(location.search);
-
-console.log(parsed.reportId);
+const parsedUrl = queryString.parse(location.search);
 
 const businessAddress = (
     <p className="contactAddress">
@@ -127,7 +124,7 @@ export default class Witness extends Component {
                                     handleInputChange={this.handleInputChange}
                                     handleSubmit={this.handleSubmit}
                                     addNotification={this._addNotification}
-                                    reportId={parsed.reportId}
+                                    reportId={parsedUrl.reportId}
                                     
                                 />
                             </div>
@@ -141,7 +138,7 @@ export default class Witness extends Component {
                                 handleInputChange={this.handleInputChange}
                                 handleSubmit={this.handleSubmit}
                                 addNotification={this._addNotification}
-                                reportId={parsed.reportId}
+                                reportId={parsedUrl.reportId}
                             
                             />
                         </div>
