@@ -7,7 +7,8 @@ exports.up = function (knex, Promise) {
       table.string('phone_number');
       table.string('license_number');
       table.string('policy_number');
-      table.string('uri');      
+      table.string('password');
+      table.string('uri');
     }),
     knex.schema.createTable('media', function (table) {
       table.increments();
@@ -25,6 +26,7 @@ exports.up = function (knex, Promise) {
       table.string('status');
       table.integer('user_id').references('id').inTable('users').onDelete('cascade');
       table.integer('vehicle_id').references('id').inTable('vehicles').onDelete('cascade');
+      table.specificType('additionalDrivers', 'jsonb[]');
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());
     }),

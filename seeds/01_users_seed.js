@@ -7,6 +7,8 @@ exports.seed = function (knex, Promise) {
         .insert([{
                 first_name: 'Aaron',
                 last_name: 'Black',
+                phone_number: '1111111',
+                password: 'Abcd1234',
                 phone_number: '19028612345',
                 policy_number: '12345',
                 license_number: '333333'
@@ -14,6 +16,9 @@ exports.seed = function (knex, Promise) {
             {
                 first_name: 'Matt',
                 last_name: 'Greff',
+                phone_number: '2222222',
+                password: 'Abcd1234',
+                policy_number: '23456',
                 phone_number: '19022563456',
                 policy_number: '12345',
                 license_number: '444444'
@@ -22,6 +27,8 @@ exports.seed = function (knex, Promise) {
                 first_name: faker.name.firstName(),
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
+                policy_number: faker.random.number(),
+                password: faker.random.number(),
                 policy_number: '12345',
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
@@ -31,6 +38,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -39,6 +47,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -47,6 +56,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -55,6 +65,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -63,6 +74,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -71,6 +83,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -79,6 +92,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -87,6 +101,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -95,6 +110,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -103,6 +119,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -111,6 +128,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -119,6 +137,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -127,6 +146,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -135,6 +155,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -143,6 +164,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -151,6 +173,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -159,6 +182,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -167,6 +191,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -175,6 +200,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -183,6 +209,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -191,6 +218,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -199,6 +227,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -207,6 +236,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -215,6 +245,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -223,6 +254,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -231,6 +263,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -239,6 +272,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -247,6 +281,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -255,6 +290,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -263,6 +299,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },
@@ -271,6 +308,7 @@ exports.seed = function (knex, Promise) {
                 last_name: faker.name.lastName(),
                 phone_number: faker.phone.phoneNumber(),
                 policy_number: faker.random.number(),
+                password: faker.random.number(),
                 uri: faker.image.cats(),
                 license_number: faker.random.number()
             },

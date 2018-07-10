@@ -274,9 +274,8 @@ class EnhancedTable extends React.Component {
               rowCount={this.props.claimsList.length}
             />
             <TableBody >
-              {this.props.claimsList
-                //slice creates a shallow copy so that the state is updated correctly on sort
-                .slice(0) 
+              {//slice creates a shallow copy so that the state is updated correctly on sort
+              this.props.claimsList.slice(0) 
                 .sort(getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((n, index) => {
