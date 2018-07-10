@@ -54,11 +54,11 @@ const Entry = () => (
 )
 
 const bgStyle = {
-  backgroundImage: "url('./Images/AdobeStock_64718583.jpeg')",
+  backgroundImage: "url('https://steemitimages.com/0x0/https://plotagraph.s3.amazonaws.com/shared/589e4c6ed1e4e81500537144.gif')",
   backgroundSize: "cover",
   backgroundRepeat: "repeat-x",
   height: "800px",
-  opacity: "0.8",
+  marginTop: "-23px"
 }
 
 

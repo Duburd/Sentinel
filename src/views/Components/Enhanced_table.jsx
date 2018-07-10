@@ -155,7 +155,7 @@ let EnhancedTableToolbar = props => {
       <div className={classes.actions}>
         {numSelected > 0 ? (
           <Tooltip title="Delete">
-            <IconButton aria-label="Delete">
+            <IconButton onClick={this.handleDelete} aria-label="Delete">
               <DeleteIcon />
             </IconButton>
           </Tooltip>

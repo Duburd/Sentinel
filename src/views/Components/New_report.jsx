@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-
 import classNames from 'classnames';
 import styled from 'styled-components';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -15,8 +14,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-
-
 
 const styles = theme => ({
   container: {
@@ -63,7 +60,7 @@ class TextFields extends React.Component {
     this.state = {
       ...props.modalObj,
       policyObj: {},
-      policyIds: {ids: [], first_names: []},
+      policyIds: { ids: [], first_names: [] },
 
       policyNum: "",
       selectedPolicyNum: "",
@@ -113,26 +110,6 @@ class TextFields extends React.Component {
       vehicleId: "",     // TODO: can delete this?
     })
 
-    // let relevantClaimsList = this.props.claimsList.filter(function (claim) {
-    //   return claim.policy_number == policyNum;
-    // });
-
-    // const policyIds = relevantClaimsList.reduce((prev, pol) => {
-    //   prev.ids.push(pol.id);
-    //   prev.vehicleids.push(pol.vehicleid);
-    //   prev.first_names.push(pol.first_name);
-    //   prev.last_names.push(pol.last_name);
-    //   prev.plates.push(pol.plate);
-    //   return prev
-    // }, {
-    //   ids: [],
-    //   vehicleids: [],
-    //   first_names: [],
-    //   last_names: [],
-    //   plates: [],
-    // }) 
-    // this.setState({ policyIds })
-    
   }
 
   getUsers = () => {
@@ -149,29 +126,27 @@ class TextFields extends React.Component {
       .sort();   // TODO: something more fun
   }
 
-
-
   render() {
-  
-    const { classes } = this.props;
-    // const { policyNum, firstName, lastName, phoneNum, make, model, year, licensePlate, damageDescription, incidentTime, location, incidentDescription } = this.state;
 
-    // form also needs crap for damage, incident, etc, and also needs a Submit button
-    // return (
-    //   <form garbage={garbage}>
-    //     <Textfield purpose={"for policy numbers"} />
-    //     <MyDropdown name='vehicle' choices={this.getVehicles()} />
-    //     <MyDropdown name='user' choices={this.getUsers()} />
-    //   </form>
-    // );
-    
+    const { classes } = this.props;
+
     function prettifyUser(user) {
-      return user.id + ' : ' + user.first_name + ' ' + user.last_name;
+      return `${user.id}: ${user.first_name} ${user.last_name}`;
     }
-    
+
     function prettifyVehicle(vehicle) {
-      return vehicle.plate;
+      return `${vehicle.plate} - ${vehicle.color} ${vehicle.year} ${vehicle.make} ${vehicle.model}`
     }
+
+    const labelStyle = {
+      left: 150, 
+      textSize: 14
+    };
+
+    const labelStyle2 = {
+      left: 200, 
+      textSize: 14
+    };
 
     return (
       <form className={classes.container} noValidate autoComplete="on">
@@ -191,14 +166,23 @@ class TextFields extends React.Component {
             },
           }}
           className={classes.textField}
-          margin="normal" 
+          margin="normal"
           onChange={this.handleInputChange}
           onBlur={this.handlePolicyNum}
         />
-        
+
         <FormControl >
-          <InputLabel htmlFor="user-id">User</InputLabel>
+          <InputLabel style={labelStyle} htmlFor="user-id">User</InputLabel>
           <Select
+            style={{
+              width: 350,
+              height: 15,
+              lineHeight: 0,
+              top: 29,
+              left: 100,
+              position: 'relative',
+              fontSize: 14,
+            }}
             value={this.state.userId}
             onChange={this.handleInputChange}
             inputProps={{
@@ -214,8 +198,17 @@ class TextFields extends React.Component {
         </FormControl>
 
         <FormControl >
-          <InputLabel htmlFor="vehicle-id">Vehicle</InputLabel>
+          <InputLabel style={labelStyle2} htmlFor="vehicle-id">Vehicle</InputLabel>
           <Select
+            style={{
+              width: 350,
+              height: 15,
+              lineHeight: 0,
+              left: 150,
+              top: 29,
+              position: 'relative',
+              fontSize: 14,
+            }}
             value={this.state.vehicleId}
             onChange={this.handleInputChange}
             inputProps={{

@@ -65,7 +65,7 @@ module.exports = (knex) => {
         user_id: req.body.data.userId,
         vehicle_id: req.body.data.vehicleId,
         status: 'pending',
-        date: req.body.data.date,
+        date: req.body.data.incidentTime,
         location: req.body.data.location,
       })
       .then(function () {

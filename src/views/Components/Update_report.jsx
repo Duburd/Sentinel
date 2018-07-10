@@ -120,11 +120,6 @@ class TextFields extends React.Component {
     });
   }
 
-  chopDate(str) {
-    return str.slice(0, -5).replace("T", " at ");
-  }
-
-
   render() {
     const { classes } = this.props;
     // const { policyNum, firstName, lastName, phoneNum, make, model, year, licensePlate, damageDescription, incidentTime, location, incidentDescription } = this.state;
@@ -365,7 +360,7 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
-          defaultValue={this.chopDate(this.props.modalObj.date)}
+          defaultValue={this.props.modalObj.date}
           className={classes.textField}
           margin="normal"
           onChange={this.handleInputChange}
