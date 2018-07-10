@@ -71,6 +71,7 @@ module.exports = (knex) => {
       var message = 'user authenticated'
       if (typeof results[0] === 'undefined') {
         message = 'looks like your credentials didn\'t match up';
+        results = null
       }
       res.json({
         message: message,
