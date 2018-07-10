@@ -14,6 +14,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+import DatePicker from '../Date_picker.jsx'
+var moment = require('moment');
 
 const styles = theme => ({
   container: {
@@ -62,6 +64,8 @@ class TextFields extends React.Component {
       policyObj: {},
       policyIds: { ids: [], first_names: [] },
 
+      incidentTime : new Date(),
+
       policyNum: "",
       selectedPolicyNum: "",
       userId: "",
@@ -74,6 +78,7 @@ class TextFields extends React.Component {
     var data = {
       data: { ...this.state, ...this.props }
     }
+    console.log(data)
     this.props.handleClose()
     fetch(`/api/reports/new`, {
       method: 'POST',
@@ -126,6 +131,10 @@ class TextFields extends React.Component {
       .sort();   // TODO: something more fun
   }
 
+  handleDateChange = (event,date) => {
+    this.setState({incidentTime: date})
+}
+
   render() {
 
     const { classes } = this.props;
@@ -147,6 +156,9 @@ class TextFields extends React.Component {
       left: 200, 
       textSize: 14
     };
+
+  
+
 
     return (
       <form className={classes.container} noValidate autoComplete="on">
@@ -224,7 +236,6 @@ class TextFields extends React.Component {
         </FormControl>
 
 
-
         <TextField
           id="damageDescription"
           label="Damage Description"
@@ -245,25 +256,9 @@ class TextFields extends React.Component {
           margin="normal"
           onChange={this.handleInputChange}
         />
-        <TextField
-          id="incidentTime"
-          label="Date/Time of incident"
-          name="incidentTime"
-          defaultValue=""
-          InputLabelProps={{
-            shrink: true,
-            FormLabelClasses: {
-              root: classes.resize
-            },
-          }}
-          InputProps={{
-            classes: {
-              input: classes.resize,
-            },
-          }}
-          className={classes.textField}
-          margin="normal"
-          onChange={this.handleInputChange}
+        <DatePicker 
+        name="incidentTime"
+        onChange={this.handleDateChange}
         />
         <TextField
           id="location"

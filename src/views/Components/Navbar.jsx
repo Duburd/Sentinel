@@ -3,7 +3,7 @@ import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
-class Navvy extends Component {
+class BootNavbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +34,7 @@ class Navvy extends Component {
                 <NavItem eventKey={3}>Login</NavItem>
               </LinkContainer>
               <LinkContainer to="/witness">
-                <NavItem eventKey={4}>Main</NavItem>
+                <NavItem eventKey={4}>Witness</NavItem>
               </LinkContainer>
 
 
@@ -53,6 +53,6 @@ class Navvy extends Component {
   }
 }
 
-export default Navvy;
+export default BootNavbar;
 
 

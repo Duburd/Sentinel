@@ -74,6 +74,7 @@ module.exports = (knex) => {
   });
 
   router.post("/new", (req, res, next) => {
+    console.log(req.body)
     knex('reports')
       .insert({
         description: req.body.data.description,

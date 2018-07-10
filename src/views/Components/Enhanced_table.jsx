@@ -302,7 +302,8 @@ class EnhancedTable extends React.Component {
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
                       {n.status === 'Open'
                       ? <TableCell style={{ fontSize: '1.25rem', color: 'green' }} numeric>{n.status}</TableCell>
-                      : (n.status === 'Closed' ? <TableCell style={{ fontSize: '1.25rem', color: 'red' }} numeric>{n.status}</TableCell>
+                      : (n.status === 'Closed' 
+                      ? <TableCell style={{ fontSize: '1.25rem', color: 'red' }} numeric>{n.status}</TableCell>
                       : <TableCell style={{ fontSize: '1.25rem', color: 'blue' }} numeric>{n.status}</TableCell>)
                       }
                       <TableCell>
