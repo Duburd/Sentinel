@@ -70,6 +70,7 @@ module.exports = (knex) => {
     .where('policy_number', '=', req.body.policyNum)
     .where('password', '=', req.body.pwd)
     .then((results) => {
+      console.log('user auth succeeded')
       res.json({
         message: 'user authenticated',
         usr: results
