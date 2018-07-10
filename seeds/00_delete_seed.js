@@ -5,5 +5,6 @@ exports.seed = function(knex, Promise) {
     .then(knex('users').del())
     .then(knex('media').del())
     .then(knex('messages').del())
-    .then(knex('witnesses').del());
+    .then(knex('witnesses').del())
+    .then(knex('admins').del());
 };
