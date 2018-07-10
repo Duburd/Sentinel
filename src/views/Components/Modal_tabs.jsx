@@ -86,6 +86,8 @@ class SimpleTabs extends React.Component {
           <TabContainer>
             {this.props.modalObj.id === 'NEW'
               ? <NewReport
+               usersList={this.props.usersList}
+               vehiclesList={this.props.vehiclesList}
                 claimsList={this.props.claimsList}
                 modalId={this.props.modalId}
                 modalObj={this.props.modalObj}

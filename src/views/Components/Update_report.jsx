@@ -154,6 +154,7 @@ class TextFields extends React.Component {
           label="First Name"
           name="first_name"
           autoComplete="given-name"
+          disabled
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -175,6 +176,7 @@ class TextFields extends React.Component {
           id="lastName"
           label="Last Name"
           name="last_name"
+          disabled
           autoComplete="family-name"
           InputLabelProps={{
             shrink: true,
@@ -240,6 +242,7 @@ class TextFields extends React.Component {
         />
         <TextField
           required
+          disabled
           id="make"
           label="Vehicle Make"
           name="make"
@@ -261,6 +264,7 @@ class TextFields extends React.Component {
         />
         <TextField
           id="model"
+          disabled
           label="Vehicle Model"
           name="model"
           InputLabelProps={{
@@ -281,6 +285,7 @@ class TextFields extends React.Component {
         />
         <TextField
           id="year"
+          disabled
           label="Vehicle Year"
           name="year"
           InputLabelProps={{
@@ -301,6 +306,7 @@ class TextFields extends React.Component {
         />
         <TextField
           id="plate"
+          disabled
           label="License plate"
           name="plate"
           InputLabelProps={{

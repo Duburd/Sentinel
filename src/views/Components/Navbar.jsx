@@ -16,7 +16,7 @@ class Navvy extends Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Valiant</Link>
+              <Link to="/">Sentinel</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

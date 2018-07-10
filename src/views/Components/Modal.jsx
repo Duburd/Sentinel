@@ -51,6 +51,8 @@ class SimpleModal extends React.Component {
             <Typography variant="subheading" id="simple-modal-description">
               
               <ModalTabs
+              vehiclesList={this.props.vehiclesList}
+                usersList={this.props.usersList}
                 images={this.props.images}
                 lightbox={this.props.lightbox}
                 handleClose={this.props.handleClose}

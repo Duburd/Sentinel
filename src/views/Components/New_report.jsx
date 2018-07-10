@@ -5,6 +5,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
 import styled from 'styled-components';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+
+
 
 const styles = theme => ({
   container: {
@@ -44,10 +52,11 @@ const ModalButton = styled.button`
   }
 `;
 
+
 class TextFields extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ...props.modalObj }
+    this.state = { ...props.modalObj, policyObj: {}, policyIds: {ids: [], first_names: []} }
   }
 
   newReport(e) {
@@ -84,17 +93,60 @@ class TextFields extends React.Component {
     });
   }
 
+  handlePolicyNum = (policyNum) => {
+    // let relevantClaimsList = this.props.claimsList.filter(function (claim) {
+    //   return claim.policy_number == policyNum;
+    // });
+
+    // const policyIds = relevantClaimsList.reduce((prev, pol) => {
+    //   prev.ids.push(pol.id);
+    //   prev.vehicleids.push(pol.vehicleid);
+    //   prev.first_names.push(pol.first_name);
+    //   prev.last_names.push(pol.last_name);
+    //   prev.plates.push(pol.plate);
+    //   return prev
+    // }, {
+    //   ids: [],
+    //   vehicleids: [],
+    //   first_names: [],
+    //   last_names: [],
+    //   plates: [],
+    // }) 
+    // this.setState({ policyIds })
+    
+  }
+
+  getUsers() {
+    return this.props.usersList.filter(user => user.policy_number === this.state.policyNum);
+  }
+
+  getVehicles() {
+    return this.props.vehiclesList.filter(v => v.policy_number === this.state.policyNum);
+  }
+
+
 
   render() {
+    console.log(this.state)
+    
     const { classes } = this.props;
     // const { policyNum, firstName, lastName, phoneNum, make, model, year, licensePlate, damageDescription, incidentTime, location, incidentDescription } = this.state;
+
+    // form also needs crap for damage, incident, etc, and also needs a Submit button
+    // return (
+    //   <form garbage={garbage}>
+    //     <Textfield purpose={"for policy numbers"} />
+    //     <MyDropdown name='vehicle' choices={this.getVehicles()} />
+    //     <MyDropdown name='user' choices={this.getUsers()} />
+    //   </form>
+    // );
+    
     return (
       <form className={classes.container} noValidate autoComplete="on">
         <TextField
           id="policyNum"
           label="Policy Number"
           name="policyNum"
-          defaultValue={this.props.modalObj.userid}
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -107,15 +159,14 @@ class TextFields extends React.Component {
             },
           }}
           className={classes.textField}
-          margin="normal"
-          value={this.state.policyNum}
+          margin="normal" 
           onChange={this.handleInputChange}
+ 
         />
         <TextField
           id="vehicleId"
           label="Vehicle Id"
           name="vehicleId"
-          defaultValue={this.props.modalObj.plate}
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {
@@ -130,28 +181,6 @@ class TextFields extends React.Component {
           className={classes.textField}
           margin="normal"
           onChange={this.handleInputChange}
-        />
-        <TextField
-          required
-          id="caseNum"
-          label="Case Number"
-          name="caseNum"
-          disabled
-          InputLabelProps={{
-            shrink: true,
-            FormLabelClasses: {
-              root: classes.resize
-            },
-          }}
-          InputProps={{
-            readOnly: true,
-            classes: {
-              input: classes.resize,
-            },
-          }}
-          defaultValue={this.props.modalObj.id}
-          className={classes.textField}
-          margin="normal"
         />
         <TextField
           id="damageDescription"
@@ -168,7 +197,6 @@ class TextFields extends React.Component {
               input: classes.resize,
             },
           }}
-          defaultValue={this.props.modalObj.damage}
           fullWidth
           multiline
           margin="normal"
@@ -229,7 +257,6 @@ class TextFields extends React.Component {
               input: classes.resizeDesc,
             },
           }}
-          defaultValue={this.props.modalObj.description}
           onChange={this.handleInputChange}
           fullWidth
           multiline

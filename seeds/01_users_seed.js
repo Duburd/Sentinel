@@ -13,7 +13,7 @@ exports.seed = function (knex, Promise) {
                 first_name: 'Matt',
                 last_name: 'Greff',
                 phone_number: '2222222',
-                policy_number: '23456',
+                policy_number: '12345',
                 license_number: '444444'
             },
             {
