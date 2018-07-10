@@ -53,7 +53,7 @@ module.exports = (knex) => {
   });
 
   router.get("/:id/vehicles", (req, res, next) => {
-    knex.select('*').from('vehicles')
+    return knex.select('*').from('vehicles')
       .where('user_id', '=', req.params.id)
       .then((results) => {
         res.json(results)
@@ -69,11 +69,12 @@ module.exports = (knex) => {
     .select('*')
     .where('policy_number', '=', req.body.policyNum)
     .where('password', '=', req.body.pwd)
-    .then((results) => {
+    .then((results, err) => {
       console.log('user auth succeeded')
+      console.log(results)
       res.json({
         message: 'user authenticated',
-        usr: results
+        user: results
       })
     }).catch((err) => {
       res.json({message: 'looks like your credentials didn\'t match up', err: err})
