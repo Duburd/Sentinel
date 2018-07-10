@@ -2,15 +2,21 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../styles/login.css";
 import "../styles/App.css"
-import { Auth } from 'aws-amplify';
 require("babel-core/register");
 require("babel-polyfill");
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
-export default class Login extends Component {
+class Login extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
   constructor(props) {
     super(props);
-
+    const { cookies } = props;
     this.state = {
+      name: cookies.get('name') || 'Ben',
       email: "",
       password: ""
     };
@@ -79,3 +85,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withCookies(Login)
