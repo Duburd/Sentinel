@@ -30,8 +30,7 @@ export default ({ childProps }) =>
   <Switch>
     <AppliedRoute path="/" exact component={Home} props={childProps} />
     <AppliedRoute path="/login" exact component={Login} props={childProps} />
-    <AppliedRoute path="/admin" component={Admin} />
-    <AppliedRoute path="/main" component={Main} />
+    <AppliedRoute path="/admin" component={Admin} props={childProps}/>
     <AppliedRoute path="/contact" component={Contact} />
     <AppliedRoute path="/witness" component={Witness} />
     { /* Finally, catch all unmatched routes */ }

@@ -10,7 +10,7 @@ const BootstrapHeader = () => (
     <div className="container">
       <div className="row">
         <div className="col-xl-9 mx-auto">
-          <h1 className="mb-5">Ensure that you are protected today with Sentinel.</h1>
+          <h1 className="mb-5">Ensure that you are protected today with Valiant.</h1>
         </div>
         <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
           <form>
@@ -32,7 +32,7 @@ const BootstrapHeader = () => (
 
 const businessAddress = (
   <address>
-    <strong>Sentinel</strong><br />
+    <strong>Valiant</strong><br />
     The HiVE, 128 W Hastings St #300, <br />
     Vancouver, BC V6B 1G8<br />
     +1 888-569-6898
@@ -45,7 +45,7 @@ const Entry = () => (
   <div style={bgStyle}>
     <div className="blankDiv">
       <div className="tempText">
-        <h1 className="landing_rowMainText">Sentinel</h1>
+        <h1 className="landing_rowMainText">Valiant</h1>
         {/* <Link to="/main"><button className="actionButton">Start Here</button></Link> */}
         <div className="spacer"></div>
       </div>
@@ -54,11 +54,11 @@ const Entry = () => (
 )
 
 const bgStyle = {
-  backgroundImage: "url('https://steemitimages.com/0x0/https://plotagraph.s3.amazonaws.com/shared/589e4c6ed1e4e81500537144.gif')",
+  backgroundImage: "url('./Images/AdobeStock_64718583.jpeg')",
   backgroundSize: "cover",
   backgroundRepeat: "repeat-x",
   height: "800px",
-  marginTop: "-23px"
+  opacity: "0.8",
 }
 
 
@@ -139,14 +139,14 @@ const Testimonials = () => (
           <div className="testimonial-item mx-auto mb-5 mb-lg-0">
             <img className="img-fluid rounded-circle mb-3" src="Images/jennifer.jpeg" alt="" />
             <h5>Jennifer H.</h5>
-            <p className="font-weight-light mb-0">"This is fantastic! Thanks so much guys! PLONK!"</p>
+            <p className="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
           </div>
         </div>
         <div className="col-lg-4">
-          <div className="testimonial-item mx-auto mb-5 mb-lg-0">
+          <div className="testimonial-item mx-auto mb-35 mb-lg-0">
             <img className="img-fluid rounded-circle mb-3" src="Images/chibwe.jpeg" alt="" />
             <h5>Chibwe M.</h5>
-            <p className="font-weight-light mb-0">"Sentinel is amazing. It provides all of the tools you need when you're in a crisis."</p>
+            <p className="font-weight-light mb-0">"Valiant is amazing. It provides all of the tools you need when you're in a crisis."</p>
           </div>
         </div>
         <div className="col-lg-4">

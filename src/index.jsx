@@ -8,6 +8,7 @@ import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 import blue from '@material-ui/core/colors/blue';
 import { BrowserRouter } from 'react-router-dom'
+import { CookiesProvider, withCookies } from 'react-cookie';
 
 
 const theme = createMuiTheme({
@@ -20,9 +21,14 @@ const theme = createMuiTheme({
   },
 });
 
+const AppWithCookies = withCookies(App)
 
 ReactDOM.render(
+  <CookiesProvider>
     <BrowserRouter>
-    <App />
-  </BrowserRouter>, 
+      <AppWithCookies />
+    </BrowserRouter>
+  </CookiesProvider>,
+
+
 document.getElementById('react-root'));

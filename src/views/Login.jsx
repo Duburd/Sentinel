@@ -2,14 +2,21 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../styles/login.css";
 import "../styles/App.css"
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
+
 require("babel-core/register");
 require("babel-polyfill");
 
 export default class Login extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
   constructor(props) {
     super(props);
-
+    const { cookies } = props;
     this.state = {
+      user: 'Guest',
       username: "matti",
       password: "abc123",
       logErr: null
@@ -47,6 +54,7 @@ export default class Login extends Component {
           this.setState({logErr: response.message})
           console.log(response)
         } else {
+          cookies.set('user', user, { path: '/' })
           console.log(response)
         }
     })
