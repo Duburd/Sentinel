@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../styles/login.css";
 import "../styles/App.css"
-import { Auth } from 'aws-amplify';
 require("babel-core/register");
 require("babel-polyfill");
 
@@ -11,32 +10,46 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: ""
+      username: "matti",
+      password: "abc123",
+      logErr: null
     };
   }
 
-
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+    return this.state.username.length > 0 && this.state.password.length > 0;
   }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
+  onUserChange = (event) => {
+    this.setState({username: event.target.value});
+  }
+
+  onPassChange = (event) => {
+    this.setState({password: event.target.value});
   }
 
   handleSubmit = async event => {
-    event.preventDefault();
-  
-    try {
-      await Auth.signIn(this.state.email, this.state.password);
-      this.props.userHasAuthenticated(true);
-      alert("Logged in");
-    } catch (e) {
-      alert(e.message);
+    this.setState({logErr: null})
+    const loginObj = {
+      username: this.state.username,
+      password: this.state.password,
     }
+    console.log(loginObj)
+    const cred = JSON.stringify(loginObj)
+    fetch('api/admin/session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: cred,
+    })
+    .then((results)=> results.json())
+    .then((response) => {
+      if(response.user === null){
+          this.setState({logErr: response.message})
+          console.log(response)
+        } else {
+          console.log(response)
+        }
+    })
   }
 
   render() {
@@ -46,21 +59,22 @@ export default class Login extends Component {
       <img src="insure.svg" className="App-logo" alt="logo" />
       <h1 className="App-title">Welcome to Sentinel</h1>
       <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
+        <form>
+          <ControlLabel style={{color: 'tomato'}}>{this.state.logErr}</ControlLabel>
+          <FormGroup controlId="username" bsSize="large">
+          <ControlLabel>Username</ControlLabel>
             <FormControl
               autoFocus
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
+              type="username"
+              value={this.state.username}
+              onChange={this.onUserChange}
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
             <ControlLabel>Password</ControlLabel>
             <FormControl
               value={this.state.password}
-              onChange={this.handleChange}
+              onChange={this.onPassChange}
               type="password"
             />
           </FormGroup>
@@ -68,7 +82,7 @@ export default class Login extends Component {
             block
             bsSize="large"
             disabled={!this.validateForm()}
-            type="submit"
+            onClick={()=>this.handleSubmit()}
           >
             Login
           </Button>

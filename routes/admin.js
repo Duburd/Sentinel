@@ -5,10 +5,11 @@ const router = express.Router();
 
 module.exports = (knex) => {
   router.post("/session", (req, res, next) => {
-    knex('admin')
+    console.log(req.body)
+    knex('admins')
     .select('*')
-    .where('email', '=', req.body.policyNum)
-    .where('password', '=', req.body.pwd)
+    .where('username', '=', req.body.username)
+    .where('password', '=', req.body.password)
     .then((results, err) => {
       var message = 'user authenticated'
       if (typeof results[0] === 'undefined') {
