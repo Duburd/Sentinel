@@ -6,6 +6,12 @@ import NotificationSystem from 'react-notification-system';
 import MediaQuery from 'react-responsive';
 import WitnessForm from './Components/WitnessForm.jsx'
 
+const queryString = require('query-string');
+
+const parsed = queryString.parse(location.search);
+
+console.log(parsed.reportId);
+
 const businessAddress = (
     <p className="contactAddress">
         <strong>Sentinel</strong><br />
@@ -47,12 +53,17 @@ const boxStyleMobile = {
 
 }
 
+
+
 export default class Witness extends Component {
     constructor(props) {
         super(props);
+        console.log(props)
         this.state = {
         }
     }
+
+  
 
     _notificationSystem = null
 
@@ -103,6 +114,7 @@ export default class Witness extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <NotificationSystem ref="notificationSystem" />
@@ -115,6 +127,8 @@ export default class Witness extends Component {
                                     handleInputChange={this.handleInputChange}
                                     handleSubmit={this.handleSubmit}
                                     addNotification={this._addNotification}
+                                    reportId={parsed.reportId}
+                                    
                                 />
                             </div>
                         </div>
@@ -127,6 +141,8 @@ export default class Witness extends Component {
                                 handleInputChange={this.handleInputChange}
                                 handleSubmit={this.handleSubmit}
                                 addNotification={this._addNotification}
+                                reportId={parsed.reportId}
+                            
                             />
                         </div>
                     </MediaQuery>

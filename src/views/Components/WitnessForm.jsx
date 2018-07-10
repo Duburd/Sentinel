@@ -12,6 +12,8 @@ function FieldGroup({ id, label, help, ...props }) {
 }
 
 const WitnessForm = (props) => {
+    
+    
 
     return (
         <form>
@@ -21,6 +23,7 @@ const WitnessForm = (props) => {
                 type="text"
                 label="Report ID"
                 placeholder="Report ID"
+                defaultValue={props.reportId}
                 onChange={props.handleInputChange}
             />
             <FieldGroup
