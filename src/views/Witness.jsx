@@ -86,6 +86,7 @@ export default class Witness extends Component {
         var data = {
             data: { ...this.state }
         }
+        const addNotification = this._notificationSystem.addNotification.bind(this)
         fetch(`/api/reports/${this.state.reportId}/witness`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -94,12 +95,17 @@ export default class Witness extends Component {
             if (response.status >= 400) {
                 throw new Error("Bad response from server");
             }
-            console.log(data)
+            if (response.status <= 400) {
+                addNotification({
+                    message: "Report submitted successfully.",
+                    level: "success"
+                })
+
+                setTimeout( () => { window.location.href = "/witness" }, 500)
+            }
             return response.json();
         }).then(function (data) {
-            //   if (data == "success") {
-            //     this.setState({ msg: "Form submitted" } );
-            //   }
+
         }).catch(function (err) {
             console.log(err)
         });
@@ -120,6 +126,8 @@ export default class Witness extends Component {
 
         this.setState({ reportId: reportIdParsed })
         this._notificationSystem = this.refs.notificationSystem;
+        
+
     }
 
     render() {
@@ -179,7 +187,7 @@ export default class Witness extends Component {
                                         <FormControl componentClass="textarea" placeholder="Please give your account of events." onChange={this.handleInputChange} name="testimony" />
                                     </FormGroup>
 
-                                    <Button type="submit" onClick={(ev) => { this._addNotification(ev, 'Report submitted'); this.handleSubmit.bind(this)(ev) }}>Submit</Button>
+                                    <Button type="submit" onClick={this.handleSubmit.bind(this)}>Submit</Button>
                                 </form>
                             </div>
                         </div>

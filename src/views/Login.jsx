@@ -76,7 +76,7 @@ class Login extends Component {
     return (
       <div className="App">
       <header className="App-header">
-      <img src="insure.svg" className="App-logo" alt="logo" />
+      <img src="insure.svg" className="App-logo-login" alt="logo" />
       <h1 className="App-title">Welcome to Sentinel</h1>
       <div className="Login">
         <form>
