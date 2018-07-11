@@ -1,3 +1,7 @@
+
+//THIS COMPONENT IS CURRENTLY NOT BEING USED.
+
+
 import React, { Component } from 'react';
 import { FormGroup, Radio, Checkbox, FormControl, ControlLabel, Button } from 'react-bootstrap';
 

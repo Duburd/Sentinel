@@ -4,10 +4,21 @@ import Footer from './Components/Footer.jsx';
 import { FormGroup, Radio, Checkbox, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import NotificationSystem from 'react-notification-system';
 import MediaQuery from 'react-responsive';
-import WitnessForm from './Components/WitnessForm.jsx'
+// import WitnessForm from './Components/WitnessForm.jsx'
 
 const queryString = require('query-string');
 const parsedUrl = queryString.parse(location.search);
+const reportIdParsed = parsedUrl.reportId;
+
+function FieldGroup({ id, label, help, ...props }) {
+    return (
+        <FormGroup controlId={id}>
+            <ControlLabel>{label}</ControlLabel>
+            <FormControl {...props} />
+            {help && <HelpBlock>{help}</HelpBlock>}
+        </FormGroup>
+    );
+}
 
 const businessAddress = (
     <p className="contactAddress">
@@ -55,12 +66,10 @@ const boxStyleMobile = {
 export default class Witness extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
+
         }
     }
-
-  
 
     _notificationSystem = null
 
@@ -85,6 +94,7 @@ export default class Witness extends Component {
             if (response.status >= 400) {
                 throw new Error("Bad response from server");
             }
+            console.log(data)
             return response.json();
         }).then(function (data) {
             //   if (data == "success") {
@@ -107,6 +117,8 @@ export default class Witness extends Component {
 
 
     componentDidMount() {
+
+        this.setState({ reportId: reportIdParsed })
         this._notificationSystem = this.refs.notificationSystem;
     }
 
@@ -120,13 +132,55 @@ export default class Witness extends Component {
                     <MediaQuery query="(min-width: 1224px)">
                         <div style={bgStyle}>
                             <div style={boxStyle}>
-                                <WitnessForm
-                                    handleInputChange={this.handleInputChange}
-                                    handleSubmit={this.handleSubmit}
-                                    addNotification={this._addNotification}
-                                    reportId={parsedUrl.reportId}
-                                    
-                                />
+                                <form>
+                                    <FieldGroup
+                                        name="reportId"
+                                        id="formControlsText"
+                                        type="text"
+                                        label="Report ID"
+                                        placeholder="Report ID"
+                                        defaultValue={reportIdParsed}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <FieldGroup
+                                        name="firstName"
+                                        id="formControlsText"
+                                        type="text"
+                                        label="First Name"
+                                        placeholder="Enter your first name"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <FieldGroup
+                                        name="lastName"
+                                        id="formControlsText"
+                                        type="text"
+                                        label="Last Name"
+                                        placeholder="Enter your family name"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <FieldGroup
+                                        name="email"
+                                        id="formControlsEmail"
+                                        type="email"
+                                        label="Email address"
+                                        placeholder="Enter email"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <FieldGroup
+                                        name="phone"
+                                        id="formControlsPhone"
+                                        type="tel"
+                                        label="Phone Number"
+                                        placeholder="Enter phone number"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <FormGroup controlId="formControlsTextarea">
+                                        <ControlLabel>Testimony</ControlLabel>
+                                        <FormControl componentClass="textarea" placeholder="Please give your account of events." onChange={this.handleInputChange} name="testimony" />
+                                    </FormGroup>
+
+                                    <Button type="submit" onClick={(ev) => { this._addNotification(ev, 'Report submitted'); this.handleSubmit.bind(this)(ev) }}>Submit</Button>
+                                </form>
                             </div>
                         </div>
                         {businessAddress}
@@ -134,13 +188,55 @@ export default class Witness extends Component {
                     </MediaQuery>
                     <MediaQuery query="(max-width: 1224px)">
                         <div style={boxStyleMobile}>
-                            <WitnessForm
-                                handleInputChange={this.handleInputChange}
-                                handleSubmit={this.handleSubmit}
-                                addNotification={this._addNotification}
-                                reportId={parsedUrl.reportId}
-                            
-                            />
+                            <form>
+                                <FieldGroup
+                                    name="reportId"
+                                    id="formControlsText"
+                                    type="text"
+                                    label="Report ID"
+                                    placeholder="Report ID"
+                                    defaultValue={parsedUrl}
+                                    onChange={this.handleInputChange}
+                                />
+                                <FieldGroup
+                                    name="firstName"
+                                    id="formControlsText"
+                                    type="text"
+                                    label="First Name"
+                                    placeholder="Enter your first name"
+                                    onChange={this.handleInputChange}
+                                />
+                                <FieldGroup
+                                    name="lastName"
+                                    id="formControlsText"
+                                    type="text"
+                                    label="Last Name"
+                                    placeholder="Enter your family name"
+                                    onChange={this.handleInputChange}
+                                />
+                                <FieldGroup
+                                    name="email"
+                                    id="formControlsEmail"
+                                    type="email"
+                                    label="Email address"
+                                    placeholder="Enter email"
+                                    onChange={this.handleInputChange}
+                                />
+                                <FieldGroup
+                                    name="phone"
+                                    id="formControlsPhone"
+                                    type="tel"
+                                    label="Phone Number"
+                                    placeholder="Enter phone number"
+                                    onChange={this.handleInputChange}
+                                />
+                                <FormGroup controlId="formControlsTextarea">
+                                    <ControlLabel>Testimony</ControlLabel>
+                                    <FormControl componentClass="textarea" placeholder="Please give your account of events." onChange={this.handleInputChange} name="testimony" />
+                                </FormGroup>
+
+                                <Button type="submit" onClick={(ev) => { this.addNotification(ev, 'Report submitted'); this.handleSubmit(ev) }}>Submit</Button>
+                            </form>
                         </div>
                     </MediaQuery>
                 </div>

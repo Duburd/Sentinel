@@ -8,7 +8,8 @@ import Login from './Login.jsx';
 import { Button as BootButton } from 'react-bootstrap';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
-
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -26,7 +27,7 @@ class Admin extends Component {
   }
 
   _notificationSystem = null
- 
+
   _addNotification = (event, msg) => {
     event.preventDefault();
     this._notificationSystem.addNotification({
@@ -37,10 +38,10 @@ class Admin extends Component {
 
   //for opening/closing main report modal
   handleOpen = (targetId) => {
-    let modalObj = {id: 'NEW'}
-      if (targetId === 'new') {
-          return this.setState({modalId: 'new', open: true, modalObj})
-      }
+    let modalObj = { id: 'NEW' }
+    if (targetId === 'new') {
+      return this.setState({ modalId: 'new', open: true, modalObj })
+    }
     modalObj = this.state.claimsList.find(function (claim) {
       return claim.id === targetId;
     });
@@ -67,16 +68,22 @@ class Admin extends Component {
         return this.setState({ claimsList: results })
       })
 
-      fetch('/api/users')
+    fetch('/api/users')
       .then(results => results.json())
       .then(results => {
         return this.setState({ usersList: results })
       })
 
-      fetch('/api/vehicles')
+    fetch('/api/vehicles')
       .then(results => results.json())
       .then(results => {
         return this.setState({ vehiclesList: results })
+      })
+
+    fetch('/api/witnesses')
+      .then(results => results.json())
+      .then(results => {
+        return this.setState({ witnessList: results })
       })
 
 
@@ -95,7 +102,9 @@ class Admin extends Component {
 
     return (
       <div className="App">
-        <BootButton className="newReportButton" onClick={this.handleOpen.bind(this, 'new')}>+ Report</BootButton>
+        <Button variant="fab" color="primary" aria-label="add" onClick={this.handleOpen.bind(this, 'new')} className="newReportButton">
+          <AddIcon />
+        </Button>
         <NotificationSystem ref="notificationSystem" />
         <header className="App-header">
           <img src="insure.svg" className="App-logo" alt="logo" />
@@ -116,6 +125,7 @@ class Admin extends Component {
         <SimpleModalWrapped
           vehiclesList={this.state.vehiclesList}
           usersList={this.state.usersList}
+          witnessList={this.state.witnessList}
           images={this.state.images}
           lightbox={this.lightbox}
           modalObj={this.state.modalObj}
@@ -125,27 +135,28 @@ class Admin extends Component {
           handleOpen={this.handleOpen}
           claimsList={this.state.claimsList}
           addNotification={this._addNotification} />
-            {isOpen && (
-            <Lightbox
-                mainSrc={images[photoIndex]}
-                nextSrc={images[(photoIndex + 1) % images.length]}
-                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                onCloseRequest={() => this.setState({ isOpen: false, images: [] })}
-                onMovePrevRequest={() =>
-                this.setState({
-                    photoIndex: (photoIndex + images.length - 1) % images.length,
-                })
-                }
-                onMoveNextRequest={() =>
-                    this.setState({
-                        photoIndex: (photoIndex + 1) % images.length,
-                    })
-                }
-                />
-                )}
-                </div>
-                )
+
+        {isOpen && (
+          <Lightbox
+            mainSrc={images[photoIndex]}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() => this.setState({ isOpen: false, images: [] })}
+            onMovePrevRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + images.length - 1) % images.length,
+              })
             }
-        }
+            onMoveNextRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + 1) % images.length,
+              })
+            }
+          />
+        )}
+      </div>
+    )
+  }
+}
 
 export default Admin;
