@@ -6,7 +6,7 @@ require("babel-core/register");
 require("babel-polyfill");
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
-import { Redirect, IndexLink} from 'react-router-dom';
+import { Redirect, Link} from 'react-router-dom';
 
 class Login extends Component {
   static propTypes = {
@@ -60,8 +60,9 @@ class Login extends Component {
           const { cookies } = this.props
           console.log(response.user[0])
           cookies.set('user', response.user[0], { path: '/' })
+          const user = cookies.get('user')
           this.setState({
-            user: cookies.get('user'),
+            user: user,
             redirect: true,
           })
         }
@@ -71,7 +72,7 @@ class Login extends Component {
   render() {
     const {redirect} = this.state
     if(redirect){
-      return <IndexLink to='/'/>
+      return <Redirect to="/"/>
     } else {
     return (
       <div className="App">

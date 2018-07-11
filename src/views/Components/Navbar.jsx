@@ -21,17 +21,17 @@ class BootNavbar extends Component {
     const {cookies} = this.props;
     cookies.remove('user')
     this.setState({
-      redirect: true
+      user: null,
     })
     this.setState({
-      user: null,
+      redirect: true
     })
   }
 
   render() {
     const {redirect} = this.state
     if(redirect){
-      return <IndexLink to='/login'/>
+      return <Redirect to="/login" href="/login"/>
     } else {
     return (
       <div className="header">
