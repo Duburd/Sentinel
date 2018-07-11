@@ -7,10 +7,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './Login.jsx';
 import { Button as BootButton } from 'react-bootstrap';
 import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
-
-
-
+import 'react-image-lightbox/style.css'; 
 
 class Admin extends Component {
   constructor(props) {

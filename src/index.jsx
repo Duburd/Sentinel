@@ -20,15 +20,12 @@ const theme = createMuiTheme({
     danger: 'orange',
   },
 });
-
-const AppWithCookies = withCookies(App)
+const AppWithCookies = withCookies(App);
 
 ReactDOM.render(
   <CookiesProvider>
     <BrowserRouter>
-      <AppWithCookies />
-    </BrowserRouter>
-  </CookiesProvider>,
-
-
+    <AppWithCookies />
+  </BrowserRouter>
+  </CookiesProvider>, 
 document.getElementById('react-root'));
