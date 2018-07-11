@@ -1,16 +1,38 @@
 import React, { Component, Fragment } from 'react';
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, IndexLink, Redirect, Link} from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 class BootNavbar extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
   constructor(props) {
     super(props);
+    const { cookies } = props;
     this.state = {
+      redirect: false,
+      user: cookies.get('user') || null,
     }
+  }
+  logout = () => {
+    const {cookies} = this.props;
+    cookies.remove('user')
+    this.setState({
+      redirect: true
+    })
+    this.setState({
+      user: null,
+    })
   }
 
   render() {
+    const {redirect} = this.state
+    if(redirect){
+      return <IndexLink to='/login'/>
+    } else {
     return (
       <div className="header">
         <Navbar inverse collapseOnSelect>
@@ -38,8 +60,8 @@ class BootNavbar extends Component {
               </LinkContainer>
 
 
-              {this.state.isAuthenticated
-                ? <NavItem eventKey={2} href="#"> Logout (I'm logged in) </NavItem>
+              {this.state.user
+                ? <NavItem onClick={()=>this.logout()}> Logout {this.state.user.username} </NavItem>
                 : <NavItem eventKey={2} href="#"> Login (I'm logged out) </NavItem>
               }
 
@@ -51,8 +73,9 @@ class BootNavbar extends Component {
       </div>
     );
   }
+  }
 }
 
-export default BootNavbar;
+export default withCookies(BootNavbar);
 
 

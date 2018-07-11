@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import "../styles/login.css";
 import "../styles/App.css"
 require("babel-core/register");
 require("babel-polyfill");
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
+import { Redirect, IndexLink} from 'react-router-dom';
 
 class Login extends Component {
   static propTypes = {
@@ -16,10 +17,11 @@ class Login extends Component {
     super(props);
     const { cookies } = props;
     this.state = {
-      name: cookies.get('name') || 'Ben',
+      user: cookies.get('user') || null,
       username: "matti",
       password: "abc123",
-      logErr: null
+      logErr: null,
+      redirect: false
     };
   }
 
@@ -58,11 +60,19 @@ class Login extends Component {
           const { cookies } = this.props
           console.log(response.user[0])
           cookies.set('user', response.user[0], { path: '/' })
+          this.setState({
+            user: cookies.get('user'),
+            redirect: true,
+          })
         }
     })
   }
 
   render() {
+    const {redirect} = this.state
+    if(redirect){
+      return <IndexLink to='/'/>
+    } else {
     return (
       <div className="App">
       <header className="App-header">
@@ -96,11 +106,13 @@ class Login extends Component {
           >
             Login
           </Button>
+          {this.state.redirect}
         </form>
       </div>
       </header>
       </div>
     );
+  }
   }
 }
 
