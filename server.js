@@ -1,6 +1,8 @@
 require('dotenv').config();
 const path = require('path');
 
+const fallback   = require('express-history-api-fallback');
+const root       = `build/public`
 const ENV        = process.env.ENV || 'production';
 const express    = require('express'    );
 const knexConfig = require("./knexfile" );
@@ -30,6 +32,8 @@ app.use("/api/vehicles",  vehiclesRoutes (knex));
 app.use("/api/witnesses", witnessesRoutes(knex));
 app.use("/api/users",     usersRoutes(knex));
 app.use("/api/admins",     adminsRoutes(knex));
+
+app.use(fallback('index.html', { root }));
 // can be GETted through the webpack-dev-server at localhost:8080/api or whatever host/port makes sense
 
 app.listen(PORT, () => {
