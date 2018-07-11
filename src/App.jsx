@@ -11,8 +11,6 @@ require("babel-core/register");
 require("babel-polyfill");
 
 class App extends Component {
-  test = () => alert('this works');
-
 
   render() {
     const childProps = {

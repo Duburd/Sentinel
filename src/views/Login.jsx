@@ -28,15 +28,15 @@ export default class Login extends Component {
   }
 
   onUserChange = (event) => {
-    this.setState({username: event.target.value});
+    this.setState({ username: event.target.value });
   }
 
   onPassChange = (event) => {
-    this.setState({password: event.target.value});
+    this.setState({ password: event.target.value });
   }
 
   handleSubmit = async event => {
-    this.setState({logErr: null})
+    this.setState({ logErr: null })
     const loginObj = {
       username: this.state.username,
       password: this.state.password,
@@ -48,55 +48,55 @@ export default class Login extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: cred,
     })
-    .then((results)=> results.json())
-    .then((response) => {
-      if(response.user === null){
-          this.setState({logErr: response.message})
+      .then((results) => results.json())
+      .then((response) => {
+        if (response.user === null) {
+          this.setState({ logErr: response.message })
           console.log(response)
         } else {
           cookies.set('user', user, { path: '/' })
           console.log(response)
         }
-    })
+      })
   }
 
   render() {
     return (
       <div className="App">
-      <header className="App-header">
-      <img src="insure.svg" className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to Sentinel</h1>
-      <div className="Login">
-        <form>
-          <ControlLabel style={{color: 'tomato'}}>{this.state.logErr}</ControlLabel>
-          <FormGroup controlId="username" bsSize="large">
-          <ControlLabel>Username</ControlLabel>
-            <FormControl
-              autoFocus
-              type="username"
-              value={this.state.username}
-              onChange={this.onUserChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.onPassChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            onClick={()=>this.handleSubmit()}
-          >
-            Login
+        <header className="App-header">
+          <img src="insure.svg" className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to Sentinel</h1>
+          <div className="Login">
+            <form>
+              <ControlLabel style={{ color: 'tomato' }}>{this.state.logErr}</ControlLabel>
+              <FormGroup controlId="username" bsSize="large">
+                <ControlLabel>Username</ControlLabel>
+                <FormControl
+                  autoFocus
+                  type="username"
+                  value={this.state.username}
+                  onChange={this.onUserChange}
+                />
+              </FormGroup>
+              <FormGroup controlId="password" bsSize="large">
+                <ControlLabel>Password</ControlLabel>
+                <FormControl
+                  value={this.state.password}
+                  onChange={this.onPassChange}
+                  type="password"
+                />
+              </FormGroup>
+              <Button
+                block
+                bsSize="large"
+                disabled={!this.validateForm()}
+                onClick={() => this.handleSubmit()}
+              >
+                Login
           </Button>
-        </form>
-      </div>
-      </header>
+            </form>
+          </div>
+        </header>
       </div>
     );
   }
