@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Navbar, Nav, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { withCookies, Cookies } from 'react-cookie';
 
 class BootNavbar extends Component {
   constructor(props) {

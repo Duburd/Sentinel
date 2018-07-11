@@ -28,7 +28,6 @@ module.exports = (knex) => {
   });
 
   router.get("/:id/reports", (req, res, next) => {
-    console.log(req.params.id)
     knex('reports')
     .select(
       'vehicles.make',
@@ -53,7 +52,7 @@ module.exports = (knex) => {
   });
 
   router.get("/:id/vehicles", (req, res, next) => {
-    knex.select('*').from('vehicles')
+    return knex.select('*').from('vehicles')
       .where('user_id', '=', req.params.id)
       .then((results) => {
         res.json(results)
@@ -64,18 +63,22 @@ module.exports = (knex) => {
   });
 
   router.post("/session", (req, res, next) => {
-    console.log(req.body)
     knex('users')
     .select('*')
     .where('policy_number', '=', req.body.policyNum)
     .where('password', '=', req.body.pwd)
-    .then((results) => {
+    .then((results, err) => {
+      var message = 'user authenticated'
+      if (typeof results[0] === 'undefined') {
+        message = 'looks like your credentials didn\'t match up';
+        results = null
+      }
       res.json({
-        message: 'user authenticated',
-        usr: results
+        message: message,
+        user: results
       })
-    }).catch((err) => {
-      res.json({message: 'looks like your credentials didn\'t match up', err: err})
+    }).catch((err, e) => {
+      res.json({message: 'looks like your credentials didn\'t match up', err: err, e: e})
     })
   });
 
