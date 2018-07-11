@@ -79,8 +79,8 @@ class Admin extends Component {
       .then(results => {
         return this.setState({ vehiclesList: results })
       })
-
-    fetch('/api/witnesses')
+      
+      fetch('/api/witnesses')
       .then(results => results.json())
       .then(results => {
         return this.setState({ witnessList: results })
@@ -89,6 +89,12 @@ class Admin extends Component {
 
     //don't know if this is the best way to do this. ****
     this.lookupInterval = setInterval(() => {
+      fetch('/api/witnesses')
+      .then(results => results.json())
+      .then(results => {
+        return this.setState({ witnessList: results })
+      })
+
       fetch('/api/reports')
         .then(results => results.json())
         .then(results => {

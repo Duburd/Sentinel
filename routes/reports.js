@@ -62,6 +62,7 @@ module.exports = (knex) => {
         email: req.body.data.email,
         phone_number: req.body.data.phone,
         testimony: req.body.data.testimony,
+        status: 'Unread',
       })
       .then(()=> {
         res.json({
@@ -142,6 +143,22 @@ module.exports = (knex) => {
       .where('id', '=', req.params.id)
       .update({
         status: req.body.status,
+      })
+      .then(()=> {
+        res.json({
+          message: 'status updated'
+        })
+      })
+      .catch((err) => {
+        res.json(err)
+      })
+  });
+
+  router.put("/:id/witnessstatus", (req, res, next) => {
+    knex('witnesses')
+      .where('id', '=', req.params.id)
+      .update({
+        status: 'Read',
       })
       .then(()=> {
         res.json({
