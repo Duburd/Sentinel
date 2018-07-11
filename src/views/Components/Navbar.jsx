@@ -69,11 +69,14 @@ class BootNavbar extends Component {
             <Nav pullRight>
               {admin}
               <LinkContainer to="/">
-                <NavItem eventKey={2}>Home</NavItem>
+                <NavItem eventKey={1}>Home</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/admin">
+                <NavItem eventKey={2}>Admin</NavItem>
               </LinkContainer>
 
               <LinkContainer to="/witness">
-                <NavItem eventKey={4}>Witness</NavItem>
+                <NavItem eventKey={4}>File Witness Report</NavItem>
               </LinkContainer>
 
 

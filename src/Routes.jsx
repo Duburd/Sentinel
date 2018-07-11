@@ -8,6 +8,7 @@ import Home from './views/Home.jsx';
 import Main from './views/Main.jsx';
 import Contact from './views/Contact.jsx';
 import Witness from './views/Witness.jsx';
+import Logged_out from './views/Logged_out.jsx'
 
 
 
@@ -30,10 +31,10 @@ export default ({ childProps }) =>
   <Switch>
     <AppliedRoute path="/" exact component={Home} props={childProps} />
     <AppliedRoute path="/login" exact component={Login} props={childProps} />
-    <AppliedRoute path="/admin" component={Admin} />
-    <AppliedRoute path="/main" component={Main} />
+    <AppliedRoute path="/admin" component={Admin} props={childProps}/>
     <AppliedRoute path="/contact" component={Contact} />
     <AppliedRoute path="/witness" component={Witness} />
+    <AppliedRoute path="/logout" component={Logged_out} />
     { /* Finally, catch all unmatched routes */ }
     {/* <Route component={NotFound} /> */}
   </Switch>;

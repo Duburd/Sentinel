@@ -32,17 +32,17 @@ const Footer = () => (
             <ul className="list-inline mb-0">
               <li className="list-inline-item mr-3">
                 <a href="#">
-                <i className="fab fa-facebook-f" />
+                <i className="fab fa-facebook-f bigger" />
                 </a>
               </li>
               <li className="list-inline-item mr-3">
                 <a href="#">
-                <i className="fab fa-twitter" />
+                <i className="fab fa-twitter bigger" />
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href="#">
-                <i className="fab fa-reddit" />
+                <i className="fab fa-reddit bigger" />
                 </a>
               </li>
             </ul>
