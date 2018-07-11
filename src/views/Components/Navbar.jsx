@@ -17,9 +17,19 @@ class BootNavbar extends Component {
       user: cookies.get('user') || null,
     }
   }
+
+  componentDidMount(){
+    const { cookies } = this.props;
+
+    this.setState({
+      user: cookies.get('user') || null
+    })
+  }
+
   logout = () => {
     const {cookies} = this.props;
     cookies.remove('user')
+    console.log(cookies.get('user'))
     this.setState({
       user: null,
     })
@@ -29,12 +39,23 @@ class BootNavbar extends Component {
   }
 
   render() {
+    const {cookies} = this.props
     const {redirect} = this.state
+    let logout = null
+    let admin = <LinkContainer to="/login">
+                  <NavItem eventKey={3}>Login</NavItem>
+                </LinkContainer>
+    if(cookies.get('user')){
+      admin =  <LinkContainer to="/admin">
+                <NavItem eventKey={1}>Admin</NavItem>
+              </LinkContainer>
+    }
     if(redirect){
-      return <Redirect to="/login" href="/login"/>
-    } else {
+      logout = <Redirect to="/login" href="/login"/>;
+    }
     return (
       <div className="header">
+      {logout}
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
@@ -46,23 +67,19 @@ class BootNavbar extends Component {
 
 
             <Nav pullRight>
-              <LinkContainer to="/admin">
-                <NavItem eventKey={1}>Admin</NavItem>
-              </LinkContainer>
+              {admin}
               <LinkContainer to="/">
                 <NavItem eventKey={2}>Home</NavItem>
               </LinkContainer>
-              <LinkContainer to="/login">
-                <NavItem eventKey={3}>Login</NavItem>
-              </LinkContainer>
+
               <LinkContainer to="/witness">
                 <NavItem eventKey={4}>Witness</NavItem>
               </LinkContainer>
 
 
-              {this.state.user
-                ? <NavItem onClick={()=>this.logout()}> Logout {this.state.user.username} </NavItem>
-                : <NavItem eventKey={2} href="#"> Login (I'm logged out) </NavItem>
+              {cookies.get('user') === undefined
+                ? <NavItem eventKey={2} href="#"> Login (I'm logged out) </NavItem>
+                : <NavItem onClick={()=>this.logout()}> Logout {cookies.get('user').username} </NavItem>
               }
 
 
@@ -72,7 +89,6 @@ class BootNavbar extends Component {
         </Navbar>
       </div>
     );
-  }
   }
 }
 
