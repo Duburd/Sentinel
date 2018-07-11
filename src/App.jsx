@@ -5,8 +5,6 @@ import Login from './views/Login.jsx';
 import Routes from './Routes.jsx';
 import Home from './views/Home.jsx';
 import Navbar from './views/Components/Navbar.jsx';
-import { instanceOf } from 'prop-types';
-import cookie from 'react-cookie';
 require("babel-core/register");
 require("babel-polyfill");
 
