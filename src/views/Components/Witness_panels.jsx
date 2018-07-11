@@ -61,19 +61,19 @@ class SimpleExpansionPanel extends React.Component {
                         <Typography className={classes.heading}>
                             {wit.status == 'Read'
                                 ? <Chip style={{ width: 100, background: 'white', color: 'black' }} label={wit.first_name} className={classes.chip}></Chip>
-                                : <Chip style={{ width: 100, background: 'lightgray', color: 'black' }} label={wit.first_name} className={classes.chip}></Chip>
+                                : <Chip style={{ fontStyle: 'italic', width: 100, background: 'white', fontWeight: 'bold', color: 'black' }} label={wit.first_name} className={classes.chip}></Chip>
                             }
                             {wit.status == 'Read'
                                 ? <Chip style={{ width: 150, background: 'white', color: 'blue' }} label={wit.last_name} className={classes.chip}></Chip>
-                                : <Chip style={{ width: 150, background: 'lightgray', color: 'black' }} label={wit.last_name} className={classes.chip}></Chip>
+                                : <Chip style={{ fontStyle: 'italic', width: 150, background: 'white', fontWeight: 'bold', color: 'blue' }} label={wit.last_name} className={classes.chip}></Chip>
                             }
                             {wit.status == 'Read'
                                 ? <Chip style={{ width: 100, background: 'white', color: 'black' }} label={wit.email} className={classes.chip}></Chip>
-                                : <Chip style={{ width: 100, background: 'lightgray', color: 'black' }} label={wit.email} className={classes.chip}></Chip>
+                                : <Chip style={{ fontStyle: 'italic', width: 100, background: 'white', fontWeight: 'bold', color: 'black' }} label={wit.email} className={classes.chip}></Chip>
                             }
                             {wit.status == 'Read'
                                 ? <Chip style={{ width: 150, background: 'white', color: 'blue' }} label={wit.phone_number} className={classes.chip}></Chip>
-                                : <Chip style={{ width: 150, background: 'lightgray', color: 'black' }} label={wit.phone_number} className={classes.chip}></Chip>
+                                : <Chip style={{ fontStyle: 'italic', width: 150, background: 'white', fontWeight: 'bold', color: 'blue' }} label={wit.phone_number} className={classes.chip}></Chip>
                             }
                         </Typography>
                     </ExpansionPanelSummary>
