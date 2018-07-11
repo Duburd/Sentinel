@@ -56,6 +56,7 @@ exports.up = function (knex, Promise) {
       table.string('last_name');
       table.string('phone_number');
       table.string('email');
+      table.string('status');
       table.timestamp('created_at').defaultTo(knex.fn.now());
     }),
     knex.schema.createTable('admins', function (table) {
