@@ -14,7 +14,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-import DatePicker from '../Date_picker.jsx'
+import DatePicker from './Date_picker.jsx'
 var moment = require('moment');
 
 const styles = theme => ({
@@ -64,7 +64,7 @@ class TextFields extends React.Component {
       policyObj: {},
       policyIds: { ids: [], first_names: [] },
 
-      incidentTime : new Date(),
+      incidentTime: new Date(),
 
       policyNum: "",
       selectedPolicyNum: "",
@@ -131,9 +131,9 @@ class TextFields extends React.Component {
       .sort();   // TODO: something more fun
   }
 
-  handleDateChange = (event,date) => {
-    this.setState({incidentTime: date})
-}
+  handleDateChange = (event, date) => {
+    this.setState({ incidentTime: date })
+  }
 
   render() {
 
@@ -148,16 +148,16 @@ class TextFields extends React.Component {
     }
 
     const labelStyle = {
-      left: 150, 
+      left: 150,
       textSize: 14
     };
 
     const labelStyle2 = {
-      left: 200, 
+      left: 200,
       textSize: 14
     };
 
-  
+
 
 
     return (
@@ -256,9 +256,9 @@ class TextFields extends React.Component {
           margin="normal"
           onChange={this.handleInputChange}
         />
-        <DatePicker 
-        name="incidentTime"
-        onChange={this.handleDateChange}
+        <DatePicker
+          name="incidentTime"
+          onChange={this.handleDateChange}
         />
         <TextField
           id="location"

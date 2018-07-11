@@ -34,7 +34,7 @@ function DateAndTimePickers(props) {
   const { classes } = props;
 
   return (
-    <form className={classes.container} noValidate>
+    
       <TextField
         id="datetime-local"
         label="Incident Time"
@@ -54,7 +54,7 @@ function DateAndTimePickers(props) {
             },
           }}
       />
-    </form>
+   
   );
 }
 
