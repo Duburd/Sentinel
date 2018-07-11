@@ -135,7 +135,6 @@ export default class Witness extends Component {
         return (
             <div>
                 <NotificationSystem ref="notificationSystem" />
-
                 <div>
                     <MediaQuery query="(min-width: 1224px)">
                         <div style={bgStyle}>
@@ -203,7 +202,7 @@ export default class Witness extends Component {
                                     type="text"
                                     label="Report ID"
                                     placeholder="Report ID"
-                                    defaultValue={parsedUrl}
+                                    defaultValue={reportIdParsed}
                                     onChange={this.handleInputChange}
                                 />
                                 <FieldGroup
