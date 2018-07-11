@@ -20,6 +20,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
 import { Button as BootButton } from 'react-bootstrap';
+var moment = require('moment');
 // import './App.css';
 
 
@@ -44,10 +45,9 @@ const columnData = [
   { id: 'description', numeric: false, disablePadding: true, label: 'Incident Description' },
   { id: 'id', numeric: true, disablePadding: false, label: 'Case #' },
   { id: 'first_name', numeric: true, disablePadding: false, label: 'Client' },
-  { id: 'created_at', numeric: true, disablePadding: false, label: 'Date' },
+  { id: 'date', numeric: true, disablePadding: false, label: 'Date' },
   { id: 'status', numeric: true, disablePadding: false, label: 'Status' },
   { id: 'reports', numeric: true, disablePadding: false, label: 'Reports' },
-
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -299,7 +299,7 @@ class EnhancedTable extends React.Component {
                       </TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.id}</TableCell>
                       <TableCell style={{ fontSize: '1.25rem' }} numeric>{n.first_name}</TableCell>
-                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{chopDate(n.created_at)}</TableCell>
+                      <TableCell style={{ fontSize: '1.25rem' }} numeric>{moment(n.date).format('MMMM Do YYYY, h:mm a')}</TableCell>
                       {n.status === 'Open'
                       ? <TableCell style={{ fontSize: '1.25rem', color: 'green' }} numeric>{n.status}</TableCell>
                       : (n.status === 'Closed' 

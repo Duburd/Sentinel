@@ -4,6 +4,7 @@
 
 .App-logo {
   height: 160px;
+  margin-left: 60px;
 }
 
 .App-header {
@@ -170,9 +171,9 @@ body {
 
 .newReportButton {
   display: relative;
-  position: absolute;
-  right: 10px;
-  margin: 20px 10px;
+  position: fixed;
+  float: right;
+  right: 20px;
 }
 
 .bigger {

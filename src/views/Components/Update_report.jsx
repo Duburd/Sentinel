@@ -349,7 +349,7 @@ class TextFields extends React.Component {
           id="incidentTime"
           label="Date/Time of incident"
           name="incidentTime"
-          defaultValue=""
+          disabled
           InputLabelProps={{
             shrink: true,
             FormLabelClasses: {

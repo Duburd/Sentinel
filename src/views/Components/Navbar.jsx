@@ -79,7 +79,7 @@ class BootNavbar extends Component {
 
 
               {cookies.get('user') === undefined
-                ? <NavItem eventKey={2} href="#"> Login (I'm logged out) </NavItem>
+                ? <NavItem eventKey={2} href="#"></NavItem>
                 : <NavItem onClick={()=>this.logout()}> Logout {cookies.get('user').username} </NavItem>
               }
 
