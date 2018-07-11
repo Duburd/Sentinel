@@ -10,7 +10,7 @@ const BootstrapHeader = () => (
     <div className="container">
       <div className="row">
         <div className="col-xl-9 mx-auto">
-          <h1 className="mb-5">Ensure that you are protected today with Valiant.</h1>
+          <h1 className="mb-5">Ensure that you are protected today with Sentinel.</h1>
         </div>
         <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
           <form>
@@ -32,7 +32,7 @@ const BootstrapHeader = () => (
 
 const businessAddress = (
   <address>
-    <strong>Valiant</strong><br />
+    <strong>Sentinel</strong><br />
     The HiVE, 128 W Hastings St #300, <br />
     Vancouver, BC V6B 1G8<br />
     +1 888-569-6898
@@ -45,7 +45,7 @@ const Entry = () => (
   <div style={bgStyle}>
     <div className="blankDiv">
       <div className="tempText">
-        <h1 className="landing_rowMainText">Valiant</h1>
+        <h1 className="landing_rowMainText">Sentinel</h1>
         {/* <Link to="/main"><button className="actionButton">Start Here</button></Link> */}
         <div className="spacer"></div>
       </div>
@@ -54,11 +54,11 @@ const Entry = () => (
 )
 
 const bgStyle = {
-  backgroundImage: "url('./Images/AdobeStock_64718583.jpeg')",
+  backgroundImage: "url('https://steemitimages.com/0x0/https://plotagraph.s3.amazonaws.com/shared/589e4c6ed1e4e81500537144.gif')",
   backgroundSize: "cover",
   backgroundRepeat: "repeat-x",
   height: "800px",
-  opacity: "0.8",
+  marginTop: "-20px"
 }
 
 
