@@ -101,7 +101,7 @@ export default class Witness extends Component {
                     level: "success"
                 })
 
-                setTimeout( () => { window.location.href = "/witness" }, 500)
+                setTimeout( () => { window.location.href = "/witness" }, 1500)
             }
             return response.json();
         }).then(function (data) {
@@ -242,7 +242,7 @@ export default class Witness extends Component {
                                     <FormControl componentClass="textarea" placeholder="Please give your account of events." onChange={this.handleInputChange} name="testimony" />
                                 </FormGroup>
 
-                                <Button type="submit" onClick={(ev) => { this.addNotification(ev, 'Report submitted'); this.handleSubmit(ev) }}>Submit</Button>
+                                <Button type="submit" onClick={this.handleSubmit.bind(this)}>Submit</Button>
                             </form>
                         </div>
                     </MediaQuery>
