@@ -185,7 +185,6 @@ module.exports = (knex) => {
         status:            status,
         date:              Date.now(),
       })
-      
       .then((id) => {
         report_id = id
         if (media) {
