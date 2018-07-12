@@ -102,7 +102,6 @@ class SimpleTabs extends React.Component {
               : <Tab label={
                 <span style={{ fontSize: 12 }}>Witness Testimonies</span>} classes={{ root: classes.tabRoot }} />
             }
-
           </Tabs>
         </AppBar>
         {value === 0 &&
