@@ -92,15 +92,17 @@ class SimpleTabs extends React.Component {
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label={<span style={{ fontSize: 12 }}>Damage Report</span>} classes={{ root: classes.tabRoot }} />
             <Tab label={<span style={{ fontSize: 12 }}>Pictures</span>} classes={{ root: classes.tabRoot }} />
-            {(this.getWitnessLength() > 0)? <Tab classes={{ root: classes.tabRoot }} label={
+
+            {(this.getWitnessLength() > 0) ? <Tab classes={{ root: classes.tabRoot }} label={
               <Badge className={classes.padding} color="secondary" badgeContent={this.getWitnessLength()}>
                 <span style={{ fontSize: 12 }}>Witness Testimonies</span>
               </Badge>
             }
             />
-            : <Tab label={
-              <span style={{ fontSize: 12 }}>Witness Testimonies</span>} classes={{ root: classes.tabRoot }} />
+              : <Tab label={
+                <span style={{ fontSize: 12 }}>Witness Testimonies</span>} classes={{ root: classes.tabRoot }} />
             }
+
           </Tabs>
         </AppBar>
         {value === 0 &&
