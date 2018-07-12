@@ -18,6 +18,7 @@ exports.seed = function (knex, Promise) {
                 phone_number: '1-(902)-123-4567',
                 password: 'Abcd1234',
                 policy_number: '12345',
+                email: 'matt@gmail.com',
                 license_number: faker.random.number()
             },
             {
@@ -189,7 +190,7 @@ exports.seed = function (knex, Promise) {
                 policy_number: faker.random.number(),
                 password: faker.random.number(),
                 uri: faker.image.cats(),
-                license_number: faker.random.number()
+                license_number: faker.random.number(),
             },
             {
                 first_name: faker.name.firstName(),
