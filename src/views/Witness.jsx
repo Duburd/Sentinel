@@ -127,11 +127,13 @@ export default class Witness extends Component {
         this.setState({ reportId: reportIdParsed })
         this._notificationSystem = this.refs.notificationSystem;
         
+        
 
     }
 
     render() {
 
+        
         return (
             <div>
                 <NotificationSystem ref="notificationSystem" />

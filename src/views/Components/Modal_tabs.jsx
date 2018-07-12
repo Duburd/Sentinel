@@ -10,6 +10,7 @@ import NewReport from './New_report.jsx';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 import WitnessPanels from './Witness_panels.jsx'
+import Badge from '@material-ui/core/Badge';
 
 function TabContainer(props) {
   return (
@@ -30,6 +31,9 @@ const styles = theme => ({
   },
   tabRoot: {
     fontSize: 12,
+  },
+  padding: {
+    padding: `0 ${theme.spacing.unit * 2}px`,
   },
 
 });
@@ -66,6 +70,14 @@ class SimpleTabs extends React.Component {
     }
   }
 
+  getWitnessLength = () => {
+    const { classes } = this.props;
+    return this.props.witnessList
+      .filter(wit => wit.report_id == this.props.modalObj.id)
+      .filter(wit => wit.status == 'Unread')
+      .length
+  }
+
 
   render() {
 
@@ -80,7 +92,15 @@ class SimpleTabs extends React.Component {
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label={<span style={{ fontSize: 12 }}>Damage Report</span>} classes={{ root: classes.tabRoot }} />
             <Tab label={<span style={{ fontSize: 12 }}>Pictures</span>} classes={{ root: classes.tabRoot }} />
-            <Tab label={<span style={{ fontSize: 12 }}>Witness Testimonies</span>} classes={{ root: classes.tabRoot }} />
+            {(this.getWitnessLength() > 0)? <Tab classes={{ root: classes.tabRoot }} label={
+              <Badge className={classes.padding} color="secondary" badgeContent={this.getWitnessLength()}>
+                <span style={{ fontSize: 12 }}>Witness Testimonies</span>
+              </Badge>
+            }
+            />
+            : <Tab label={
+              <span style={{ fontSize: 12 }}>Witness Testimonies</span>} classes={{ root: classes.tabRoot }} />
+            }
           </Tabs>
         </AppBar>
         {value === 0 &&
