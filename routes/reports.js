@@ -172,6 +172,7 @@ module.exports = (knex) => {
 
 
   router.post("/", (req, res, next) => {
+    let report_id = null;
     const {damage, description, vehicle_id, location, user_id, status, media, additionalDrivers} = req.body;
     knex('reports')
       .returning('id')
@@ -182,8 +183,10 @@ module.exports = (knex) => {
         location:          location,
         user_id:           user_id,
         status:            status,
+        date:              Date.now(),
       })
       .then((id) => {
+        report_id = id
         if (media) {
           media.forEach((uri)=>{
             knex('media')
@@ -209,7 +212,7 @@ module.exports = (knex) => {
         if(err) {
           res.json(err)
         }
-        res.json(results)
+        res.json([{results: results, report_id: report_id[0]}])
       })
   });
   return router

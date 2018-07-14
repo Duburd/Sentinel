@@ -72,7 +72,6 @@ class BootNavbar extends Component {
                 <NavItem eventKey={1}>Home</NavItem>
               </LinkContainer>
 
-
               <LinkContainer to="/witness">
                 <NavItem eventKey={4}>File Witness Report</NavItem>
               </LinkContainer>

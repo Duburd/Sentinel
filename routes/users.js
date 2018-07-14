@@ -65,7 +65,7 @@ module.exports = (knex) => {
   router.post("/session", (req, res, next) => {
     knex('users')
     .select('*')
-    .where('policy_number', '=', req.body.policyNum)
+    .where('email', '=', req.body.email)
     .where('password', '=', req.body.pwd)
     .then((results, err) => {
       var message = 'user authenticated'

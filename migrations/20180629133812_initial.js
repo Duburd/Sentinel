@@ -6,6 +6,7 @@ exports.up = function (knex, Promise) {
       table.string('last_name');
       table.string('phone_number');
       table.string('license_number');
+      table.string('email');
       table.string('policy_number');
       table.string('password');
       table.string('uri');
