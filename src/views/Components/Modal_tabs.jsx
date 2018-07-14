@@ -91,7 +91,6 @@ class SimpleTabs extends React.Component {
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label={<span style={{ fontSize: 12 }}>Damage Report</span>} classes={{ root: classes.tabRoot }} />
-            <Tab label={<span style={{ fontSize: 12 }}>Pictures</span>} classes={{ root: classes.tabRoot }} />
 
             {(this.getWitnessLength() > 0) ? <Tab classes={{ root: classes.tabRoot }} label={
               <Badge className={classes.padding} color="secondary" badgeContent={this.getWitnessLength()}>
@@ -99,9 +98,10 @@ class SimpleTabs extends React.Component {
               </Badge>
             }
             />
-              : <Tab label={
-                <span style={{ fontSize: 12 }}>Witness Testimonies</span>} classes={{ root: classes.tabRoot }} />
+            : <Tab label={
+              <span style={{ fontSize: 12 }}>Witness Testimonies</span>} classes={{ root: classes.tabRoot }} />
             }
+            <Tab label={<span style={{ fontSize: 12 }}>Pictures</span>} classes={{ root: classes.tabRoot }} />
           </Tabs>
         </AppBar>
         {value === 0 &&
@@ -127,11 +127,6 @@ class SimpleTabs extends React.Component {
           </TabContainer>}
         {value === 1 &&
           <TabContainer>
-            {/* pictures of damaged cars/evidence */}
-            {this.state.media}
-          </TabContainer>}
-        {value === 2 &&
-          <TabContainer>
             <WitnessPanels
               claimsList={this.props.claimsList}
               modalId={this.props.modalId}
@@ -140,6 +135,11 @@ class SimpleTabs extends React.Component {
               addNotification={this.props.addNotification}
               witnessList={this.props.witnessList}
             />
+          </TabContainer>}
+        {value === 2 &&
+          <TabContainer>
+            {/* pictures of damaged cars/evidence */}
+            {this.state.media}
           </TabContainer>}
       </div>
     );

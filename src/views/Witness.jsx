@@ -34,6 +34,7 @@ const bgStyle = {
     backgroundRepeat: "repeat-x",
     height: "800px",
     opacity: "1",
+    marginTop: "-20px"
 }
 
 const boxStyle = {
@@ -44,7 +45,7 @@ const boxStyle = {
     boxSizing: "border-box",
     marginLeft: "25%",
     background: "black",
-    opacity: "0.7",
+    opacity: "0.85",
     color: "white",
 
 }
