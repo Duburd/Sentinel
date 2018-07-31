@@ -1,4 +1,4 @@
-## Created by Aaron Black and Mattison Greff
+### A Full-stack React/React Native app by Aaron Black and Mattison Greff
 
 ### Sentinel
 
@@ -8,13 +8,13 @@ Sentinel was built using React and React Native. This repo is the `React` part o
 
 ## Screenshots:
 
-![alt tag] https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.46.03%20PM.png
+![alt tag] (https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.46.03%20PM.png)
 
-![alt tag] https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.45.45%20PM.png
+![alt tag] (https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.45.45%20PM.png)
 
-![alt tag] https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.45.53%20PM.png
+![alt tag] (https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.45.53%20PM.png)
 
-![alt tag] https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.46.03%20PM.png
+![alt tag] (https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.46.03%20PM.png)
 
 ## Quick start:
 
