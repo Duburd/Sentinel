@@ -36,7 +36,7 @@ Sentinel was built using React and React Native. This repo is the `React` part o
 - React Router Dom
 - Material UI
 - Bootstrap
-- Deployed to Heroku
+- Deployed to Heroku @ https://alluring-shenandoah-49358.herokuapp.com/
 
 ---
 
