@@ -65,7 +65,6 @@ class BootNavbar extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
 
-
             <Nav pullRight>
               {admin}
               <LinkContainer to="/">
@@ -76,13 +75,10 @@ class BootNavbar extends Component {
                 <NavItem eventKey={4}>File Witness Report</NavItem>
               </LinkContainer>
 
-
               {cookies.get('user') === undefined
                 ? <NavItem eventKey={2} href="#"></NavItem>
                 : <NavItem onClick={()=>this.logout()}> Logout {cookies.get('user').username} </NavItem>
               }
-
-
 
             </Nav>
           </Navbar.Collapse>

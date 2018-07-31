@@ -55,7 +55,6 @@ const ModalButton = styled.button`
   }
 `;
 
-
 class TextFields extends React.Component {
   constructor(props) {
     super(props)
