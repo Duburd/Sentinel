@@ -23,7 +23,7 @@ Sentinel was built using React and React Native. This repo is the `React` part o
 1. Clone this repo.
 2. run `yarn install` from the project's root directory in terminal to install dependencies. 
 2. input `yarn dev` in terminal to start server.
-3. visit `localhost:8080` in browswer.
+3. visit `localhost:8080` in browser.
 
 
 ## Tech Stack
