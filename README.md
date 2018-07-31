@@ -26,7 +26,7 @@ Sentinel was built using React and React Native. This repo is the `React` part o
 
 ---
 
-##Thanks to: 
+### Thanks to: 
 * [Jeremy Holman]()
 * [David VanDusen](https://github.com/davidvandusen/react-webpack-boilerplate)
 * Karl Jensen
