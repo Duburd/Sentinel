@@ -17,8 +17,6 @@ Sentinel was built using React and React Native. This repo is the `React` part o
 
 ![alt tag](https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-30%20at%208.21.21%20PM.png)
 
-![alt tag](https://github.com/Matt-Greff/Sentinel/blob/master/docs/Screen%20Shot%202018-07-13%20at%209.45.53%20PM.png)
-
 
 
 ## Quick start:
