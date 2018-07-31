@@ -1,6 +1,7 @@
-### A Full-stack React/React Native app by Aaron Black and Mattison Greff
 
-## Sentinel
+# Sentinel
+
+### A Full-stack React/React Native app by Aaron Black and Mattison Greff
 
 Sentinel is a full stack web app for insurance companies to manage and edit reports submitted by clients. 
 
@@ -23,6 +24,19 @@ Sentinel was built using React and React Native. This repo is the `React` part o
 2. run `yarn install` from the project's root directory in terminal to install dependencies. 
 2. input `yarn dev` in terminal to start server.
 3. visit `localhost:8080` in browswer.
+
+
+## Tech Stack
+
+- Node
+- Express
+- Postgres
+- Knex
+- React
+- React Router Dom
+- Material UI
+- Bootstrap
+- Deployed to Heroku
 
 ---
 
